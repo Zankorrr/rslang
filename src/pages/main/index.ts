@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import './style.css';
 
 export function addHeader() {
@@ -8,16 +9,22 @@ export function addHeader() {
   const navigation = document.createElement('nav');
   navigation.classList.add('navigation');
   const mainPageButton = document.createElement('button');
+  mainPageButton.classList.add('main-page-button');
   mainPageButton.innerText = 'Main';
   const textbookButton = document.createElement('button');
+  textbookButton.classList.add('textbook-button');
   textbookButton.innerText = 'Textbook';
   const wordListButton = document.createElement('button');
+  wordListButton.classList.add('word-list-button');
   wordListButton.innerText = 'Word list';
   const audioCallButton = document.createElement('button');
+  audioCallButton.classList.add('audio-call-button');
   audioCallButton.innerText = 'Audio call';
   const sprintButton = document.createElement('button');
+  sprintButton.classList.add('sprint-button');
   sprintButton.innerText = 'Sprint';
   const statisticsButton = document.createElement('button');
+  statisticsButton.classList.add('statistics-button');
   statisticsButton.innerText = 'Statistics';
   navigation.append(
     mainPageButton,
@@ -82,4 +89,64 @@ export function addFooter() {
   authors.append(aleksey, ', ', dmitry, ', ', maksim, ' @2022');
   footer.append(rss, authors);
   document.body.appendChild(footer);
+}
+
+export function updateNavigation() {
+  const audioCallGame = document.querySelector('.audio-call-game') as HTMLElement;
+  const sprintGame = document.querySelector('.sprint-game') as HTMLElement;
+  const statisticsPage = document.querySelector('.statistics-page') as HTMLElement;
+  const textbookPage = document.querySelector('.textbook-page') as HTMLElement;
+  const wordListPage = document.querySelector('.word-list-page') as HTMLElement;
+  const description = document.querySelector('.description') as HTMLElement;
+  const aboutTeam = document.querySelector('.about-team') as HTMLElement;
+  const footer = document.querySelector('.footer') as HTMLElement;
+  function hideElements() {
+    const variableElements = [audioCallGame, sprintGame, statisticsPage,
+      textbookPage, wordListPage, description, aboutTeam, footer];
+    variableElements.forEach((el) => {
+      el.style.display = 'none';
+    });
+  }
+
+  const mainPageButton = document.querySelector('.main-page-button') as HTMLButtonElement;
+  const textbookButton = document.querySelector('.textbook-button') as HTMLButtonElement;
+  const wordListButton = document.querySelector('.word-list-button') as HTMLButtonElement;
+  const audioCallButton = document.querySelector('.audio-call-button') as HTMLButtonElement;
+  const sprintButton = document.querySelector('.sprint-button') as HTMLButtonElement;
+  const statisticsButton = document.querySelector('.statistics-button') as HTMLButtonElement;
+
+  mainPageButton.addEventListener('click', () => {
+    hideElements();
+    description.style.display = 'block';
+    aboutTeam.style.display = 'block';
+    footer.style.display = 'flex';
+  });
+
+  textbookButton.addEventListener('click', () => {
+    hideElements();
+    textbookPage.style.display = 'block';
+    footer.style.display = 'flex';
+  });
+
+  wordListButton.addEventListener('click', () => {
+    hideElements();
+    wordListPage.style.display = 'block';
+    footer.style.display = 'flex';
+  });
+
+  audioCallButton.addEventListener('click', () => {
+    hideElements();
+    audioCallGame.style.display = 'block';
+  });
+
+  sprintButton.addEventListener('click', () => {
+    hideElements();
+    sprintGame.style.display = 'block';
+  });
+
+  statisticsButton.addEventListener('click', () => {
+    hideElements();
+    statisticsPage.style.display = 'block';
+    footer.style.display = 'flex';
+  });
 }
