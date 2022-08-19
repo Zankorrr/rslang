@@ -1,5 +1,5 @@
 .sprint-game {
-  display: block;
+  display: none;
 }
 .game-wrapper {
   display: flex;

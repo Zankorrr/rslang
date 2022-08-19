@@ -3,7 +3,7 @@ const randomInteger = (min: number, max: number) => {
   return Math.floor(rand);
 };
 
-export const randomWord = async () => {
+export const randomWord = async (difficult: number | null) => {
   const word = document.getElementById('word');
   const translation = document.getElementById('translation');
   const url = 'https://rslang-zankorrr-db.herokuapp.com/';
@@ -12,7 +12,7 @@ export const randomWord = async () => {
   const counter = document.getElementById('pointCounter');
   const randomPage = randomInteger(0, 29);
 
-  const response = await fetch(`${url}words/?group=0&page=${randomPage}`, {
+  const response = await fetch(`${url}words/?group=${difficult}&page=${randomPage}`, {
     method: 'GET',
   });
 
@@ -30,10 +30,6 @@ export const randomWord = async () => {
 
   const randomIntAnswer = randomInteger(0, 1);
 
-  //   console.log(items[randomIntWord].wordTranslate);
-  //   console.log(items[randomIntForAnswer].wordTranslate);
-  //   console.log(answerArr[randomIntAnswer].translateWord);
-
   (word as HTMLElement).innerText = items[randomIntWord].word;
   (word as HTMLElement).setAttribute('wordId', `${items[randomIntWord].id}`);
   (translation as HTMLElement).innerText = answerArr[randomIntAnswer].translateWord;
@@ -46,9 +42,9 @@ export const randomWord = async () => {
       if (wordId === answerId) {
         (counter as HTMLElement).innerText = String(+((counter as HTMLElement)
           .innerText) + 10);
-        randomWord();
+        randomWord(difficult);
       } else {
-        randomWord();
+        randomWord(difficult);
       }
     };
 
@@ -56,9 +52,9 @@ export const randomWord = async () => {
       if (wordId !== answerId) {
         (counter as HTMLElement).innerText = String(+((counter as HTMLElement)
           .innerText) + 10);
-        randomWord();
+        randomWord(difficult);
       } else {
-        randomWord();
+        randomWord(difficult);
       }
     };
   };
