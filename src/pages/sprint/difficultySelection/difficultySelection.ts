@@ -1,7 +1,7 @@
 import './style.css';
 import html from '../html';
 import randomWord from '../sprint';
-import timer from '../timer';
+import timer from '../timer/timer';
 
 export const difficultySelectionHtml = `
   <form class="difficultySelectionPlate" id="difficultForm">
