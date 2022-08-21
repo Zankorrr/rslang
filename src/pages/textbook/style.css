@@ -1,8 +1,9 @@
 .textbook-page {
   display: none;
   flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
   margin-top: 10px;
-  height: 100%;
 }
 
 .textbook-navigation-container {
@@ -11,13 +12,15 @@
 }
 
 .textbook-chapter-container {
-  background-color: burlywood;
+  display: flex;
+  flex-wrap: wrap;
   flex-grow: 1;
+  background-color: #fa7b7b;
+  justify-content: center;
+  align-content: center;
 }
 
 .textbook-word-container {
-  display: flex;
-  justify-content: space-between;
   border: 1px solid blue;
   margin: 10px;
 }

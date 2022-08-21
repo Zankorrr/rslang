@@ -1,100 +1,95 @@
 import { getWords } from '../../core/api';
 import './style.css';
 
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
+const textbookVariables = {
+  chapter: 0,
+  page: 0,
+};
 
-function addTextbookPage() {
-  const textbookVariables = {
-    chapter: 0,
-    page: 0,
-  };
-  const textbookPage = document.createElement('div');
-  textbookPage.classList.add('textbook-page');
-  //   -   -   -   -   -   -   -   -   -   -
-  const navigationContainer = document.createElement('div');
-  navigationContainer.classList.add('textbook-navigation-container');
-  const chapter1Button = document.createElement('button');
-  chapter1Button.innerText = 'Chapter 1';
-  const chapter2Button = document.createElement('button');
-  chapter2Button.innerText = 'Chapter 2';
-  const chapter3Button = document.createElement('button');
-  chapter3Button.innerText = 'Chapter 3';
-  const chapter4Button = document.createElement('button');
-  chapter4Button.innerText = 'Chapter 4';
-  const chapter5Button = document.createElement('button');
-  chapter5Button.innerText = 'Chapter 5';
-  const chapter6Button = document.createElement('button');
-  chapter6Button.innerText = 'Chapter 6';
-  const trickyWordsButton = document.createElement('button');
-  trickyWordsButton.innerText = 'Tricky';
-  navigationContainer.append(
-    chapter1Button,
-    chapter2Button,
-    chapter3Button,
-    chapter4Button,
-    chapter5Button,
-    chapter6Button,
-    trickyWordsButton,
-  );
-  //   -   -   -   -   -   -   -   -   -   -
-  const chapterContainer = document.createElement('div');
-  chapterContainer.classList.add('textbook-chapter-container');
-  async function updateTextbook() {
+const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
+
+async function updateTextbook() {
+  const chapterContainer = document.querySelector('.textbook-chapter-container');
+  if (chapterContainer) {
     chapterContainer.innerHTML = '';
     const data = await getWords(textbookVariables.chapter, textbookVariables.page);
     data.forEach((word) => {
       const wordContainer = document.createElement('div');
       wordContainer.classList.add('textbook-word-container');
-      const wordTextContainer = document.createElement('div');
-      wordTextContainer.classList.add('textbook-word-text');
-      wordTextContainer.innerText = `${word.word} - ${word.transcription} - ${word.wordTranslate}\n\n${word.textMeaning}\n${word.textMeaningTranslate}\n\n${word.textExample}\n${word.textExampleTranslate}`;
-      const wordImageContainer = document.createElement('img');
-      wordImageContainer.classList.add('textbook-word-image');
-      wordImageContainer.src = `${baseUrl}/${word.image}`;
-      wordImageContainer.alt = word.word;
-      wordContainer.append(wordTextContainer, wordImageContainer);
+      wordContainer.innerText = word.word;
       chapterContainer.appendChild(wordContainer);
     });
   }
-  updateTextbook();
-  chapter1Button.addEventListener('click', () => {
-    textbookVariables.chapter = 0;
-    updateTextbook();
-  });
-  chapter2Button.addEventListener('click', () => {
-    textbookVariables.chapter = 1;
-    updateTextbook();
-  });
-  chapter3Button.addEventListener('click', () => {
-    textbookVariables.chapter = 2;
-    updateTextbook();
-  });
-  chapter4Button.addEventListener('click', () => {
-    textbookVariables.chapter = 3;
-    updateTextbook();
-  });
-  chapter5Button.addEventListener('click', () => {
-    textbookVariables.chapter = 4;
-    updateTextbook();
-  });
-  chapter6Button.addEventListener('click', () => {
-    textbookVariables.chapter = 5;
-    updateTextbook();
-  });
-  trickyWordsButton.addEventListener('click', () => {
-    textbookVariables.chapter = 6;
-    updateTextbook();
-  });
-  //   -   -   -   -   -   -   -   -   -   -
+}
+
+function updatePageNumber() {
+  const pageNumber = document.querySelector('.page-number') as HTMLElement;
+  if (pageNumber) {
+    pageNumber.innerText = (textbookVariables.page + 1).toString();
+  }
+}
+
+function addTextbookPage() {
+  const textbookPage = document.createElement('div');
+  textbookPage.classList.add('textbook-page');
+
+  const navigationContainer = document.createElement('div');
+  navigationContainer.classList.add('textbook-navigation-container');
+
+  const chapterContainer = document.createElement('div');
+  chapterContainer.classList.add('textbook-chapter-container');
+
+  for (let i = 0; i < 7; i += 1) {
+    const chapterButton = document.createElement('button');
+    chapterButton.style.backgroundColor = textbookColors[i];
+    if (i < 6) {
+      chapterButton.innerText = `Chapter ${i + 1}`;
+    } else {
+      chapterButton.innerText = 'Tricky';
+    }
+    chapterButton.addEventListener('click', () => {
+      chapterContainer.style.backgroundColor = textbookColors[i];
+      textbookVariables.chapter = i;
+      textbookVariables.page = 0;
+      updateTextbook();
+      updatePageNumber();
+    });
+    navigationContainer.appendChild(chapterButton);
+  }
+
+  const pageNumber = document.createElement('button');
+  pageNumber.classList.add('page-number');
+
   const paginationContainer = document.createElement('div');
   paginationContainer.classList.add('textbook-pagination-container');
-  const pageOne = document.createElement('button');
-  pageOne.innerText = 'page 1';
-  paginationContainer.append(pageOne);
+  const pagePrevious = document.createElement('button');
+  pagePrevious.innerText = '<';
+  pagePrevious.addEventListener('click', () => {
+    if (textbookVariables.page > 0) {
+      textbookVariables.page -= 1;
+      updateTextbook();
+      updatePageNumber();
+    }
+  });
+
+  const pageNext = document.createElement('button');
+  pageNext.innerText = '>';
+  pageNext.addEventListener('click', () => {
+    if (textbookVariables.page < 29) {
+      textbookVariables.page += 1;
+      updateTextbook();
+      updatePageNumber();
+    }
+  });
+  paginationContainer.append(pagePrevious, pageNumber, pageNext);
+  updatePageNumber();
   //   -   -   -   -   -   -   -   -   -   -
   textbookPage.append(navigationContainer, chapterContainer, paginationContainer);
   //   -   -   -   -   -   -   -   -   -   -
   document.body.appendChild(textbookPage);
+
+  updateTextbook();
+  updatePageNumber();
 }
 
 export default addTextbookPage;
