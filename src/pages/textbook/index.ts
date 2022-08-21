@@ -20,12 +20,7 @@ async function updateTextbook() {
       wordContainer.title = `${word.transcription} - ${word.wordTranslate}`;
       chapterContainer.appendChild(wordContainer);
     });
-  }
-}
-
-function updatePageNumber() {
-  const pageNumber = document.querySelector('.page-number') as HTMLElement;
-  if (pageNumber) {
+    const pageNumber = document.querySelector('.page-number') as HTMLElement;
     pageNumber.innerText = (textbookVariables.page + 1).toString();
   }
 }
@@ -54,44 +49,34 @@ function addTextbookPage() {
       textbookVariables.chapter = i;
       textbookVariables.page = 0;
       updateTextbook();
-      updatePageNumber();
     });
     navigationContainer.appendChild(chapterButton);
   }
-
-  const pageNumber = document.createElement('button');
+  const pageNumber = document.createElement('div');
   pageNumber.classList.add('page-number');
 
   const paginationContainer = document.createElement('div');
   paginationContainer.classList.add('textbook-pagination-container');
+
   const pagePrevious = document.createElement('button');
   pagePrevious.innerText = '<';
   pagePrevious.addEventListener('click', () => {
     if (textbookVariables.page > 0) {
       textbookVariables.page -= 1;
       updateTextbook();
-      updatePageNumber();
     }
   });
-
   const pageNext = document.createElement('button');
   pageNext.innerText = '>';
   pageNext.addEventListener('click', () => {
     if (textbookVariables.page < 29) {
       textbookVariables.page += 1;
       updateTextbook();
-      updatePageNumber();
     }
   });
   paginationContainer.append(pagePrevious, pageNumber, pageNext);
-  updatePageNumber();
-  //   -   -   -   -   -   -   -   -   -   -
   textbookPage.append(navigationContainer, chapterContainer, paginationContainer);
-  //   -   -   -   -   -   -   -   -   -   -
   document.body.appendChild(textbookPage);
-
   updateTextbook();
-  updatePageNumber();
 }
-
 export default addTextbookPage;

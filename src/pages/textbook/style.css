@@ -47,3 +47,9 @@
 .textbook-word-container:hover:after {
   content: attr(data-title);
 }
+
+.page-number {
+  border-radius: 1em;
+  padding: 0.5em;
+  align-self: center;
+}
