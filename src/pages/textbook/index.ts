@@ -17,6 +17,7 @@ async function updateTextbook() {
       const wordContainer = document.createElement('div');
       wordContainer.classList.add('textbook-word-container');
       wordContainer.innerText = word.word;
+      wordContainer.title = `${word.transcription} - ${word.wordTranslate}`;
       chapterContainer.appendChild(wordContainer);
     });
   }
@@ -41,6 +42,7 @@ function addTextbookPage() {
 
   for (let i = 0; i < 7; i += 1) {
     const chapterButton = document.createElement('button');
+    chapterButton.classList.add('textbook-chapter-button');
     chapterButton.style.backgroundColor = textbookColors[i];
     if (i < 6) {
       chapterButton.innerText = `Chapter ${i + 1}`;
@@ -48,7 +50,7 @@ function addTextbookPage() {
       chapterButton.innerText = 'Tricky';
     }
     chapterButton.addEventListener('click', () => {
-      chapterContainer.style.backgroundColor = textbookColors[i];
+      textbookPage.style.backgroundColor = textbookColors[i];
       textbookVariables.chapter = i;
       textbookVariables.page = 0;
       updateTextbook();
