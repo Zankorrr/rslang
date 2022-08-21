@@ -124,7 +124,7 @@ export function updateNavigation() {
 
   textbookButton.addEventListener('click', () => {
     hideElements();
-    textbookPage.style.display = 'block';
+    textbookPage.style.display = 'flex';
     footer.style.display = 'flex';
   });
 
