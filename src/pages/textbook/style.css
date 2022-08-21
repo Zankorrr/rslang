@@ -1,5 +1,36 @@
 .textbook-page {
   display: none;
-  background-color: lightyellow;
+  flex-direction: column;
   margin-top: 10px;
+  height: 100%;
+}
+
+.textbook-navigation-container {
+  background-color: aqua;
+  height: 30px;
+}
+
+.textbook-chapter-container {
+  background-color: burlywood;
+  flex-grow: 1;
+}
+
+.textbook-word-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid blue;
+  margin: 10px;
+}
+
+.textbook-word-text {
+  width: 300px;
+}
+
+.textbook-word-image {
+  height: fit-content;
+}
+
+.textbook-pagination-container {
+  background-color: chartreuse;
+  height: 30px;
 }

@@ -149,4 +149,10 @@ export function updateNavigation() {
     statisticsPage.style.display = 'block';
     footer.style.display = 'flex';
   });
+
+  // - - - - - - - - - - - - - - - -
+
+  hideElements();
+  textbookPage.style.display = 'flex';
+  footer.style.display = 'flex';
 }
