@@ -1,15 +1,60 @@
-export const html = `<div class="game-wrapper">
+export const html = `
+<div class="difficultySelectionPlate" id="difficultForm">
+  <p>Выберите уровень сложности</p>
+  <div class="difficultInputs">
+    <input type="radio" id="difficult1"
+     name="difficultLevel" difficultId="0">
+    <label for="difficult1" difficultId="0">A1</label>
+
+    <input type="radio" id="difficult2"
+     name="difficultLevel" difficultId="1">
+    <label for="difficult2" difficultId="1">A2</label>
+
+    <input type="radio" id="difficult3"
+     name="difficultLevel" difficultId="2">
+    <label for="difficult3" difficultId="2">B1</label>
+
+    <input type="radio" id="difficult4"
+     name="difficultLevel" difficultId="3">
+    <label for="difficult4" difficultId="3">B2</label>
+
+    <input type="radio" id="difficult5"
+     name="difficultLevel" difficultId="4">
+    <label for="difficult5" difficultId="4">C1</label>
+
+    <input type="radio" id="difficult6"
+     name="difficultLevel" difficultId="5">
+    <label for="difficult6" difficultId="5">C2</label>
+  </div>
+  <div class="difficultButton">
+    <button type="submit" id="button-start">Старт</button>
+  </div>
+</div> 
+<div class="load-screen">
+<div class="timer2" id="timer2">
+    <div class="timer2__line" id="timer2Line"></div>
+    <div class="timer2__body">
+    <div class="timer2__counter">
+        <span>3</span>
+        <span>2</span>
+        <span>1</span>
+        <span>0</span>
+    </div>
+</div>
+</div>
+</div>
+<div class="game-wrapper">
         <div class="game">
             <div class="pointsCounter" id="pointCounter">0</div>
             <div class="multiplier">x1</div>
             <div class="correctness">
-                <div class="factor active" id="factor-one"></div>
+                <div class="factor" id="factor-one"></div>
                 <div class="factor" id="factor-two"></div>
                 <div class="factor" id="factor-three"></div>
             </div>
             <div class="actions">
-                <div class="word" id="word"></div>
-                <div class="translation" id="translation"></div>
+                <div class="word-ask" id="word-ask"></div>
+                <div class="word-translate" id="word-translate"></div>
                 <div class="answer-buttons">
                     <a class="button right" id="right">right</a>
                     <a class="button wrong" id="wrong">wrong</a>
