@@ -34,7 +34,7 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: path.resolve(__dirname, './src/assets'), to: 'assets' },
+        { from: path.resolve(__dirname, './src/assets'), to: 'assets', noErrorOnMissing: true },
       ],
     }),
     new CleanWebpackPlugin(),
