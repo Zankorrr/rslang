@@ -2,4 +2,57 @@
   display: none;
   background-color: lightgreen;
   margin-top: 10px;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.iteration-container {
+  background-color: darkgrey;
+	display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.word-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-displayed {
+  display: none;
+}
+
+.word-variables-container {
+  display: flex;
+  justify-content: center;
+}
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.word-result {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.true-answer {
+	background-color: green;
+}
+
+.false-answer {
+	background-color: red;
 }

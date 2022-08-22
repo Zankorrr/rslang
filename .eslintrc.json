@@ -17,7 +17,17 @@
     ],
     "rules": {
         "import/extensions": 0,
-        "linebreak-style": ["error", "windows"]
+
+
+        "linebreak-style": ["error", "windows"],
+				"eol-last": 0,
+				"no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+				"import/prefer--export": "off",
+				"indent": "off",
+				"no-console": "off",
+				"no-param-reassign": 0,
+				"allowUnreachableCode": true
+
     },
     "settings": {
         "import/resolver": {

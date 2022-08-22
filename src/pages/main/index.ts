@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+import { openApp } from '../audio_call/modules/openApp';
 import './style.css';
 
 export function addHeader() {
@@ -124,7 +125,7 @@ export function updateNavigation() {
 
   textbookButton.addEventListener('click', () => {
     hideElements();
-    textbookPage.style.display = 'block';
+    textbookPage.style.display = 'flex';
     footer.style.display = 'flex';
   });
 
@@ -136,7 +137,8 @@ export function updateNavigation() {
 
   audioCallButton.addEventListener('click', () => {
     hideElements();
-    audioCallGame.style.display = 'block';
+    audioCallGame.style.display = 'flex';
+    openApp();
   });
 
   sprintButton.addEventListener('click', () => {
