@@ -6,18 +6,65 @@ const textbookVariables = {
   page: 0,
 };
 
+const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
+
 const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
 
 async function updateTextbook() {
   const chapterContainer = document.querySelector('.textbook-chapter-container');
   if (chapterContainer) {
-    chapterContainer.innerHTML = '';
+    chapterContainer.textContent = '';
     const data = await getWords(textbookVariables.chapter, textbookVariables.page);
     data.forEach((word) => {
       const wordContainer = document.createElement('div');
       wordContainer.classList.add('textbook-word-container');
-      wordContainer.innerText = word.word;
-      wordContainer.title = `${word.transcription} - ${word.wordTranslate}`;
+
+      const wordDescriptionContainer = document.createElement('div');
+      wordDescriptionContainer.classList.add('textbook-word-description');
+
+      const wordTextContainer = document.createElement('div');
+      wordTextContainer.innerHTML = `${word.word} - ${word.transcription} - ${word.wordTranslate}
+      <br><br>${word.textMeaning}<br>${word.textMeaningTranslate}.<br><br>${word.textExample}
+      <br>${word.textExampleTranslate}.`;
+
+      const wordButtonsContainer = document.createElement('div');
+      wordButtonsContainer.classList.add('textbook-word-buttons');
+
+      const audio1 = document.createElement('audio');
+      audio1.src = `${baseUrl}/${word.audio}`;
+      const audio2 = document.createElement('audio');
+      audio2.src = `${baseUrl}/${word.audioMeaning}`;
+      const audio3 = document.createElement('audio');
+      audio3.src = `${baseUrl}/${word.audioExample}`;
+      const wordPlayButton = document.createElement('button');
+      wordPlayButton.innerText = '▶️';
+      wordPlayButton.addEventListener('click', () => audio1.play());
+      audio1.addEventListener('ended', () => audio2.play());
+      audio2.addEventListener('ended', () => audio3.play());
+
+      const wordToTrickyButton = document.createElement('button');
+      wordToTrickyButton.innerText = '🥲';
+      wordToTrickyButton.addEventListener('click', () => {
+        wordContainer.classList.toggle('textbook-tricky-word');
+        wordToTrickyButton.classList.toggle('textbook-tricky-word');
+      });
+
+      const wordToLearnedButton = document.createElement('button');
+      wordToLearnedButton.innerText = '😎';
+      wordToLearnedButton.addEventListener('click', () => {
+        wordContainer.classList.toggle('textbook-learned-word');
+        wordToLearnedButton.classList.toggle('textbook-learned-word');
+      });
+
+      wordButtonsContainer.append(wordPlayButton, wordToTrickyButton, wordToLearnedButton);
+
+      wordDescriptionContainer.append(wordTextContainer, wordButtonsContainer);
+
+      const wordImageContainer = document.createElement('img');
+      wordImageContainer.classList.add('textbook-word-image');
+      wordImageContainer.src = `${baseUrl}/${word.image}`;
+      wordImageContainer.alt = word.word;
+      wordContainer.append(wordDescriptionContainer, wordImageContainer);
       chapterContainer.appendChild(wordContainer);
     });
     const pageNumber = document.querySelector('.page-number') as HTMLElement;
@@ -31,6 +78,17 @@ function addTextbookPage() {
 
   const navigationContainer = document.createElement('div');
   navigationContainer.classList.add('textbook-navigation-container');
+
+  const exerciseContainer = document.createElement('div');
+  exerciseContainer.classList.add('textbook-exercise-container');
+  const audioCallLink = document.createElement('button');
+  audioCallLink.innerText = 'Audio call';
+  audioCallLink.addEventListener('click', () => (document.querySelector('.audio-call-button') as HTMLButtonElement)?.click());
+  const sprintLink = document.createElement('button');
+  sprintLink.innerText = 'Sprint';
+  sprintLink.addEventListener('click', () => (document.querySelector('.sprint-button') as HTMLButtonElement)?.click());
+  exerciseContainer.innerText = 'You need more practice: ';
+  exerciseContainer.append(audioCallLink, sprintLink);
 
   const chapterContainer = document.createElement('div');
   chapterContainer.classList.add('textbook-chapter-container');
@@ -52,6 +110,7 @@ function addTextbookPage() {
     });
     navigationContainer.appendChild(chapterButton);
   }
+
   const pageNumber = document.createElement('div');
   pageNumber.classList.add('page-number');
 
@@ -75,7 +134,12 @@ function addTextbookPage() {
     }
   });
   paginationContainer.append(pagePrevious, pageNumber, pageNext);
-  textbookPage.append(navigationContainer, chapterContainer, paginationContainer);
+  textbookPage.append(
+    navigationContainer,
+    exerciseContainer,
+    chapterContainer,
+    paginationContainer,
+  );
   document.body.appendChild(textbookPage);
   updateTextbook();
 }
