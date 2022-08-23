@@ -6,21 +6,19 @@ export const pushButtons = (difficult: number | null) => {
   const counter = document.getElementById('pointCounter');
   const wordAsk = document.getElementById('word-ask');
   const wordTranslate = document.getElementById('word-translate');
-  //   const correctness = document.querySelector('.correctness');
+  const correctness = document.querySelector('.correctness');
 
-  //   const addActive = () => {
-  //     const factorsArr = Array.from((correctness as HTMLElement).querySelectorAll('.factor'));
-  //     if (factorsArr.every((item) => item.classList.contains('active'))) {
-  //       // eslint-disable-next-line no-console
-  //       console.log(1);
-  //     } else {
-  //       (((correctness as HTMLElement).firstChild as HTMLElement)
-  // .nextSibling as HTMLElement).classList.add('active');
-  //       // eslint-disable-next-line no-console
-  //       console.log((correctness as HTMLElement).firstChild);
-  //     }
-  //   };
-  //   addActive();
+  const addActive = () => {
+    const factorsArr = Array.from((correctness as HTMLElement).querySelectorAll('.factor'));
+    if (factorsArr.every((item) => item.classList.contains('active'))) {
+      // eslint-disable-next-line no-console
+      console.log(1);
+    } else {
+      (((correctness as HTMLElement).firstChild as HTMLElement)
+        .nextSibling as HTMLElement).classList.add('active');
+    }
+  };
+  addActive();
 
   const wordId = (wordAsk as HTMLElement).getAttribute('wordId');
   const answerId = (wordTranslate as HTMLElement).getAttribute('wordId');

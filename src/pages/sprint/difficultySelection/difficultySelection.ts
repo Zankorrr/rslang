@@ -10,6 +10,19 @@ export const start = () => {
   const startButton = document.getElementById('button-start');
   const checkInputs = Array.from(document.getElementsByName('difficultLevel'));
   const difficultArr: number[] | null[] = [];
+  const difficultInputs = document.querySelector('.difficult-inputs');
+  const difficultInputsArr = Array.from(document.querySelectorAll('.label-diff'));
+
+  (difficultInputs as HTMLElement).onclick = (e) => {
+    if ((e.target as HTMLElement).classList.contains('label-diff')) {
+      difficultInputsArr.forEach((item) => {
+        (item as HTMLElement).classList.remove('label-active');
+        (item as HTMLElement).classList.add('label-diff');
+      });
+      (e.target as HTMLElement).classList.remove('label-diff');
+      (e.target as HTMLElement).classList.add('label-active');
+    }
+  };
 
   (startButton as HTMLElement).onclick = () => {
     checkInputs.forEach((item) => {

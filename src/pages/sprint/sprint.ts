@@ -1,4 +1,5 @@
 import pushButtons from './bonus/bonus';
+import { IAnswer } from './intefaces';
 
 const randomInteger = (min: number, max: number) => {
   const rand = min + Math.random() * (max + 1 - min);
@@ -20,7 +21,7 @@ export const randomWord = async (difficult: number | null) => {
   const randomIntWord = randomInteger(0, 19);
   const randomIntForAnswer = randomInteger(0, 19);
 
-  const answerArr = [];
+  const answerArr: IAnswer[] = [];
 
   answerArr.push(
     { translateWord: items[randomIntWord].wordTranslate, id: items[randomIntWord].id },

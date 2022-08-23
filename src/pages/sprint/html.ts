@@ -1,33 +1,34 @@
 export const html = `
 <div class="difficultySelectionPlate" id="difficultForm">
-  <p>Выберите уровень сложности</p>
-  <div class="difficultInputs">
+  <p><b>Правила игры:</b> У вас есть 30 секунд для точго чтобы перевести как можно больше слов, выбрав правильный вариант из двух предложенных. Для старта игры выберите уровень сложности и нажмите "старт"</p>
+  <h2>Выберите уровень сложности</h2>
+  <div class="difficult-inputs">
     <input type="radio" id="difficult1"
      name="difficultLevel" difficultId="0">
-    <label for="difficult1" difficultId="0">A1</label>
+    <label for="difficult1" class="label-diff" difficultId="0">A1</label>
 
     <input type="radio" id="difficult2"
      name="difficultLevel" difficultId="1">
-    <label for="difficult2" difficultId="1">A2</label>
+    <label for="difficult2" class="label-diff" difficultId="1">A2</label>
 
     <input type="radio" id="difficult3"
      name="difficultLevel" difficultId="2">
-    <label for="difficult3" difficultId="2">B1</label>
+    <label for="difficult3" class="label-diff" difficultId="2">B1</label>
 
     <input type="radio" id="difficult4"
      name="difficultLevel" difficultId="3">
-    <label for="difficult4" difficultId="3">B2</label>
+    <label for="difficult4" class="label-diff" difficultId="3">B2</label>
 
     <input type="radio" id="difficult5"
      name="difficultLevel" difficultId="4">
-    <label for="difficult5" difficultId="4">C1</label>
+    <label for="difficult5" class="label-diff" difficultId="4">C1</label>
 
     <input type="radio" id="difficult6"
      name="difficultLevel" difficultId="5">
-    <label for="difficult6" difficultId="5">C2</label>
+    <label for="difficult6" class="label-diff" difficultId="5">C2</label>
   </div>
   <div class="difficultButton">
-    <button type="submit" id="button-start">Старт</button>
+    <a href="#" class="button-start" id="button-start">Старт</a>
   </div>
 </div> 
 <div class="load-screen">
