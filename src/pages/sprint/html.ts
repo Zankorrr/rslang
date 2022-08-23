@@ -47,7 +47,7 @@ export const html = `
 <div class="game-wrapper">
         <div class="game">
             <div class="pointsCounter" id="pointCounter">0</div>
-            <div class="multiplier">x1</div>
+            <div class="multiplier" id="multiplier">+10</div>
             <div class="correctness">
                 <div class="factor" id="factor-one"></div>
                 <div class="factor" id="factor-two"></div>
