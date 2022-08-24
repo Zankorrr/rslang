@@ -1,10 +1,12 @@
 import pushButtons from './bonus/bonus';
-import { IAnswer } from './intefaces';
+import { IAnswer, IWord } from './intefaces';
 
 const randomInteger = (min: number, max: number) => {
   const rand = min + Math.random() * (max + 1 - min);
   return Math.floor(rand);
 };
+
+export const arrForStatistics: IWord[] = [];
 
 export const randomWord = async (difficult: number | null) => {
   const wordAsk = document.getElementById('word-ask');
@@ -21,6 +23,7 @@ export const randomWord = async (difficult: number | null) => {
   const randomIntWord = randomInteger(0, 19);
   const randomIntForAnswer = randomInteger(0, 19);
 
+  arrForStatistics.push(items[randomIntWord]);
   const answerArr: IAnswer[] = [];
 
   answerArr.push(

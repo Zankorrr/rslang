@@ -1,4 +1,4 @@
-import randomWord from '../sprint';
+import { randomWord, arrForStatistics } from '../sprint';
 
 let points = 10;
 
@@ -39,16 +39,27 @@ export const pushButtons = (difficult: number | null) => {
 
   const wordId = (wordAsk as HTMLElement).getAttribute('wordId');
   const answerId = (wordTranslate as HTMLElement).getAttribute('wordId');
+
+  const addBooleanForStatistics = (bool) => {
+    arrForStatistics.forEach((item) => {
+      if (item.id === wordId) {
+        item.boolean = bool;
+      }
+    });
+  };
+
   (rightButton as HTMLElement).onclick = () => {
     if (wordId === answerId) {
       (counter as HTMLElement).innerText = String(+((counter as HTMLElement)
         .innerText) + points);
       randomWord(difficult);
       addActive();
+      addBooleanForStatistics(true);
     } else {
       randomWord(difficult);
       removeActive();
       removeBonus();
+      addBooleanForStatistics(false);
     }
   };
 
@@ -58,10 +69,12 @@ export const pushButtons = (difficult: number | null) => {
         .innerText) + points);
       randomWord(difficult);
       addActive();
+      addBooleanForStatistics(true);
     } else {
       randomWord(difficult);
       removeActive();
       removeBonus();
+      addBooleanForStatistics(false);
     }
   };
 };
