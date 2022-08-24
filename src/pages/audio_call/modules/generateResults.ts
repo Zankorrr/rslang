@@ -73,3 +73,5 @@ export function generateResults(res: IResult[]) {
     });
   });
 }
+
+export default generateResults;

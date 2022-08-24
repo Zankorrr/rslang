@@ -39,12 +39,21 @@ p {
     justify-content: space-around;
     font-size: 20px;
 }
-.x {
+.close-app {
     width: 100px;
     margin: 20% auto;
     color: red;
     font-size: 40px;
 }
-.x:hover {
+.close-app:hover {
+    cursor: pointer;
+}
+.again {
+    width: 100px;
+    margin: 20% auto;
+    color: rgb(8, 131, 14);
+    font-size: 40px;
+}
+.again:hover {
     cursor: pointer;
 }

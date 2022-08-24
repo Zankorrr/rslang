@@ -4,7 +4,7 @@ import loadScreen from '../loadScreen/loadScreen';
 
 export const difficultLevel: string[] | null[] = [];
 export const start = () => {
-  const sprintGame = document.querySelector('.game-wrapper');
+  const sprintGameWrapper = document.querySelector('.game-wrapper');
   const difficultySelectionPlate = document.querySelector('.difficultySelectionPlate');
   const loadScreenMask = document.querySelector('.load-screen');
   const startButton = document.getElementById('button-start');
@@ -32,7 +32,7 @@ export const start = () => {
     });
 
     (loadScreenMask as HTMLElement).style.display = 'block';
-    (sprintGame as HTMLElement).style.display = 'flex';
+    (sprintGameWrapper as HTMLElement).style.display = 'flex';
     (difficultySelectionPlate as HTMLElement).style.display = 'none';
 
     randomWord(difficultArr[0]);

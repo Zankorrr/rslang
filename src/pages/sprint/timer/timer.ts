@@ -6,7 +6,7 @@ export const timer = () => {
   (loadScreenMask as HTMLElement).style.display = 'none';
   setTimeout(() => {
     showStatisticsWindow();
-  }, 30000);
+  }, 3000);
 };
 
 export default timer;
