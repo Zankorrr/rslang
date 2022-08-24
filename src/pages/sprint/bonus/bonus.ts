@@ -40,7 +40,7 @@ export const pushButtons = (difficult: number | null) => {
   const wordId = (wordAsk as HTMLElement).getAttribute('wordId');
   const answerId = (wordTranslate as HTMLElement).getAttribute('wordId');
 
-  const addBooleanForStatistics = (bool) => {
+  const addBooleanForStatistics = (bool: boolean) => {
     arrForStatistics.forEach((item) => {
       if (item.id === wordId) {
         item.boolean = bool;
