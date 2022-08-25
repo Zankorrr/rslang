@@ -16,18 +16,14 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "import/extensions": 0,
-
-
+        "import/extensions": "off",
         "linebreak-style": ["error", "windows"],
-				"eol-last": 0,
-				"no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
-				"import/prefer--export": "off",
-				"indent": "off",
-				"no-console": "off",
-				"no-param-reassign": 0,
-				"allowUnreachableCode": true
-
+    	"eol-last": ["error", "always"],
+		"no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+		"import/prefer--export": "off",
+		"indent": ["error", 2],
+		"no-console": "off",
+		"no-param-reassign": "off"
     },
     "settings": {
         "import/resolver": {

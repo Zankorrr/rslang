@@ -59,3 +59,5 @@ export async function openApp() {
       });
     }
 }
+
+export default openApp;

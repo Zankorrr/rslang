@@ -1,52 +1,54 @@
 export const html = `
-<div class="difficultySelectionPlate" id="difficultForm">
-  <p>Выберите уровень сложности</p>
-  <div class="difficultInputs">
-    <input type="radio" id="difficult1"
-     name="difficultLevel" difficultId="0">
-    <label for="difficult1" difficultId="0">A1</label>
+<div class="sprint-container">
+    <div class="difficultySelectionPlate" id="difficultForm">
+        <p><b>Правила игры:</b> У вас есть 30 секунд для точго чтобы перевести как можно больше слов, выбрав правильный вариант из двух предложенных. Для старта игры выберите уровень сложности и нажмите "старт"</p>
+        <h2>Выберите уровень сложности</h2>
+        <div class="difficult-inputs">
+            <input type="radio" id="difficult1"
+                name="difficultLevel" difficultId="0">
+            <label for="difficult1" class="label-diff" difficultId="0">A1</label>
 
-    <input type="radio" id="difficult2"
-     name="difficultLevel" difficultId="1">
-    <label for="difficult2" difficultId="1">A2</label>
+            <input type="radio" id="difficult2"
+                name="difficultLevel" difficultId="1">
+            <label for="difficult2" class="label-diff" difficultId="1">A2</label>
 
-    <input type="radio" id="difficult3"
-     name="difficultLevel" difficultId="2">
-    <label for="difficult3" difficultId="2">B1</label>
+            <input type="radio" id="difficult3"
+                name="difficultLevel" difficultId="2">
+            <label for="difficult3" class="label-diff" difficultId="2">B1</label>
 
-    <input type="radio" id="difficult4"
-     name="difficultLevel" difficultId="3">
-    <label for="difficult4" difficultId="3">B2</label>
+            <input type="radio" id="difficult4"
+                name="difficultLevel" difficultId="3">
+            <label for="difficult4" class="label-diff" difficultId="3">B2</label>
 
-    <input type="radio" id="difficult5"
-     name="difficultLevel" difficultId="4">
-    <label for="difficult5" difficultId="4">C1</label>
+            <input type="radio" id="difficult5"
+                name="difficultLevel" difficultId="4">
+            <label for="difficult5" class="label-diff" difficultId="4">C1</label>
 
-    <input type="radio" id="difficult6"
-     name="difficultLevel" difficultId="5">
-    <label for="difficult6" difficultId="5">C2</label>
-  </div>
-  <div class="difficultButton">
-    <button type="submit" id="button-start">Старт</button>
-  </div>
-</div> 
-<div class="load-screen">
-<div class="timer2" id="timer2">
-    <div class="timer2__line" id="timer2Line"></div>
-    <div class="timer2__body">
-    <div class="timer2__counter">
-        <span>3</span>
-        <span>2</span>
-        <span>1</span>
-        <span>0</span>
+            <input type="radio" id="difficult6"
+                name="difficultLevel" difficultId="5">
+            <label for="difficult6" class="label-diff" difficultId="5">C2</label>
+        </div>
+        <div class="difficultButton">
+            <a href="#" class="button-start" id="button-start">Старт</a>
+        </div>
+    </div> 
+    <div class="load-screen">
+        <div class="timer2" id="timer2">
+            <div class="timer2__line" id="timer2Line"></div>
+            <div class="timer2__body">
+            <div class="timer2__counter">
+                <span>3</span>
+                <span>2</span>
+                <span>1</span>
+                <span>0</span>
+            </div>
+        </div>
     </div>
-</div>
-</div>
-</div>
-<div class="game-wrapper">
+    </div>
+    <div class="game-wrapper">
         <div class="game">
             <div class="pointsCounter" id="pointCounter">0</div>
-            <div class="multiplier">x1</div>
+            <div class="multiplier" id="multiplier">+10</div>
             <div class="correctness">
                 <div class="factor" id="factor-one"></div>
                 <div class="factor" id="factor-two"></div>
@@ -99,7 +101,27 @@ export const html = `
                 </div>
             </div>
         </div>
-        
-    </div>`;
+    </div>
+    <div class="statistics-wrapper" id="statistics-wrapper">
+        <div class="statistics">
+            <h2>Ваш результат</h2>
+            <div class="right-results">
+                <h3>Правильно</h3>
+                <div class="right" id="stat-right">
+
+                </div>
+            </div>
+            <div class="wrong-results">
+                <h3>Не правильно</h3>
+                <div class="wrong" id="stat-wrong">
+
+                </div>
+            </div>
+            <div class="close-app" id="close-app">КРЕСТИК</div>
+            <div class="again" id="again">ЕЩЁ РАЗ</div>
+        </div>
+    </div>
+</div>
+`;
 
 export default html;

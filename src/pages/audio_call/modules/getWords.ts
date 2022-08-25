@@ -6,3 +6,5 @@ export async function getWords() {
   const words = await response.json();
   return words;
 }
+
+export default getWords;

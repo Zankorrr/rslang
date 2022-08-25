@@ -8,3 +8,5 @@ export function closeApp() {
       }
     });
 }
+
+export default closeApp;

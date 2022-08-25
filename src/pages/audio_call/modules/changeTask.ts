@@ -29,3 +29,5 @@ export function changeTask(count: number, arr: IWord[], arrR: IResult[]) {
 
   return generateResults(arrR);
 }
+
+export default changeTask;
