@@ -20,7 +20,7 @@
         "linebreak-style": ["error", "windows"],
     	"eol-last": ["error", "always"],
 		"no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
-		"import/prefer--export": "off",
+		"import/prefer-default-export": "off",
 		"indent": ["error", 2],
 		"no-console": "off",
 		"no-param-reassign": "off"

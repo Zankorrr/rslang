@@ -1,6 +1,7 @@
 import './style.css';
 import randomWord from '../sprint';
 import loadScreen from '../loadScreen/loadScreen';
+import noStart from '../noStart/noStart';
 
 export const difficultLevel: string[] | null[] = [];
 export const start = () => {
@@ -30,12 +31,15 @@ export const start = () => {
         difficultArr[0] = Number(item.getAttribute('difficultId'));
       }
     });
+    if (checkInputs.some((item) => (item as HTMLInputElement).checked === true)) {
+      (loadScreenMask as HTMLElement).style.display = 'block';
+      (sprintGameWrapper as HTMLElement).style.display = 'flex';
+      (difficultySelectionPlate as HTMLElement).style.display = 'none';
 
-    (loadScreenMask as HTMLElement).style.display = 'block';
-    (sprintGameWrapper as HTMLElement).style.display = 'flex';
-    (difficultySelectionPlate as HTMLElement).style.display = 'none';
-
-    randomWord(difficultArr[0]);
-    loadScreen();
+      randomWord(difficultArr[0]);
+      loadScreen();
+    } else {
+      noStart();
+    }
   };
 };
