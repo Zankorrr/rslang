@@ -12,47 +12,63 @@ p {
     justify-content: center;
     align-items: center;
     z-index: 100;
-    background-color: rgba(0, 0, 0, 0.418);
 }
 .statistics {
-    width: 50%;
-    height: 80%;
-    background-color: antiquewhite;
+    width: 40%;
+    height: 70%;
+    padding: 20px;
+    background-color: #f2eee0;
+    color: #334456;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #999999;
+    overflow: auto;
+}
+.right-text,
+ .wrong-text {
+    font-size: 27px;
+    margin-bottom: 3px;
+}
+.right-text {
+    box-shadow: 0 2px 0 0 #027ea1;
+}
+.wrong-text {
+    box-shadow: 0 2px 0 0 #de8668;
 }
 .right-results {
-    background-color: aquamarine;
+    margin-top: 20px;
 }
-.right div {
-    background-color: #fff;
+.right div,
+.wrong div {
+    background-color: #f2eee0;
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    font-size: 20px;
+    justify-content: space-between;
+    font-size: 23px;
+    border-bottom: solid 1px #c3b69f;
 }
 .wrong-results {
-    background-color: brown;
+    margin-top: 20px;
 }
-.wrong div {
-    background-color: #fff;
-    width: 100%;
+.result-header {
     display: flex;
-    justify-content: space-around;
-    font-size: 20px;
+    justify-content: space-between;
+    font-size: 30px;
+}
+.result-title {
+    font-size: 33px;
+}
+.stat-btns {
+    display: flex;
 }
 .close-app {
-    width: 100px;
-    margin: 20% auto;
-    color: red;
-    font-size: 40px;
+    color: #de8668;
 }
 .close-app:hover {
     cursor: pointer;
 }
 .again {
-    width: 100px;
-    margin: 20% auto;
-    color: rgb(8, 131, 14);
-    font-size: 40px;
+    margin-right: 20px;
+    color: #027ea1;
 }
 .again:hover {
     cursor: pointer;

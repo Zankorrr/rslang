@@ -8,7 +8,7 @@ export const start = () => {
   const sprintGameWrapper = document.querySelector('.game-wrapper');
   const difficultySelectionPlate = document.querySelector('.difficultySelectionPlate');
   const loadScreenMask = document.querySelector('.load-screen');
-  const startButton = document.getElementById('button-start');
+  const startButton = document.getElementById('button-start') as HTMLElement;
   const checkInputs = Array.from(document.getElementsByName('difficultLevel'));
   const difficultArr: number[] | null[] = [];
   const difficultInputs = document.querySelector('.difficult-inputs');
@@ -25,7 +25,8 @@ export const start = () => {
     }
   };
 
-  (startButton as HTMLElement).onclick = () => {
+  startButton.onclick = (e) => {
+    e.preventDefault();
     checkInputs.forEach((item) => {
       if ((item as HTMLInputElement).checked === true) {
         difficultArr[0] = Number(item.getAttribute('difficultId'));
