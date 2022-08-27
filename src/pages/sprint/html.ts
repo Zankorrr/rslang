@@ -1,8 +1,8 @@
 export const html = `
-<div class="sprint-container">
+<div class="sprint-container" id="sprint-container">
     <div class="difficultySelectionPlate" id="difficultForm">
-        <p><b>Правила игры:</b> У вас есть 30 секунд для точго чтобы перевести как можно больше слов, выбрав правильный вариант из двух предложенных. Для старта игры выберите уровень сложности и нажмите "старт"</p>
-        <h2 id="difficultLevelChange">Выберите уровень сложности</h2>
+        <p>СПРИНТ</p>
+        <div id="difficultLevelChange">Выберите уровень сложности</div>
         <div class="difficult-inputs">
             <input type="radio" id="difficult1"
                 name="difficultLevel" difficultId="0">

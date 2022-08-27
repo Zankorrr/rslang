@@ -62,14 +62,18 @@ p {
 }
 .close-app {
     color: #de8668;
+    transition: all 0.2s ease 0s;
 }
 .close-app:hover {
     cursor: pointer;
+    transform: scale3d(1.1, 1.1, 1.1);
 }
 .again {
     margin-right: 20px;
     color: #027ea1;
+    transition: all 0.2s ease 0s;
 }
 .again:hover {
     cursor: pointer;
+    transform: scale3d(1.1, 1.1, 1.1);
 }

@@ -12,12 +12,13 @@
     box-shadow: 0 0 10px #999999;
 }
 .difficultySelectionPlate p {
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
 }
-h2 {
+#difficultLevelChange {
     font-size: 30px;
     color: #334456;
+    margin-top: 30px;
 }
 .difficult-inputs {
     display: flex;
