@@ -16,6 +16,9 @@ export function createUser() {
       };
 
       await signUpAPI(user);
+
+      const signUp = document.querySelector('.signup-container') as HTMLElement;
+      signUp.style.display = 'none';
     }
   });
 }

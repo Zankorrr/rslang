@@ -17,9 +17,9 @@ export async function signInAPI(user: ISignUp) {
      console.log(content);
 
      if (response.status === 200 && signInButton) {
-       console.log(signInButton.innerText);
+       const signIn = document.querySelector('.signin-container') as HTMLElement;
+
+       signIn.style.display = 'none';
        signInButton.innerText = 'Log out';
      }
-
-     console.log(response.status);
 }
