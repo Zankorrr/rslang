@@ -26,7 +26,7 @@
 				"indent": "off",
 				"no-console": "off",
 				"no-param-reassign": 0,
-				"allowUnreachableCode": true
+				"import/prefer-default-export": "off"
 
     },
     "settings": {

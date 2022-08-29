@@ -24,9 +24,19 @@ export function addHeader() {
   const sprintButton = document.createElement('button');
   sprintButton.classList.add('sprint-button');
   sprintButton.innerText = 'Sprint';
+
   const statisticsButton = document.createElement('button');
   statisticsButton.classList.add('statistics-button');
   statisticsButton.innerText = 'Statistics';
+
+  const signUpButton = document.createElement('button');
+  signUpButton.classList.add('signup-button');
+  signUpButton.innerText = 'Sign up';
+
+  const signInButton = document.createElement('button');
+  signInButton.classList.add('signin-button');
+  signInButton.innerText = 'Sign in';
+
   navigation.append(
     mainPageButton,
     textbookButton,
@@ -34,6 +44,8 @@ export function addHeader() {
     audioCallButton,
     sprintButton,
     statisticsButton,
+    signUpButton,
+    signInButton,
   );
   header.append(logo, navigation);
   document.body.appendChild(header);
@@ -98,12 +110,15 @@ export function updateNavigation() {
   const statisticsPage = document.querySelector('.statistics-page') as HTMLElement;
   const textbookPage = document.querySelector('.textbook-page') as HTMLElement;
   const wordListPage = document.querySelector('.word-list-page') as HTMLElement;
+  const signUp = document.querySelector('.signup-container') as HTMLElement;
+  const signIn = document.querySelector('.signin-container') as HTMLElement;
   const description = document.querySelector('.description') as HTMLElement;
   const aboutTeam = document.querySelector('.about-team') as HTMLElement;
   const footer = document.querySelector('.footer') as HTMLElement;
+
   function hideElements() {
     const variableElements = [audioCallGame, sprintGame, statisticsPage,
-      textbookPage, wordListPage, description, aboutTeam, footer];
+      textbookPage, wordListPage, signUp, signIn, description, aboutTeam, footer];
     variableElements.forEach((el) => {
       el.style.display = 'none';
     });
@@ -115,6 +130,8 @@ export function updateNavigation() {
   const audioCallButton = document.querySelector('.audio-call-button') as HTMLButtonElement;
   const sprintButton = document.querySelector('.sprint-button') as HTMLButtonElement;
   const statisticsButton = document.querySelector('.statistics-button') as HTMLButtonElement;
+  const signUpButton = document.querySelector('.signup-button') as HTMLButtonElement;
+  const signInButton = document.querySelector('.signin-button') as HTMLButtonElement;
 
   mainPageButton.addEventListener('click', () => {
     hideElements();
@@ -150,5 +167,19 @@ export function updateNavigation() {
     hideElements();
     statisticsPage.style.display = 'block';
     footer.style.display = 'flex';
+  });
+
+  signUpButton.addEventListener('click', () => {
+    signIn.style.display = 'none';
+    signUp.style.display = 'flex';
+  });
+
+  signInButton.addEventListener('click', () => {
+    if (signInButton.innerText === 'Log out') {
+      console.log('log out');
+    } else {
+      signUp.style.display = 'none';
+      signIn.style.display = 'flex';
+    }
   });
 }
