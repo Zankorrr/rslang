@@ -176,7 +176,7 @@ export function updateNavigation() {
 
   signInButton.addEventListener('click', () => {
     if (signInButton.innerText === 'Log out') {
-      console.log('log out');
+      signInButton.innerText = 'Sign in';
     } else {
       signUp.style.display = 'none';
       signIn.style.display = 'flex';
