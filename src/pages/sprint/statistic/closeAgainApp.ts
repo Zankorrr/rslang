@@ -30,20 +30,20 @@ export const closeApp = () => {
     };
   };
 
-  closeButton.onclick = () => {
+  closeButton.addEventListener('click', () => {
     arrForStatistics.length = 0;
     hideElements();
     description.style.display = 'block';
     aboutTeam.style.display = 'block';
     footer.style.display = 'flex';
     newGame();
-  };
+  });
 
-  againGame.onclick = () => {
+  againGame.addEventListener('click', () => {
     arrForStatistics.length = 0;
     sprintGame.innerHTML = html;
     start();
-  };
+  });
 };
 
 export default closeApp;
