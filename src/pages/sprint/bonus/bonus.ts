@@ -1,46 +1,80 @@
-import randomWord from '../sprint';
+import { randomWord, arrForStatistics } from '../sprint';
+
+let points = 10;
 
 export const pushButtons = (difficult: number | null) => {
-  const rightButton = document.getElementById('right');
-  const wrongButton = document.getElementById('wrong');
-  const counter = document.getElementById('pointCounter');
-  const wordAsk = document.getElementById('word-ask');
-  const wordTranslate = document.getElementById('word-translate');
-  //   const correctness = document.querySelector('.correctness');
+  const rightButton = document.getElementById('right') as HTMLElement;
+  const wrongButton = document.getElementById('wrong') as HTMLElement;
+  const counter = document.getElementById('pointCounter') as HTMLElement;
+  const wordAsk = document.getElementById('word-ask') as HTMLElement;
+  const wordTranslate = document.getElementById('word-translate') as HTMLElement;
+  const correctness = document.querySelector('.correctness') as HTMLElement;
+  const multiplier = document.getElementById('multiplier') as HTMLElement;
+  const factorsArr = Array.from(correctness.querySelectorAll('.factor'));
 
-  //   const addActive = () => {
-  //     const factorsArr = Array.from((correctness as HTMLElement).querySelectorAll('.factor'));
-  //     if (factorsArr.every((item) => item.classList.contains('active'))) {
-  //       // eslint-disable-next-line no-console
-  //       console.log(1);
-  //     } else {
-  //       (((correctness as HTMLElement).firstChild as HTMLElement)
-  // .nextSibling as HTMLElement).classList.add('active');
-  //       // eslint-disable-next-line no-console
-  //       console.log((correctness as HTMLElement).firstChild);
-  //     }
-  //   };
-  //   addActive();
+  const removeActive = () => {
+    factorsArr.forEach((item) => {
+      item.classList.remove('active');
+    });
+  };
 
-  const wordId = (wordAsk as HTMLElement).getAttribute('wordId');
-  const answerId = (wordTranslate as HTMLElement).getAttribute('wordId');
-  (rightButton as HTMLElement).onclick = () => {
-    if (wordId === answerId) {
-      (counter as HTMLElement).innerText = String(+((counter as HTMLElement)
-        .innerText) + 10);
-      randomWord(difficult);
+  const removeBonus = () => {
+    points = 10;
+    multiplier.innerText = `+${points}`;
+  };
+
+  const addActive = () => {
+    if (factorsArr.every((item) => item.classList.contains('active'))) {
+      removeActive();
+    } else if (factorsArr[1].classList.contains('active')) {
+      factorsArr[2].classList.add('active');
+      points += 10;
+      multiplier.innerText = `+${points}`;
+    } else if (factorsArr[0].classList.contains('active')) {
+      factorsArr[1].classList.add('active');
     } else {
-      randomWord(difficult);
+      factorsArr[0].classList.add('active');
     }
   };
 
-  (wrongButton as HTMLElement).onclick = () => {
-    if (wordId !== answerId) {
-      (counter as HTMLElement).innerText = String(+((counter as HTMLElement)
-        .innerText) + 10);
+  const wordId = wordAsk.getAttribute('wordId');
+  const answerId = wordTranslate.getAttribute('wordId');
+
+  const addBooleanForStatistics = (bool: boolean) => {
+    arrForStatistics.forEach((item) => {
+      if (item.id === wordId) {
+        item.boolean = bool;
+      }
+    });
+  };
+
+  rightButton.onclick = () => {
+    if (wordId === answerId) {
+      counter.innerText = String(+(counter
+        .innerText) + points);
       randomWord(difficult);
+      addActive();
+      addBooleanForStatistics(true);
     } else {
       randomWord(difficult);
+      removeActive();
+      removeBonus();
+      addBooleanForStatistics(false);
+    }
+  };
+
+  wrongButton.onclick = () => {
+    if (wordId !== answerId) {
+      counter.innerText = String(+(counter
+        .innerText) + points);
+      randomWord(difficult);
+      addActive();
+      addBooleanForStatistics(true);
+    } else {
+      randomWord(difficult);
+      removeActive();
+      removeBonus();
+      addBooleanForStatistics(false);
     }
   };
 };
