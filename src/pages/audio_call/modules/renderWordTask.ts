@@ -16,5 +16,3 @@ export function renderWordTask() {
                 <button class="word-button">I don't know</button>`;
   iterationContainer?.insertAdjacentHTML('beforeend', html);
 }
-
-export default renderWordTask;

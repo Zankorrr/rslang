@@ -19,5 +19,3 @@ export function getVariablesOfWord(word: IWord, data: IWord[]) {
 
   return result;
 }
-
-export default getVariablesOfWord;

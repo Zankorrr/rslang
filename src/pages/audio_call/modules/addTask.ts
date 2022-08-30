@@ -22,5 +22,3 @@ export function addTask(arr: IWord[], num: number) {
     wordText.innerText = `${arr[num].word}`;
   }
 }
-
-export default addTask;

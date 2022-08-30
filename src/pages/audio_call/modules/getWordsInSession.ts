@@ -12,5 +12,3 @@ export function getWordsInSession(arr: IWord[], data: IWord[]) {
     arr.push(data[wordIndex]);
   }
 }
-
-export default getWordsInSession;

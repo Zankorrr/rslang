@@ -10,5 +10,3 @@ export function addResultWord(flag: boolean, arrRes: IResult[], arrWords: IWord[
 
   arrRes.push(resultWord);
 }
-
-export default addResultWord;

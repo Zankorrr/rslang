@@ -6,5 +6,3 @@ export function renderPage() {
     gameContainer.insertAdjacentHTML('beforeend', html);
   }
 }
-
-export default renderPage;
