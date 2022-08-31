@@ -1,9 +1,11 @@
 import { getWords } from '../../core/api';
 import './style.css';
 
-const textbookVariables = {
+export const textbookVariables = {
   chapter: 0,
   page: 0,
+  chaptersAmount: 7,
+  pagesAmount: 30,
 };
 
 const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
@@ -37,27 +39,34 @@ async function updateTextbook() {
       const audio3 = document.createElement('audio');
       audio3.src = `${baseUrl}/${word.audioExample}`;
       const wordPlayButton = document.createElement('button');
-      wordPlayButton.innerText = '▶️';
+      wordPlayButton.innerText = 'Play';
       wordPlayButton.addEventListener('click', () => audio1.play());
       audio1.addEventListener('ended', () => audio2.play());
       audio2.addEventListener('ended', () => audio3.play());
 
       const wordToTrickyButton = document.createElement('button');
-      wordToTrickyButton.innerText = '🥲';
+      wordToTrickyButton.innerText = 'Tricky';
       wordToTrickyButton.addEventListener('click', () => {
         wordContainer.classList.toggle('textbook-tricky-word');
         wordToTrickyButton.classList.toggle('textbook-tricky-word');
       });
 
       const wordToLearnedButton = document.createElement('button');
-      wordToLearnedButton.innerText = '😎';
+      wordToLearnedButton.innerText = 'Learned';
       wordToLearnedButton.addEventListener('click', () => {
         wordContainer.classList.toggle('textbook-learned-word');
         wordToLearnedButton.classList.toggle('textbook-learned-word');
       });
 
-      wordButtonsContainer.append(wordPlayButton, wordToTrickyButton, wordToLearnedButton);
+      const mistakesCounter = document.createElement('button');
+      mistakesCounter.innerText = '0/0';
 
+      wordButtonsContainer.append(
+        wordPlayButton,
+        wordToTrickyButton,
+        wordToLearnedButton,
+        mistakesCounter,
+        );
       wordDescriptionContainer.append(wordTextContainer, wordButtonsContainer);
 
       const wordImageContainer = document.createElement('img');
@@ -73,8 +82,21 @@ async function updateTextbook() {
 }
 
 function addTextbookPage() {
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('textbookChapter', textbookVariables.chapter.toString());
+    localStorage.setItem('textbookPage', textbookVariables.page.toString());
+  });
+  const localStorageChapter = localStorage.getItem('textbookChapter');
+  if (localStorageChapter) {
+    textbookVariables.chapter = +localStorageChapter;
+  }
+  const localStoragePage = localStorage.getItem('textbookPage');
+  if (localStoragePage) {
+    textbookVariables.page = +localStoragePage;
+  }
   const textbookPage = document.createElement('div');
   textbookPage.classList.add('textbook-page');
+  textbookPage.style.backgroundColor = textbookColors[textbookVariables.chapter];
 
   const navigationContainer = document.createElement('div');
   navigationContainer.classList.add('textbook-navigation-container');
@@ -93,7 +115,7 @@ function addTextbookPage() {
   const chapterContainer = document.createElement('div');
   chapterContainer.classList.add('textbook-chapter-container');
 
-  for (let i = 0; i < 7; i += 1) {
+  for (let i = 0; i < textbookVariables.chaptersAmount; i += 1) {
     const chapterButton = document.createElement('button');
     chapterButton.classList.add('textbook-chapter-button');
     chapterButton.style.backgroundColor = textbookColors[i];
@@ -128,7 +150,7 @@ function addTextbookPage() {
   const pageNext = document.createElement('button');
   pageNext.innerText = '>';
   pageNext.addEventListener('click', () => {
-    if (textbookVariables.page < 29) {
+    if (textbookVariables.page < (textbookVariables.pagesAmount - 1)) {
       textbookVariables.page += 1;
       updateTextbook();
     }
