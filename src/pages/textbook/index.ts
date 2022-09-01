@@ -3,9 +3,10 @@ import {
   getUserWords,
   getWord,
   getWords,
+  removeUserWord,
 } from '../../core/api';
 import { IUserWord, Word } from '../../core/types';
-import openApp from '../audio_call/modules/openApp';
+// import openApp from '../audio_call/modules/openApp';
 import './style.css';
 
 export const textbookVariables = {
@@ -25,6 +26,10 @@ async function getTrickyWords() {
   const data = await Promise.all(trickyIds.map((id) => getWord(id)));
   return data;
 }
+
+// async function removeTrickyWord() {
+
+// }
 
 async function updateTextbook() {
   const chapterContainer = document.querySelector('.textbook-chapter-container');
@@ -73,14 +78,27 @@ async function updateTextbook() {
 
       const wordToLearnedButton = document.createElement('button');
       wordToLearnedButton.innerText = 'Learned';
-      wordToLearnedButton.addEventListener('click', () => {
+      wordToLearnedButton.addEventListener('click', async () => {
         wordContainer.classList.toggle('textbook-learned-word');
         wordToLearnedButton.classList.toggle('textbook-learned-word');
-        getUserWords();
+        await removeUserWord(word.id);
+        if (textbookVariables.chapter === 6) {
+          updateTextbook();
+        }
       });
 
       const mistakesCounter = document.createElement('button');
       mistakesCounter.innerText = '0/0';
+
+      if (localStorage.getItem('userId')) {
+        wordToTrickyButton.style.display = 'block';
+        wordToLearnedButton.style.display = 'block';
+        mistakesCounter.style.display = 'block';
+      } else {
+        wordToTrickyButton.style.display = 'none';
+        wordToLearnedButton.style.display = 'none';
+        mistakesCounter.style.display = 'none';
+      }
 
       wordButtonsContainer.append(
         wordPlayButton,
@@ -127,9 +145,9 @@ function addTextbookPage() {
   const audioCallLink = document.createElement('button');
   audioCallLink.classList.add('audiocall-from-textbook');
   audioCallLink.innerText = 'Audio call';
-  audioCallLink.addEventListener('click', () => {
-    openApp('audiocall-from-textbook');
-  });
+  // audioCallLink.addEventListener('click', () => {
+  //   openApp('audiocall-from-textbook');
+  // });
   const sprintLink = document.createElement('button');
   sprintLink.innerText = 'Sprint';
   sprintLink.addEventListener('click', () => (document.querySelector('.sprint-button') as HTMLButtonElement)?.click());
@@ -147,6 +165,12 @@ function addTextbookPage() {
       chapterButton.innerText = `Chapter ${i + 1}`;
     } else {
       chapterButton.innerText = 'Tricky';
+      chapterButton.classList.add('tricky');
+      if (localStorage.getItem('userId')) {
+        chapterButton.style.display = 'inline-block';
+      } else {
+        chapterButton.style.display = 'none';
+      }
     }
     chapterButton.addEventListener('click', () => {
       textbookPage.style.backgroundColor = textbookColors[i];

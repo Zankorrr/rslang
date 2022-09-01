@@ -53,3 +53,15 @@ export const getUserWords = async (): Promise<IUserWord[]> => {
   console.log(result);
   return result;
 };
+
+export const removeUserWord = async (wordId: string): Promise<void> => {
+  const token = localStorage.getItem('userToken');
+  await fetch(`${baseUrl}/users/${localStorage.getItem('userId')}/words/${wordId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+};
