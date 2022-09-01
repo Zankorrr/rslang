@@ -137,10 +137,12 @@ button {
   padding: 8px 16px;
   font-size: 16px;
   font-family: 'Comfortaa', cursive;
+  transition: all 0.1s linear;
 }
 
 button:hover {
   cursor: pointer;
+  transform: translateY(-3px);
 }
 
 /* полоса прокрутки (скроллбар) */
@@ -160,4 +162,8 @@ button:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #255361;
+}
+
+html {
+  overflow-y: scroll;
 }
