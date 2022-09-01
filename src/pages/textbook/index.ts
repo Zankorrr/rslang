@@ -1,4 +1,10 @@
-import { getWords } from '../../core/api';
+import {
+  createUserWord,
+  getUserWords,
+  getWord,
+  getWords,
+} from '../../core/api';
+import { IUserWord, Word } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
 import './style.css';
 
@@ -13,11 +19,23 @@ const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 
 const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
 
+async function getTrickyWords() {
+  const trickyWords = await getUserWords();
+  const trickyIds = await Promise.all(trickyWords.map((el: IUserWord) => el.wordId));
+  const data = await Promise.all(trickyIds.map((id) => getWord(id)));
+  return data;
+}
+
 async function updateTextbook() {
   const chapterContainer = document.querySelector('.textbook-chapter-container');
   if (chapterContainer) {
     chapterContainer.textContent = '';
-    const data = await getWords(textbookVariables.chapter, textbookVariables.page);
+    let data: Word[] = [];
+    if (textbookVariables.chapter === 6) {
+      data = await getTrickyWords();
+    } else {
+      data = await getWords(textbookVariables.chapter, textbookVariables.page);
+    }
     data.forEach((word) => {
       const wordContainer = document.createElement('div');
       wordContainer.classList.add('textbook-word-container');
@@ -50,6 +68,7 @@ async function updateTextbook() {
       wordToTrickyButton.addEventListener('click', () => {
         wordContainer.classList.toggle('textbook-tricky-word');
         wordToTrickyButton.classList.toggle('textbook-tricky-word');
+        createUserWord(word.id);
       });
 
       const wordToLearnedButton = document.createElement('button');
@@ -57,6 +76,7 @@ async function updateTextbook() {
       wordToLearnedButton.addEventListener('click', () => {
         wordContainer.classList.toggle('textbook-learned-word');
         wordToLearnedButton.classList.toggle('textbook-learned-word');
+        getUserWords();
       });
 
       const mistakesCounter = document.createElement('button');

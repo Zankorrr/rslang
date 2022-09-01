@@ -14,3 +14,9 @@ export interface Word {
   textMeaningTranslate: string,
   textExampleTranslate: string
 }
+
+export interface IUserWord {
+  id: string,
+  difficulty: string,
+  wordId: string
+}
