@@ -3,7 +3,10 @@
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-  background-color: #fa7b7b;
+}
+
+.textbook-chapter-button {
+  min-width: 132px;
 }
 
 .textbook-navigation-container,
@@ -52,10 +55,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 1em;
+  border-radius: 5px;
   margin: 0.5em;
   padding: 0.5em;
-  background-color: ivory;
+  background-color: rgba(255, 255, 255, 0.486);
+  box-shadow: 0 0 7px #666;
 }
 
 .textbook-tricky-word {
@@ -78,6 +82,7 @@
 
 .textbook-word-image {
   border-radius: 0.5em;
+  box-shadow: 0 0 7px #666;
 }
 
 .page-number {
