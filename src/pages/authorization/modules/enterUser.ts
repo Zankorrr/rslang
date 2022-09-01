@@ -1,4 +1,5 @@
-import { ISignUp } from '../types/types';
+import { authorizedUser } from '../../../core/globalVariables';
+import { ISignIn } from '../types/types';
 import { signInAPI } from './signInAPI';
 
 export function enterUser() {
@@ -9,12 +10,20 @@ export function enterUser() {
   signInButton?.addEventListener('click', async (event) => {
     event.preventDefault();
 
+    if (signInButton.innerText === 'Log out') {
+      signInButton.innerText = 'Sign in';
+      localStorage.removeItem('userToken');
+      localStorage.removeItem('userId');
+      authorizedUser.flag = false;
+      authorizedUser.userToken = '';
+      authorizedUser.userId = '';
+    }
+
     if (signInEmailInput && signInPasswordInput) {
-      const user: ISignUp = {
+      const user: ISignIn = {
         email: signInEmailInput?.value,
         password: signInPasswordInput?.value,
       };
-      console.log('sign in');
       await signInAPI(user);
     }
   });

@@ -3,6 +3,8 @@ export function renderSignUpForm() {
   const html = `<form class="signup-form">
                   <h2>Sign up</h2>
                   <p>Please fill in this form to create an account.</p>
+                  <label for="name"><b>Name</b></label>
+                  <input type="text" placeholder="Enter name" name="name" required class="signup-name">
                   <label for="email"><b>Email</b></label>
                   <input type="text" placeholder="Enter Email" name="email" required class="signup-email">
                   <label for="psw"><b>Password</b></label>

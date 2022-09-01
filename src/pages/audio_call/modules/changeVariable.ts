@@ -2,6 +2,7 @@ import { IResult, IWord } from './types';
 import { addResultWord } from './addResultWord';
 
 const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
+let pushedButton = false;
 
 export function changeVariable(arr: IWord[], arrR: IResult[], num: number) {
   const wordsVariables: NodeListOf<HTMLElement> = document.querySelectorAll('.word-variables');
@@ -10,8 +11,17 @@ export function changeVariable(arr: IWord[], arrR: IResult[], num: number) {
   const wordImage: HTMLImageElement | null = document.querySelector('.word-image');
   const wordButton: HTMLButtonElement | null = document.querySelector('.word-button');
 
+
   wordsVariables?.forEach((button) => {
     button.addEventListener('click', () => {
+
+			if (!pushedButton) {
+				pushedButton = true;
+				wordsVariables.forEach((item) => {
+					item.setAttribute('disabled', 'disabled');
+				});
+			}
+
       if (button.innerText === wordText?.innerText) {
         button.classList.add('true-answer');
         addResultWord(true, arrR, arr, num);
@@ -32,5 +42,5 @@ export function changeVariable(arr: IWord[], arrR: IResult[], num: number) {
 
       wordAudio?.play();
     });
-  });
+	});
 }
