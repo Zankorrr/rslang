@@ -20,24 +20,22 @@ const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 
 const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
 
-async function getTrickyWords() {
+async function getTrickyIDs() {
   const trickyWords = await getUserWords();
   const trickyIds = await Promise.all(trickyWords.map((el: IUserWord) => el.wordId));
-  const data = await Promise.all(trickyIds.map((id) => getWord(id)));
-  return data;
+  return trickyIds;
 }
-
-// async function removeTrickyWord() {
-
-// }
 
 async function updateTextbook() {
   const chapterContainer = document.querySelector('.textbook-chapter-container');
   if (chapterContainer) {
     chapterContainer.textContent = '';
+
+    const trickyIDs = await getTrickyIDs();
+
     let data: Word[] = [];
     if (textbookVariables.chapter === 6) {
-      data = await getTrickyWords();
+      data = await Promise.all(trickyIDs.map((id) => getWord(id)));
     } else {
       data = await getWords(textbookVariables.chapter, textbookVariables.page);
     }
@@ -70,10 +68,19 @@ async function updateTextbook() {
 
       const wordToTrickyButton = document.createElement('button');
       wordToTrickyButton.innerText = 'Tricky';
-      wordToTrickyButton.addEventListener('click', () => {
-        wordContainer.classList.toggle('textbook-tricky-word');
-        wordToTrickyButton.classList.toggle('textbook-tricky-word');
-        createUserWord(word.id);
+      wordToTrickyButton.addEventListener('click', async () => {
+        if (trickyIDs.includes(word.id)) {
+          await removeUserWord(word.id);
+          if (textbookVariables.chapter === 6) {
+            updateTextbook();
+          }
+        } else {
+          createUserWord(word.id);
+        }
+        if (textbookVariables.chapter !== 6) {
+          wordContainer.classList.toggle('textbook-tricky-word');
+          wordToTrickyButton.classList.toggle('textbook-tricky-word');
+        }
       });
 
       const wordToLearnedButton = document.createElement('button');
@@ -98,6 +105,11 @@ async function updateTextbook() {
         wordToTrickyButton.style.display = 'none';
         wordToLearnedButton.style.display = 'none';
         mistakesCounter.style.display = 'none';
+      }
+
+      if (textbookVariables.chapter !== 6 && trickyIDs.includes(word.id)) {
+        wordContainer.classList.add('textbook-tricky-word');
+        wordToTrickyButton.classList.add('textbook-tricky-word');
       }
 
       wordButtonsContainer.append(
