@@ -91,7 +91,7 @@
   display: flex;
   justify-content: space-around;
 }
-.button {
+.sprint-game .button {
   width: 45%;
   color: #f2eee0;
   padding: 8px;
@@ -103,11 +103,11 @@
   box-shadow: 0 0 7px #333;
   transition: all 0.2s ease 0s;
 }
-.button:hover {
+.sprint-game .button:hover {
   color: #fff;
   font-weight: 600;
 }
-.button:active {
+.sprint-game .button:active {
   transform: scale3d(0.97, 0.97, 0.97);
   box-shadow: 0 0 3px #333;
 }

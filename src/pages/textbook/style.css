@@ -17,6 +17,7 @@
   font-family: 'Comfortaa', cursive;
   box-shadow: 0 0 5px #333;
   margin: 0px 1px 0px 1px;
+  border: none;
 }
 
 .textbook-navigation-container,

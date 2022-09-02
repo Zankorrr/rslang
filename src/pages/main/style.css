@@ -128,7 +128,7 @@ h1 {
   animation: move_wave 15s linear infinite;
 }
 
-button {
+.header button {
   appearance: none;
   border: 0;
   border-radius: 5px;
@@ -140,7 +140,7 @@ button {
   transition: all 0.1s linear;
 }
 
-button:hover {
+.header button:hover {
   cursor: pointer;
   transform: translateY(-3px);
 }

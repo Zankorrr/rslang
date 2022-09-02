@@ -1,7 +1,6 @@
 .audio-call-game {
   display: none;
-  background-color: lightgreen;
-  margin-top: 10px;
+  margin-top: 100px;
 	justify-content: center;
 	align-items: center;
 	position: relative;
@@ -11,10 +10,11 @@
   position: absolute;
   top: 0;
   right: 0;
+  border: 0;
+  background: #ffffff00;
 }
 
 .iteration-container {
-  background-color: darkgrey;
 	display: flex;
   justify-content: center;
   flex-direction: column;
@@ -27,6 +27,12 @@
   align-items: center;
 }
 
+.word-container img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
 .no-displayed {
   display: none;
 }
@@ -34,6 +40,8 @@
 .word-variables-container {
   display: flex;
   justify-content: center;
+  margin-top: 120px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .result-container {
@@ -55,4 +63,33 @@
 
 .false-answer {
 	background-color: red;
+}
+
+.word-variables-container button {
+  border: 0;
+  background: #ffffff00;
+  color: #fff;
+  font-size: 20px;
+  font-family: 'Comfortaa', cursive;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0px 15px 0px 15px;
+}
+
+.word-variables-container button:last-of-type {
+  border-right: none;
+}
+
+.word-text {
+  position: absolute;
+  top: 240px;
+  font-size: 32px;
+}
+
+.word-button {
+  border: 0;
+  background: #ffffff00;
+  color: #fff;
+  font-size: 28px;
+  font-family: 'Comfortaa', cursive;
+  margin-top: 20px;
 }
