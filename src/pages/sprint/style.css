@@ -21,6 +21,7 @@
   padding: 20px;
 }
 .game-header {
+  position: relative;
   display: flex;
   width: 100%;
 }
@@ -32,6 +33,7 @@
 }
 .points-text {
   font-size: 40px;
+  padding-right: 5px;
 }
 .pointsCounter {
   display: flex;
@@ -117,6 +119,40 @@
 .wrong {
   background: #de8668;
 }
+
+.plus-points {
+  position: absolute;
+  top: 150%;
+  left: 45%;
+  font-size: 50px;
+  color: green;
+  opacity: 0;
+  animation: up 1s linear 1 normal running;
+}
+
+.minus-points {
+  position: absolute;
+  top: 150%;
+  left: 45%;
+  font-size: 50px;
+  color: red;
+  opacity: 0;
+  animation: up 1s linear 1 normal running;
+}
+
+@keyframes up {
+  0%{
+  top: 150%;
+  opacity: 1;
+  }
+  100%{
+  top: 0%;
+  opacity: 0;
+  }
+  }
+
+
+
 /* ::-webkit-scrollbar {
   width: 10px;
 }
