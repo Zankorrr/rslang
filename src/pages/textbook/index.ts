@@ -6,7 +6,7 @@ import {
   removeUserWord,
 } from '../../core/api';
 import { IUserWord, Word } from '../../core/types';
-// import openApp from '../audio_call/modules/openApp';
+import openApp from '../audio_call/modules/openApp';
 import './style.css';
 
 export const textbookVariables = {
@@ -20,10 +20,10 @@ const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 
 const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
 
-async function getTrickyIDs() {
-  const trickyWords = await getUserWords();
-  const trickyIds = await Promise.all(trickyWords.map((el: IUserWord) => el.wordId));
-  return trickyIds;
+async function getFilteredIDs(userWords: IUserWord[], difficulty: string) {
+  const filteredWords = userWords.filter((el) => el.difficulty === difficulty);
+  const filteredIDs = filteredWords.map((el: IUserWord) => el.wordId);
+  return filteredIDs;
 }
 
 async function updateTextbook() {
@@ -31,7 +31,9 @@ async function updateTextbook() {
   if (chapterContainer) {
     chapterContainer.textContent = '';
 
-    const trickyIDs = await getTrickyIDs();
+    const userWords = await getUserWords();
+    const trickyIDs = await getFilteredIDs(userWords, 'tricky');
+    const learnedIDs = await getFilteredIDs(userWords, 'learned');
 
     let data: Word[] = [];
     if (textbookVariables.chapter === 6) {
@@ -68,6 +70,10 @@ async function updateTextbook() {
 
       const wordToTrickyButton = document.createElement('button');
       wordToTrickyButton.innerText = 'Tricky';
+
+      const wordToLearnedButton = document.createElement('button');
+      wordToLearnedButton.innerText = 'Learned';
+
       wordToTrickyButton.addEventListener('click', async () => {
         if (trickyIDs.includes(word.id)) {
           await removeUserWord(word.id);
@@ -75,23 +81,33 @@ async function updateTextbook() {
             updateTextbook();
           }
         } else {
-          createUserWord(word.id);
+          if (learnedIDs.includes(word.id)) {
+            await removeUserWord(word.id);
+            wordContainer.classList.toggle('textbook-learned-word');
+            wordToLearnedButton.classList.toggle('textbook-learned-word');
+          }
+          createUserWord(word.id, 'tricky');
         }
-        if (textbookVariables.chapter !== 6) {
-          wordContainer.classList.toggle('textbook-tricky-word');
-          wordToTrickyButton.classList.toggle('textbook-tricky-word');
-        }
+        wordContainer.classList.toggle('textbook-tricky-word');
+        wordToTrickyButton.classList.toggle('textbook-tricky-word');
       });
 
-      const wordToLearnedButton = document.createElement('button');
-      wordToLearnedButton.innerText = 'Learned';
       wordToLearnedButton.addEventListener('click', async () => {
+        if (learnedIDs.includes(word.id)) {
+          removeUserWord(word.id);
+        } else {
+          if (trickyIDs.includes(word.id)) {
+            await removeUserWord(word.id);
+            wordContainer.classList.toggle('textbook-tricky-word');
+            wordToTrickyButton.classList.toggle('textbook-tricky-word');
+            if (textbookVariables.chapter === 6) {
+              updateTextbook();
+            }
+          }
+          createUserWord(word.id, 'learned');
+        }
         wordContainer.classList.toggle('textbook-learned-word');
         wordToLearnedButton.classList.toggle('textbook-learned-word');
-        await removeUserWord(word.id);
-        if (textbookVariables.chapter === 6) {
-          updateTextbook();
-        }
       });
 
       const mistakesCounter = document.createElement('button');
@@ -110,6 +126,11 @@ async function updateTextbook() {
       if (textbookVariables.chapter !== 6 && trickyIDs.includes(word.id)) {
         wordContainer.classList.add('textbook-tricky-word');
         wordToTrickyButton.classList.add('textbook-tricky-word');
+      }
+
+      if (textbookVariables.chapter !== 6 && learnedIDs.includes(word.id)) {
+        wordContainer.classList.add('textbook-learned-word');
+        wordToLearnedButton.classList.add('textbook-learned-word');
       }
 
       wordButtonsContainer.append(
@@ -157,9 +178,9 @@ function addTextbookPage() {
   const audioCallLink = document.createElement('button');
   audioCallLink.classList.add('audiocall-from-textbook');
   audioCallLink.innerText = 'Audio call';
-  // audioCallLink.addEventListener('click', () => {
-  //   openApp('audiocall-from-textbook');
-  // });
+  audioCallLink.addEventListener('click', () => {
+    openApp('audiocall-from-textbook');
+  });
   const sprintLink = document.createElement('button');
   sprintLink.innerText = 'Sprint';
   sprintLink.addEventListener('click', () => (document.querySelector('.sprint-button') as HTMLButtonElement)?.click());
