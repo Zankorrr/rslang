@@ -1,60 +1,43 @@
-import { getWords } from './getWords';
-import { IResult, IWord } from './types';
-import { renderPage } from './renderPage';
-import { renderWordTask } from './renderWordTask';
-import { getWordsInSession } from './getWordsInSession';
-import { closeApp } from './closeApp';
-import { addTask } from './addTask';
-import { changeTask } from './changeTask';
-import { addResultWord } from './addResultWord';
+import { getWordsFromPage } from './getWords';
+import { IWord } from './types';
+import { hideElements } from '../../main/index';
+import { textbookVariables } from '../../textbook/index';
+import { getWordsFromChapter } from './getWordsFromChapter';
+import { renderChooseTab } from './renderChooseTab';
+import { createApp } from './createApp';
 
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
+export async function openApp(context: string) {
+  let words: IWord[] = [];
+  const gameContainer: HTMLElement | null = document.querySelector('.audio-call-game');
 
-export async function openApp() {
-  const words = await getWords();
-  if (words) {
-    const wordsInSession: IWord[] = [];
-    const results: IResult[] = [];
-    let counterIteration = 0;
+  hideElements();
 
-    renderPage();
-    closeApp();
-    renderWordTask();
-    getWordsInSession(wordsInSession, words);
-    addTask(wordsInSession, counterIteration);
+  if (gameContainer) {
+    gameContainer.style.display = 'flex';
+    gameContainer.innerHTML = '';
+  }
 
-    const changeButton = document.querySelector('.word-button');
-    changeButton?.addEventListener('click', () => {
-      counterIteration += 1;
-      changeTask(counterIteration, wordsInSession, results);
-    });
+  if (context === 'audiocall-from-textbook') {
+    words = await getWordsFromPage(textbookVariables.chapter, textbookVariables.page);
+    if (words) {
+      createApp(words);
+    }
+  } else {
+    renderChooseTab();
+    const chapterButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.chapter-button');
 
-    const wordsVariables: NodeListOf<HTMLElement> = document.querySelectorAll('.word-variables');
-    const wordAudio: HTMLMediaElement | null = document.querySelector('.word-audio');
-    const wordText: HTMLElement | null = document.querySelector('.word-text');
-    const wordImage: HTMLImageElement | null = document.querySelector('.word-image');
-    const wordButton: HTMLButtonElement | null = document.querySelector('.word-button');
+    chapterButtons.forEach((item: HTMLElement, index: number) => {
+      item.addEventListener('click', async () => {
+        const res = await getWordsFromChapter(index);
+        words = res.flat();
 
-    wordsVariables?.forEach((button) => {
-      button.addEventListener('click', () => {
-        if (button.innerText === wordText?.innerText) {
-          button.classList.add('true-answer');
-          addResultWord(true, results, wordsInSession, counterIteration);
-        } else {
-          button.classList.add('false-answer');
-          addResultWord(false, results, wordsInSession, counterIteration);
+        if (gameContainer) {
+          gameContainer.innerHTML = '';
         }
 
-        if (wordImage) {
-          wordImage.src = `${baseUrl}/${wordsInSession[counterIteration].image}`;
+        if (res) {
+          createApp(words);
         }
-
-        wordText?.classList.remove('no-displayed');
-
-        if (wordButton?.innerText) {
-          wordButton.innerText = 'Next';
-        }
-        wordAudio?.play();
       });
     });
   }

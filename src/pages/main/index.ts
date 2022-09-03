@@ -54,11 +54,7 @@ export function addHeader() {
 export function addDescription() {
   const description = document.createElement('div');
   description.classList.add('description');
-  description.innerText = `Description:
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-  Fugiat itaque voluptatum eum repellat libero reprehenderit beatae amet,
-  assumenda fugit natus ex unde accusamus perspiciatis tempora
-  voluptates qui quam minus expedita!`;
+  description.innerText = 'RSLang - это бесплатная возможность повысить свой словарный запас в формате игры. Скучно не будет.';
   document.body.appendChild(description);
 }
 
@@ -104,7 +100,7 @@ export function addFooter() {
   document.body.appendChild(footer);
 }
 
-export function updateNavigation() {
+export function hideElements() {
   const audioCallGame = document.querySelector('.audio-call-game') as HTMLElement;
   const sprintGame = document.querySelector('.sprint-game') as HTMLElement;
   const statisticsPage = document.querySelector('.statistics-page') as HTMLElement;
@@ -116,13 +112,24 @@ export function updateNavigation() {
   const aboutTeam = document.querySelector('.about-team') as HTMLElement;
   const footer = document.querySelector('.footer') as HTMLElement;
 
-  function hideElements() {
-    const variableElements = [audioCallGame, sprintGame, statisticsPage,
-      textbookPage, wordListPage, signUp, signIn, description, aboutTeam, footer];
+  const variableElements = [audioCallGame, sprintGame, statisticsPage,
+    textbookPage, wordListPage, signUp, signIn, description, aboutTeam, footer];
     variableElements.forEach((el) => {
       el.style.display = 'none';
-    });
-  }
+  });
+}
+
+export function updateNavigation() {
+  // const audioCallGame = document.querySelector('.audio-call-game') as HTMLElement;
+  const sprintGame = document.querySelector('.sprint-game') as HTMLElement;
+  const statisticsPage = document.querySelector('.statistics-page') as HTMLElement;
+  const textbookPage = document.querySelector('.textbook-page') as HTMLElement;
+  const wordListPage = document.querySelector('.word-list-page') as HTMLElement;
+  const signUp = document.querySelector('.signup-container') as HTMLElement;
+  const signIn = document.querySelector('.signin-container') as HTMLElement;
+  const description = document.querySelector('.description') as HTMLElement;
+  const aboutTeam = document.querySelector('.about-team') as HTMLElement;
+  const footer = document.querySelector('.footer') as HTMLElement;
 
   const mainPageButton = document.querySelector('.main-page-button') as HTMLButtonElement;
   const textbookButton = document.querySelector('.textbook-button') as HTMLButtonElement;
@@ -153,9 +160,7 @@ export function updateNavigation() {
   });
 
   audioCallButton.addEventListener('click', () => {
-    hideElements();
-    audioCallGame.style.display = 'flex';
-    openApp();
+    openApp('audiocall-from-menu');
   });
 
   sprintButton.addEventListener('click', () => {
@@ -183,3 +188,5 @@ export function updateNavigation() {
     }
   });
 }
+
+
