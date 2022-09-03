@@ -5,11 +5,10 @@ import {
   getWords,
   removeUserWord,
 } from '../../core/api';
-import { IUserWord, Word } from '../../core/types';
+import { baseUrl } from '../../core/globalVariables';
+import { IUserWord, Word, ItextbookVariables } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
 import './style.css';
-import openApp from '../audio_call/modules/openApp';
-import { ItextbookVariables } from '../../core/types';
 
 export const textbookVariables: ItextbookVariables = {
   chapter: 0,
@@ -17,8 +16,6 @@ export const textbookVariables: ItextbookVariables = {
   chaptersAmount: 7,
   pagesAmount: 30,
 };
-
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 
 const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
 
@@ -33,9 +30,14 @@ async function updateTextbook() {
   if (chapterContainer) {
     chapterContainer.textContent = '';
 
-    const userWords = await getUserWords();
-    const trickyIDs = await getFilteredIDs(userWords, 'tricky');
-    const learnedIDs = await getFilteredIDs(userWords, 'learned');
+    let userWords: IUserWord[] = [];
+    let trickyIDs: string[] = [];
+    let learnedIDs: string[] = [];
+    if (localStorage.getItem('userId')) {
+      userWords = await getUserWords();
+      trickyIDs = await getFilteredIDs(userWords, 'tricky');
+      learnedIDs = await getFilteredIDs(userWords, 'learned');
+    }
 
     let data: Word[] = [];
     if (textbookVariables.chapter === 6) {
@@ -196,7 +198,7 @@ function addTextbookPage() {
     const chapterButton = document.createElement('button');
     chapterButton.classList.add('textbook-chapter-button');
     chapterButton.style.backgroundColor = textbookColors[i];
-    if (i < 6) {
+    if (i < textbookVariables.chaptersAmount - 1) {
       chapterButton.innerText = `Chapter ${i + 1}`;
     } else {
       chapterButton.innerText = 'Tricky';
