@@ -15,9 +15,17 @@ export interface Word {
   textExampleTranslate: string
 }
 
+export interface IUserWord {
+  id: string,
+  difficulty: string,
+  wordId: string
+}
+
 export interface ItextbookVariables {
   chapter: number,
-  page: number
+  page: number,
+  chaptersAmount: number,
+  pagesAmount: number,
 }
 
 export interface IAuthorizedUser {
