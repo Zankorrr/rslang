@@ -63,8 +63,8 @@ export const html = `
                 <div class="word-ask" id="word-ask"></div>
                 <div class="word-translate" id="word-translate"></div>
                 <div class="answer-buttons">
-                    <a class="button right" id="right">right</a>
-                    <a class="button wrong" id="wrong">wrong</a>
+                    <a class="button button-right" id="right">right</a>
+                    <a class="button button-wrong" id="wrong">wrong</a>
                 </div>
             </div>    
             <div class="timer" id="timer">

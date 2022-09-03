@@ -1,22 +1,36 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+body {
+  padding: 0 100px;
+  font-family: 'Klee One', cursive;
+  background-image: linear-gradient(to top, #489cbd 20%, #029e91 80%)
+}
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: lightcoral;
+  /* background-color: lightcoral; */
+}
+
+h1 {
+  font-family: 'Comfortaa', cursive;
+  background: linear-gradient(180deg, #489cbd 33%, #489cbd 66%, #1d3333);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .description {
-  background-color: lightpink;
-  margin-top: 10px;
+  margin-top: 300px;
 }
 
 .about-team {
-  background-color: lightblue;
-  margin-top: 10px;
+  margin-top: 100px;
+  flex-grow: 1;
 }
 
 .about-member {
-  background-color: lightsalmon;
   height: 50px;
   margin-top: 10px;
 }
@@ -24,11 +38,132 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  background-color: lightgrey;
-  margin-top: auto;
+  flex-shrink: 0;
+  /* background-color: lightgrey; */
   height: 35px;
+  margin-bottom: 10px;
 }
 
 .footer .rss-logo {
   height: 100%;
+}
+
+@keyframes move_wave {
+  0% {
+      transform: translateX(0) translateZ(0) scaleY(1)
+  }
+  50% {
+      transform: translateX(-25%) translateZ(0) scaleY(0.55)
+  }
+  100% {
+      transform: translateX(-50%) translateZ(0) scaleY(1)
+  }
+}
+
+.waveWrapper {
+  overflow: hidden;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  transform: rotate(180deg);
+  z-index: -4;
+}
+
+.empty-space {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5%;
+  width: 100%;
+  background: #fff;
+}
+
+.waveWrapperInner {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 95%;
+  bottom: 5%;
+  background-image: linear-gradient(to top, #489cbd 20%, #029e91 80%);
+}
+.bgTop {
+  z-index: -1;
+  opacity: 0.5;
+}
+.bgMiddle {
+  z-index: -2;
+  opacity: 0.75;
+}
+.bgBottom {
+  z-index: -3;
+}
+.wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat no-repeat;
+  background-position: 0 bottom;
+  transform-origin: center bottom;
+}
+.waveTop {
+  background-size: 50% 100px;
+}
+.waveAnimation .waveTop {
+  animation: move_wave 50s linear infinite;
+}
+.waveMiddle {
+  background-size: 50% 120px;
+}
+.waveAnimation .waveMiddle {
+  animation: move_wave 10s linear infinite;
+}
+.waveBottom {
+  background-size: 50% 100px;
+}
+.waveAnimation .waveBottom {
+  animation: move_wave 15s linear infinite;
+}
+
+.header button {
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0);
+  color: #000;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-family: 'Comfortaa', cursive;
+  transition: all 0.1s linear;
+}
+
+.header button:hover {
+  cursor: pointer;
+  transform: translateY(-3px);
+}
+
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  width: 8px; /* ширина для вертикального скролла */
+  height: 8px; /* высота для горизонтального скролла */
+  background-color: #489cbd9d;
+  box-shadow: inset 1px 1px 10px #117979;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: #2fb185;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #255361;
+}
+
+html {
+  overflow-y: scroll;
 }

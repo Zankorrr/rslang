@@ -6,24 +6,25 @@
     min-height: 300px;
     margin: 10% auto;
     padding: 20px;
-    background-color: #f2eee0;
-    color: #334456;
+    color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px #999999;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px #333;
+    font-family: 'Comfortaa', cursive;
 }
 .difficultySelectionPlate p {
-    font-size: 40px;
+    font-size: 33px;
     text-align: center;
 }
 #difficultLevelChange {
-    font-size: 30px;
-    color: #334456;
-    margin-top: 30px;
+    font-size: 20px;
+    color: #fff;
+    margin-top: 50px;
 }
 .difficult-inputs {
     display: flex;
     gap: 7px;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 .difficult-inputs input {
     display: none;
@@ -32,13 +33,12 @@
     display: flex;
     color: #fff;
     font-size: 20px;
-    background-color: #027ea1;
     width: 50px;
     height: 50px;
     border-radius: 3px;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 3px #666;
+    box-shadow: 0 0 3px #333;
     transition: all 0.2s ease 0s;
 }
 .difficult-inputs label:hover {
@@ -63,7 +63,7 @@
 }
 .button-start {
     padding: 10px 20px;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 900;
     color: #de8668;
     border-radius: 5px;

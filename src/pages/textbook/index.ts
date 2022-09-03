@@ -210,7 +210,18 @@ function addTextbookPage() {
       }
     }
     chapterButton.addEventListener('click', () => {
-      textbookPage.style.backgroundColor = textbookColors[i];
+      const wavesTop = document.querySelector('.bgTop') as HTMLElement;
+      const wavesMiddle = document.querySelector('.bgMiddle') as HTMLElement;
+      const wavesBottom = document.querySelector('.bgBottom') as HTMLElement;
+      const bodyApp = document.body;
+      wavesTop.style.transition = 'all 1s linear';
+      wavesTop.style.background = textbookColors[i];
+      wavesMiddle.style.transition = 'all 1s linear';
+      wavesMiddle.style.background = textbookColors[i];
+      wavesBottom.style.transition = 'all 1s linear';
+      wavesBottom.style.background = textbookColors[i];
+      bodyApp.style.transition = 'all 1s linear';
+      bodyApp.style.background = textbookColors[i];
       textbookVariables.chapter = i;
       textbookVariables.page = 0;
       updateTextbook();
