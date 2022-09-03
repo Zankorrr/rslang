@@ -5,6 +5,7 @@ import {
   getWords,
   removeUserWord,
 } from '../../core/api';
+
 import { baseUrl } from '../../core/globalVariables';
 import { IUserWord, Word, ItextbookVariables } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
@@ -25,7 +26,7 @@ async function getFilteredIDs(userWords: IUserWord[], difficulty: string) {
   return filteredIDs;
 }
 
-async function updateTextbook() {
+export async function updateTextbook() {
   const chapterContainer = document.querySelector('.textbook-chapter-container');
   if (chapterContainer) {
     chapterContainer.textContent = '';
