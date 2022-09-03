@@ -173,7 +173,6 @@ function addTextbookPage() {
   }
   const textbookPage = document.createElement('div');
   textbookPage.classList.add('textbook-page');
-  textbookPage.style.backgroundColor = textbookColors[textbookVariables.chapter];
 
   const navigationContainer = document.createElement('div');
   navigationContainer.classList.add('textbook-navigation-container');

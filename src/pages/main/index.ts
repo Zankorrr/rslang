@@ -138,6 +138,9 @@ export function updateNavigation() {
   const sprintButton = document.querySelector('.sprint-button') as HTMLButtonElement;
   const statisticsButton = document.querySelector('.statistics-button') as HTMLButtonElement;
   const signUpButton = document.querySelector('.signup-button') as HTMLButtonElement;
+  const signInButton = document.querySelector('.signin-button') as HTMLButtonElement;
+  const closeSigninForm = document.querySelector('.close-signin-form') as HTMLElement;
+  const closeSignupForm = document.querySelector('.close-signup-form') as HTMLElement;
   // const signInButton = document.querySelector('.signin-button') as HTMLButtonElement;
 
   mainPageButton.addEventListener('click', () => {
@@ -177,6 +180,19 @@ export function updateNavigation() {
   signUpButton.addEventListener('click', () => {
     signIn.style.display = 'none';
     signUp.style.display = 'flex';
+  });
+
+  signInButton.addEventListener('click', () => {
+    signIn.style.display = 'flex';
+    signUp.style.display = 'none';
+  });
+
+  closeSigninForm.addEventListener('click', () => {
+    signIn.style.display = 'none';
+  });
+
+  closeSignupForm.addEventListener('click', () => {
+    signUp.style.display = 'none';
   });
 
   // signInButton.addEventListener('click', () => {

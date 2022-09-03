@@ -19,6 +19,20 @@ export const newBackground = () => {
 
   backgroundBody.innerHTML = backgroundHtml;
   bodyBack.append(backgroundBody);
+
+  const textbookPage = document.querySelector('.textbook-page') as HTMLElement;
+  const wavesTop = document.querySelector('.bgTop') as HTMLElement;
+  const wavesMiddle = document.querySelector('.bgMiddle') as HTMLElement;
+  const wavesBottom = document.querySelector('.bgBottom') as HTMLElement;
+  const nav = document.querySelector('.navigation') as HTMLElement;
+
+  nav.addEventListener('click', () => {
+    if (textbookPage.style.display === 'none') {
+      wavesTop.style.background = 'linear-gradient(to top, #489cbd 20%, #029e91 80%)';
+      wavesMiddle.style.background = 'linear-gradient(to top, #489cbd 20%, #029e91 80%)';
+      wavesBottom.style.background = 'linear-gradient(to top, #489cbd 20%, #029e91 80%)';
+  }
+  });
 };
 
 export default newBackground;

@@ -8,6 +8,7 @@ export function renderSignInForm() {
                   <label for="psw"><b>Password</b></label>
                   <input type="password" placeholder="Enter Password" name="psw" required class="signin-password">
                   <button class="signin-button-form">Sign in</button>
+                  <div class="close-signin-form">x</div>
                 </form>`;
   signInContainer?.insertAdjacentHTML('beforeend', html);
 }

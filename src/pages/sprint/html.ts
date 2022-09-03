@@ -110,7 +110,7 @@ export const html = `
     <div class="statistics-wrapper" id="statistics-wrapper">
         <div class="statistics">
             <div class="result-header">
-                <p class="result-title" id="total-result">Your score:</p>
+                <p class="results-title" id="total-result">Your score:</p>
                 <div class="stat-btns">
                     <div class="again" id="again">Again</div>
                     <div class="close-app" id="close-app">X</div>
