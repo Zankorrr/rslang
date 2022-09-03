@@ -6,10 +6,8 @@
     min-height: 300px;
     margin: 10% auto;
     padding: 20px;
-    background-color: #f2eee0;
-    color: #334456;
+    color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px #999999;
 }
 .difficultySelectionPlate p {
     font-size: 40px;
@@ -17,7 +15,7 @@
 }
 #difficultLevelChange {
     font-size: 30px;
-    color: #334456;
+    color: #fff;
     margin-top: 30px;
 }
 .difficult-inputs {
@@ -32,13 +30,12 @@
     display: flex;
     color: #fff;
     font-size: 20px;
-    background-color: #027ea1;
     width: 50px;
     height: 50px;
     border-radius: 3px;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 3px #666;
+    box-shadow: 0 0 3px #333;
     transition: all 0.2s ease 0s;
 }
 .difficult-inputs label:hover {
