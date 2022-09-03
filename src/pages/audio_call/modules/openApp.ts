@@ -5,8 +5,8 @@ import { textbookVariables } from '../../textbook/index';
 import { getWordsFromChapter } from './getWordsFromChapter';
 import { renderChooseTab } from './renderChooseTab';
 import { createApp } from './createApp';
-import { getUserWords } from './getUserWord';
-import { authorizedUser } from '../../../core/globalVariables';
+// import { getUserWords } from './getUserWord';
+// import { authorizedUser } from '../../../core/globalVariables';
 
 export async function openApp(context: string) {
   let words: IWord[] = [];
@@ -43,7 +43,7 @@ export async function openApp(context: string) {
       });
     });
   }
-  getUserWords(authorizedUser.userId);
+  // getUserWords(authorizedUser.userId);
 }
 
 export default openApp;
