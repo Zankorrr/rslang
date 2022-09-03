@@ -5,11 +5,9 @@ import {
   getWords,
   removeUserWord,
 } from '../../core/api';
-import { IUserWord, Word } from '../../core/types';
+import { IUserWord, Word, ItextbookVariables } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
 import './style.css';
-import openApp from '../audio_call/modules/openApp';
-import { ItextbookVariables } from '../../core/types';
 
 export const textbookVariables: ItextbookVariables = {
   chapter: 0,
@@ -33,9 +31,14 @@ async function updateTextbook() {
   if (chapterContainer) {
     chapterContainer.textContent = '';
 
-    const userWords = await getUserWords();
-    const trickyIDs = await getFilteredIDs(userWords, 'tricky');
-    const learnedIDs = await getFilteredIDs(userWords, 'learned');
+    let userWords: IUserWord[] = [];
+    let trickyIDs: string[] = [];
+    let learnedIDs: string[] = [];
+    if (localStorage.getItem('userId')) {
+      userWords = await getUserWords();
+      trickyIDs = await getFilteredIDs(userWords, 'tricky');
+      learnedIDs = await getFilteredIDs(userWords, 'learned');
+    }
 
     let data: Word[] = [];
     if (textbookVariables.chapter === 6) {
