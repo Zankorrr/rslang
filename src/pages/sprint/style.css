@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 .sprint-game {
   display: none;
-  font-family: 'Caveat', cursive;
+  font-family: 'Comfortaa', cursive;
 }
 .game-wrapper {
   display: none;
@@ -32,14 +31,14 @@
   margin-left: 20px;
 }
 .points-text {
-  font-size: 40px;
+  font-size: 30px;
   padding-right: 5px;
 }
 .pointsCounter {
   display: flex;
   max-width: 100px;
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
 }
 .multiplier {
   width: 200px;
@@ -77,12 +76,13 @@
 
 }
 .word-ask {
-  font-size: 55px;
+  font-size: 45px;
   text-align: center;
   border-bottom: 1px solid #334456;
 }
 .word-translate {
-  font-size: 40px;
+  margin-top: 20px;
+  font-size: 30px;
   text-align: center;
   box-shadow: 0 1px 0 0 #334456;
 }

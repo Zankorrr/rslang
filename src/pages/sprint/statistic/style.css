@@ -42,7 +42,7 @@ p {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    font-size: 23px;
+    font-size: 18px;
     border-bottom: solid 1px #c3b69f;
 }
 .wrong-results {
