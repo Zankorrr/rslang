@@ -1,8 +1,8 @@
 export const html = `
 <div class="sprint-container" id="sprint-container">
     <div class="difficultySelectionPlate" id="difficultForm">
-        <p>СПРИНТ</p>
-        <div id="difficultLevelChange">Выберите уровень сложности</div>
+        <p>SPRINT</p>
+        <div id="difficultLevelChange">Select difficulty level</div>
         <div class="difficult-inputs">
             <input type="radio" id="difficult1"
                 name="difficultLevel" data-difficult="0">
@@ -29,7 +29,7 @@ export const html = `
             <label for="difficult6" class="label-diff">C2</label>
         </div>
         <div class="difficultButton">
-            <div class="button-start" id="button-start">СТАРТ</div>
+            <div class="button-start" id="button-start">START</div>
         </div>
     </div> 
     <div class="load-screen">
@@ -49,7 +49,7 @@ export const html = `
         <div class="game">
             <div class="game-header">
                 <div class="points">
-                    <p class="points-text">Счёт: </p>
+                    <p class="points-text">Score:</p>
                     <div class="pointsCounter" id="pointCounter">0</div>
                 </div>
                 <div class="correctness">
@@ -110,18 +110,18 @@ export const html = `
     <div class="statistics-wrapper" id="statistics-wrapper">
         <div class="statistics">
             <div class="result-header">
-                <p class="result-title">Ваш результат:</p>
+                <p class="result-title" id="total-result">Your score:</p>
                 <div class="stat-btns">
-                    <div class="again" id="again">Ещё раз</div>
-                    <div class="close-app" id="close-app">Выход</div>
+                    <div class="again" id="again">Again</div>
+                    <div class="close-app" id="close-app">X</div>
                 </div>
             </div>
             <div class="right-results">
-                <div class="right-text">Правильно</div>
+                <div class="right-text">Right</div>
                 <div class="right" id="stat-right"></div>
             </div>
             <div class="wrong-results">
-                <div class="wrong-text">Не правильно</div>
+                <div class="wrong-text">Wrong</div>
                 <div class="wrong" id="stat-wrong"></div>
             </div>
         </div>
