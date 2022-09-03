@@ -138,7 +138,7 @@ export function updateNavigation() {
   const sprintButton = document.querySelector('.sprint-button') as HTMLButtonElement;
   const statisticsButton = document.querySelector('.statistics-button') as HTMLButtonElement;
   const signUpButton = document.querySelector('.signup-button') as HTMLButtonElement;
-  const signInButton = document.querySelector('.signin-button') as HTMLButtonElement;
+  // const signInButton = document.querySelector('.signin-button') as HTMLButtonElement;
 
   mainPageButton.addEventListener('click', () => {
     hideElements();
@@ -179,14 +179,14 @@ export function updateNavigation() {
     signUp.style.display = 'flex';
   });
 
-  signInButton.addEventListener('click', () => {
-    if (signInButton.innerText === 'Log out') {
-      signInButton.innerText = 'Sign in';
-    } else {
-      signUp.style.display = 'none';
-      signIn.style.display = 'flex';
-    }
-  });
+  // signInButton.addEventListener('click', () => {
+  //   if (signInButton.innerText === 'Log out') {
+  //     signInButton.innerText = 'Sign in';
+  //   } else {
+  //     signUp.style.display = 'none';
+  //     signIn.style.display = 'flex';
+  //   }
+  // });
 }
 
 
