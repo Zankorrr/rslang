@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 .sprint-game {
   display: none;
-  font-family: 'Caveat', cursive;
+  font-family: 'Comfortaa', cursive;
 }
 .game-wrapper {
   display: none;
@@ -14,13 +13,14 @@
   height: 500px;
   margin:8% auto;
   align-items: center; 
-  background-color: #f2eee0;
+  background-color: rgba(255, 255, 255, 0.1);
   color: #334456;
   border-radius: 5px;
-  box-shadow: 0 0 10px #999999;
+  box-shadow: 0 0 10px #333;
   padding: 20px;
 }
 .game-header {
+  position: relative;
   display: flex;
   width: 100%;
 }
@@ -31,13 +31,14 @@
   margin-left: 20px;
 }
 .points-text {
-  font-size: 40px;
+  font-size: 30px;
+  padding-right: 5px;
 }
 .pointsCounter {
   display: flex;
   max-width: 100px;
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
 }
 .multiplier {
   width: 200px;
@@ -61,7 +62,6 @@
   color: #999999;
   border: 2px solid #334456;
   border-radius: 100%;
-  background-color: #f2eee0;
 }
 .active {
   background-color: #027ea1;
@@ -73,15 +73,16 @@
   justify-content: space-between;
   min-width: 400px;
   height: 200px;
-  background: #f2eee0;
+
 }
 .word-ask {
-  font-size: 55px;
+  font-size: 45px;
   text-align: center;
-  box-shadow: 0 1px 0 0 #334456;
+  border-bottom: 1px solid #334456;
 }
 .word-translate {
-  font-size: 40px;
+  margin-top: 20px;
+  font-size: 30px;
   text-align: center;
   box-shadow: 0 1px 0 0 #334456;
 }
@@ -91,7 +92,7 @@
   display: flex;
   justify-content: space-around;
 }
-.button {
+.sprint-game .button {
   width: 45%;
   color: #f2eee0;
   padding: 8px;
@@ -103,20 +104,54 @@
   box-shadow: 0 0 7px #333;
   transition: all 0.2s ease 0s;
 }
-.button:hover {
+.sprint-game .button:hover {
   color: #fff;
   font-weight: 600;
 }
-.button:active {
+.sprint-game .button:active {
   transform: scale3d(0.97, 0.97, 0.97);
   box-shadow: 0 0 3px #333;
 }
-.right {
+.button-right {
   background: #027ea1;
 }
-.wrong {
+.button-wrong {
   background: #de8668;
 }
+
+.plus-points {
+  position: absolute;
+  top: 150%;
+  left: 45%;
+  font-size: 50px;
+  color: green;
+  opacity: 0;
+  animation: up 1s linear 1 normal running;
+}
+
+.minus-points {
+  position: absolute;
+  top: 150%;
+  left: 45%;
+  font-size: 50px;
+  color: red;
+  opacity: 0;
+  animation: up 1s linear 1 normal running;
+}
+
+@keyframes up {
+  0%{
+  top: 150%;
+  opacity: 1;
+  }
+  100%{
+  top: 0%;
+  opacity: 0;
+  }
+  }
+
+
+
 /* ::-webkit-scrollbar {
   width: 10px;
 }

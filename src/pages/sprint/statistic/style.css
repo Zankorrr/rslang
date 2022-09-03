@@ -17,10 +17,10 @@ p {
     width: 40%;
     height: 70%;
     padding: 20px;
-    background-color: #f2eee0;
+    background-color: #ffffff;
     color: #334456;
     border-radius: 5px;
-    box-shadow: 0 0 10px #999999;
+    box-shadow: 0 0 10px #666;
     overflow: auto;
 }
 .right-text,
@@ -29,21 +29,20 @@ p {
     margin-bottom: 3px;
 }
 .right-text {
-    box-shadow: 0 2px 0 0 #027ea1;
+    border-bottom: 2px solid #027ea1;
 }
 .wrong-text {
-    box-shadow: 0 2px 0 0 #de8668;
+    border-bottom: 2px solid #de8668;
 }
 .right-results {
     margin-top: 20px;
 }
 .right div,
 .wrong div {
-    background-color: #f2eee0;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    font-size: 23px;
+    font-size: 18px;
     border-bottom: solid 1px #c3b69f;
 }
 .wrong-results {
