@@ -1,7 +1,9 @@
 import { getWords } from '../../core/api';
 import './style.css';
+import openApp from '../audio_call/modules/openApp';
+import { ItextbookVariables } from '../../core/types';
 
-const textbookVariables = {
+export const textbookVariables: ItextbookVariables = {
   chapter: 0,
   page: 0,
 };
@@ -82,8 +84,11 @@ function addTextbookPage() {
   const exerciseContainer = document.createElement('div');
   exerciseContainer.classList.add('textbook-exercise-container');
   const audioCallLink = document.createElement('button');
+  audioCallLink.classList.add('audiocall-from-textbook');
   audioCallLink.innerText = 'Audio call';
-  audioCallLink.addEventListener('click', () => (document.querySelector('.audio-call-button') as HTMLButtonElement)?.click());
+  audioCallLink.addEventListener('click', () => {
+    openApp('audiocall-from-textbook');
+  });
   const sprintLink = document.createElement('button');
   sprintLink.innerText = 'Sprint';
   sprintLink.addEventListener('click', () => (document.querySelector('.sprint-button') as HTMLButtonElement)?.click());

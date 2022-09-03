@@ -2,6 +2,7 @@ import { ISignUp } from '../types/types';
 import { signUpAPI } from './signUpAPI';
 
 export function createUser() {
+  const signUpNameInput: HTMLInputElement | null = document.querySelector('.signup-name');
   const signUpEmailInput: HTMLInputElement | null = document.querySelector('.signup-email');
   const signUpPasswordInput: HTMLInputElement | null = document.querySelector('.signup-password');
   const signUpButton: HTMLButtonElement | null = document.querySelector('.signup-button-form');
@@ -9,8 +10,9 @@ export function createUser() {
   signUpButton?.addEventListener('click', async (event) => {
     event.preventDefault();
 
-    if (signUpEmailInput && signUpPasswordInput) {
+    if (signUpEmailInput && signUpPasswordInput && signUpNameInput) {
       const user: ISignUp = {
+        name: signUpNameInput?.value,
         email: signUpEmailInput?.value,
         password: signUpPasswordInput?.value,
       };

@@ -14,3 +14,14 @@ export interface Word {
   textMeaningTranslate: string,
   textExampleTranslate: string
 }
+
+export interface ItextbookVariables {
+  chapter: number,
+  page: number
+}
+
+export interface IAuthorizedUser {
+	flag: boolean,
+  userToken: string,
+  userId: string,
+}
