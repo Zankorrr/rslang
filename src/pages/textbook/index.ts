@@ -5,6 +5,7 @@ import {
   getWords,
   removeUserWord,
 } from '../../core/api';
+import { baseUrl } from '../../core/globalVariables';
 import { IUserWord, Word, ItextbookVariables } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
 import './style.css';
@@ -15,8 +16,6 @@ export const textbookVariables: ItextbookVariables = {
   chaptersAmount: 7,
   pagesAmount: 30,
 };
-
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 
 const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
 
@@ -199,7 +198,7 @@ function addTextbookPage() {
     const chapterButton = document.createElement('button');
     chapterButton.classList.add('textbook-chapter-button');
     chapterButton.style.backgroundColor = textbookColors[i];
-    if (i < 6) {
+    if (i < textbookVariables.chaptersAmount - 1) {
       chapterButton.innerText = `Chapter ${i + 1}`;
     } else {
       chapterButton.innerText = 'Tricky';
