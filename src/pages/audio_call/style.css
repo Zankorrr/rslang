@@ -56,3 +56,9 @@
 .false-answer {
 	background-color: red;
 }
+
+.chapter-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

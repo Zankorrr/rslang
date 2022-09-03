@@ -1,8 +1,9 @@
-import { ISignUp } from '../types/types';
+import { authorizedUser } from '../../../core/globalVariables';
+import { ISignIn } from '../types/types';
 
 const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 
-export async function signInAPI(user: ISignUp) {
+export async function signInAPI(user: ISignIn) {
   const signInButton: HTMLButtonElement | null = document.querySelector('.signin-button');
   const response = await fetch(`${baseUrl}/signin`, {
        method: 'POST',
@@ -14,13 +15,15 @@ export async function signInAPI(user: ISignUp) {
      });
      const content = await response.json();
 
-     console.log(content);
-
-     localStorage.setItem('userToken', content.token);
-     localStorage.setItem('userId', content.userId);
-
      if (response.status === 200 && signInButton) {
-       const signIn = document.querySelector('.signin-container') as HTMLElement;
+      const signIn = document.querySelector('.signin-container') as HTMLElement;
+
+      localStorage.setItem('userToken', content.token);
+      localStorage.setItem('userId', content.userId);
+
+       authorizedUser.flag = true;
+       authorizedUser.userToken = content.token;
+       authorizedUser.userId = content.userId;
 
        signIn.style.display = 'none';
        signInButton.innerText = 'Log out';

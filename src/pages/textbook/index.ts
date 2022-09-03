@@ -8,8 +8,10 @@ import {
 import { IUserWord, Word } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
 import './style.css';
+import openApp from '../audio_call/modules/openApp';
+import { ItextbookVariables } from '../../core/types';
 
-export const textbookVariables = {
+export const textbookVariables: ItextbookVariables = {
   chapter: 0,
   page: 0,
   chaptersAmount: 7,
