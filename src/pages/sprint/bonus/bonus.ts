@@ -37,6 +37,34 @@ export const pushButtons = (difficult: number | null) => {
     }
   };
 
+  const plusPoints = () => {
+    console.log('plus');
+    const pointsPlus = document.createElement('div');
+    pointsPlus.classList.add('plus-points');
+    pointsPlus.innerText = `+${points}`;
+
+    multiplier.after(pointsPlus);
+
+    const removeAnimation = () => {
+      pointsPlus.remove();
+    };
+    setTimeout(removeAnimation, 1000);
+  };
+
+  const minusPoints = () => {
+    console.log('minus');
+    const pointsMinus = document.createElement('div');
+    pointsMinus.classList.add('minus-points');
+    pointsMinus.innerText = '-10';
+
+    multiplier.after(pointsMinus);
+
+    const removeAnimation = () => {
+      pointsMinus.remove();
+    };
+    setTimeout(removeAnimation, 5000);
+  };
+
   const wordId = wordAsk.getAttribute('wordId');
   const answerId = wordTranslate.getAttribute('wordId');
 
@@ -50,12 +78,17 @@ export const pushButtons = (difficult: number | null) => {
 
   rightButton.onclick = () => {
     if (wordId === answerId) {
-      counter.innerText = String(+(counter
-        .innerText) + points);
+      plusPoints();
+      counter.innerText = `${+counter.innerText + points}`;
       randomWord(difficult);
       addActive();
       addBooleanForStatistics(true);
     } else {
+      if (+(counter.innerText) > 0) {
+        minusPoints();
+        counter.innerText = String(+(counter
+          .innerText) - 10);
+      }
       randomWord(difficult);
       removeActive();
       removeBonus();
@@ -65,12 +98,18 @@ export const pushButtons = (difficult: number | null) => {
 
   wrongButton.onclick = () => {
     if (wordId !== answerId) {
+      plusPoints();
       counter.innerText = String(+(counter
         .innerText) + points);
       randomWord(difficult);
       addActive();
       addBooleanForStatistics(true);
     } else {
+      if (+(counter.innerText) > 0) {
+        minusPoints();
+        counter.innerText = String(+(counter
+          .innerText) - 10);
+      }
       randomWord(difficult);
       removeActive();
       removeBonus();

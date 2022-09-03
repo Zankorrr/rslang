@@ -3,9 +3,13 @@ import { arrForStatistics } from '../sprint';
 import closeApp from './closeAgainApp';
 
 export const showStatisticsWindow = () => {
-  const statisticsWindow = document.getElementById('statistics-wrapper');
-  const right = document.getElementById('stat-right');
-  const wrong = document.getElementById('stat-wrong');
+  const statisticsWindow = document.getElementById('statistics-wrapper') as HTMLElement;
+  const right = document.getElementById('stat-right') as HTMLElement;
+  const wrong = document.getElementById('stat-wrong') as HTMLElement;
+  const result = document.getElementById('total-result') as HTMLElement;
+  const counter = document.getElementById('pointCounter') as HTMLElement;
+
+  result.innerText = `Your score is ${counter.innerText} points`;
 
   let statTrueHtml = '';
   let statFalseHtml = '';
@@ -16,11 +20,11 @@ export const showStatisticsWindow = () => {
       statFalseHtml += `<div><p>${item.word}</p> <p>${item.transcription}</p> <p>${item.wordTranslate}</p></div>`;
     }
   });
-  (statisticsWindow as HTMLElement).style.display = 'flex';
-  (right as HTMLElement).innerHTML = `
+  statisticsWindow.style.display = 'flex';
+  right.innerHTML = `
     ${statTrueHtml}
   `;
-  (wrong as HTMLElement).innerHTML = `
+  wrong.innerHTML = `
     ${statFalseHtml}
   `;
   closeApp();
