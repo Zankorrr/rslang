@@ -6,7 +6,7 @@
     width: 103px;
     height: 103px;
     border-radius: 50%;
-    background-color: #f2eee0;
+    background-color: #489cbd;
     overflow: hidden;
 }
 .timer::before {
@@ -17,7 +17,7 @@
     width: 50%;
     height: 100%;
     z-index: 3;
-    background-color: #f2eee0;
+    background-color: #489cbd;
     animation: mask_left 30s steps(1,end) forwards;
     animation-delay: 3s;
 }
@@ -57,8 +57,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: #f2eee0;
-    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
     overflow: hidden;
     z-index: 5;
 }
@@ -113,9 +112,9 @@
 
 @keyframes mask_color {
     0% {
-        background-color: #027ea1;
+        background-color: green;
     }
     100% {
-        background-color: #de8668;
+        background-color: red;
     }
 }
