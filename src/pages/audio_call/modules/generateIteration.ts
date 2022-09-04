@@ -1,7 +1,6 @@
+import { baseUrl } from '../../../core/globalVariables';
 import { getRandomNumber } from './getRandomNumber';
 import { IResult, IWord } from './types';
-
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 
 export function generateIteration(data: IWord[], arr: string[], res: IResult[]) {
   const iterationContainer = document.querySelector('.iteration-container');

@@ -1,7 +1,9 @@
+const srcImage = '../assets/img/icon-sound.png';
+
 export function renderWordTask() {
   const iterationContainer = document.querySelector('.iteration-container');
   const html = `<div class="word-container">
-                  <img src="../assets/img/icon-sound.png" alt="word-image" class="word-image">
+                  <img src=${srcImage} alt="word-image" class="word-image">
                   <audio src="/" class="word-audio" autoplay>
                   </audio>
                   <div class="word-text no-displayed"></div>

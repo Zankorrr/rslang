@@ -1,21 +1,9 @@
 import { baseUrl } from './globalVariables';
-import { IUserWord, Word } from './types';
+import { IUserWord, IWord } from './types';
 
-export const getWords = async (group: number, page: number): Promise<Word[]> => (await fetch(`${baseUrl}/words?group=${group}&page=${page}`)).json();
-// const example = async () => {
-//   const item = await getWords(2, 1);
-//   const p = document.createElement('p');
-//   p.innerText = `Answer is ${item[0].word}`;
-//   document.body.appendChild(p);
-// };
+export const getWords = async (group: number, page: number): Promise<IWord[]> => (await fetch(`${baseUrl}/words?group=${group}&page=${page}`)).json();
 
-export const getWord = async (wordId: string): Promise<Word> => (await fetch(`${baseUrl}/words/${wordId}`)).json();
-// const example = async () => {
-//   const item = await getWord('5e9f5ee35eb9e72bc21af4a0');
-//   const p = document.createElement('p');
-//   p.innerText = `Answer is ${item.word}`;
-//   document.body.appendChild(p);
-// };
+export const getWord = async (wordId: string): Promise<IWord> => (await fetch(`${baseUrl}/words/${wordId}`)).json();
 
 export const createUserWord = async (wordId: string, difficulty: string): Promise<void> => {
   const user = localStorage.getItem('userId');

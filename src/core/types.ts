@@ -18,7 +18,7 @@ export interface IWord {
 export interface IUserWord {
   id: string,
   difficulty: string,
-  wordId: string
+  wordId: string,
 }
 
 export interface IAuthorizedUser {
@@ -27,7 +27,7 @@ export interface IAuthorizedUser {
   userId: string,
 }
 
-export interface IUserWord {
+export interface IUserWordFull {
   difficulty: string,
   optional: IUserWordOptional,
 }
@@ -41,7 +41,7 @@ interface IUserWordOptional {
 
 interface IUserWordProgress {
   right: number,
-  wrong: number
+  wrong: number,
 }
 
 interface IUserLearnedWord {

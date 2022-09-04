@@ -1,6 +1,6 @@
-import { Word } from '../../../core/types';
+import { baseUrl } from '../../../core/globalVariables';
+import { IWord } from '../../../core/types';
 
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 const wordsUrl = `${baseUrl}/words`;
 
 // export async function getWords() {
@@ -9,4 +9,4 @@ const wordsUrl = `${baseUrl}/words`;
 //   return words;
 // }
 
-export const getWordsFromPage = async (group: number, page: number): Promise<Word[]> => (await fetch(`${wordsUrl}?group=${group}&page=${page}`)).json();
+export const getWordsFromPage = async (group: number, page: number): Promise<IWord[]> => (await fetch(`${wordsUrl}?group=${group}&page=${page}`)).json();

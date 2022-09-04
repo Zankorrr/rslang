@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { openApp } from '../audio_call/modules/openApp';
 import { addFog, removeFog } from '../authorization/modules/addFog';
 import { textbookColors, textbookVariables } from '../textbook/index';
