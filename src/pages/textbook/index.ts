@@ -7,11 +7,10 @@ import {
 } from '../../core/api';
 
 import { baseUrl } from '../../core/globalVariables';
-import { IUserWord, Word, ItextbookVariables } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
 import './style.css';
 
-export const textbookVariables: ItextbookVariables = {
+export const textbookVariables = {
   chapter: 0,
   page: 0,
   chaptersAmount: 7,

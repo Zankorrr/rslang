@@ -21,13 +21,6 @@ export interface IUserWord {
   wordId: string
 }
 
-export interface ItextbookVariables {
-  chapter: number,
-  page: number,
-  chaptersAmount: number,
-  pagesAmount: number,
-}
-
 export interface IAuthorizedUser {
 	flag: boolean,
   userToken: string,
