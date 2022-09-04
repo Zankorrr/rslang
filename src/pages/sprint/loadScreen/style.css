@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     z-index: var(--superscript);
-    background: linear-gradient(to top, #489cbd 20%, #029e91 80%);
+    background: #5ca0cb;
 }
 .timer2 {
     position: relative;
@@ -19,7 +19,7 @@
     width: 103px;
     height: 103px;
     border-radius: 50%;
-    background: linear-gradient(to top, #489cbd 20%, #029e91 80%);
+    background: #5ca0cb;
     overflow: hidden;
     margin: 20% auto;
 }
@@ -31,7 +31,7 @@
     width: 50%;
     height: 100%;
     z-index: 3;
-    background: linear-gradient(to top, #489cbd 20%, #029e91 80%);
+    background: #5ca0cb;
     animation: mask_left2 3s steps(1,end) forwards;
 }
 .timer2::after {
@@ -67,7 +67,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background: linear-gradient(to top, #489cbd 20%, #029e91 80%);
+    background: #5ca0cb;
     text-align: center;
     overflow: hidden;
     z-index: 5;
