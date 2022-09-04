@@ -33,7 +33,11 @@ export function addHeader() {
 
   const signInButton = document.createElement('button');
   signInButton.classList.add('signin-button');
-  signInButton.innerText = 'Sign in';
+  if (localStorage.getItem('userToken')) {
+    signInButton.innerText = 'Log out';
+  } else {
+    signInButton.innerText = 'Sign in';
+  }
 
   navigation.append(
     mainPageButton,
@@ -131,7 +135,7 @@ export function updateNavigation() {
   const sprintButton = document.querySelector('.sprint-button') as HTMLButtonElement;
   const statisticsButton = document.querySelector('.statistics-button') as HTMLButtonElement;
   const signUpButton = document.querySelector('.signup-button') as HTMLButtonElement;
-  const signInButton = document.querySelector('.signin-button') as HTMLButtonElement;
+  // const signInButton = document.querySelector('.signin-button') as HTMLButtonElement;
   const closeSigninForm = document.querySelector('.close-signin-form') as HTMLElement;
   const closeSignupForm = document.querySelector('.close-signup-form') as HTMLElement;
 
@@ -178,11 +182,11 @@ export function updateNavigation() {
     addFog();
   });
 
-  signInButton.addEventListener('click', () => {
-    signIn.style.display = 'flex';
-    signUp.style.display = 'none';
-    addFog();
-  });
+  // signInButton.addEventListener('click', () => {
+  //   signIn.style.display = 'flex';
+  //   signUp.style.display = 'none';
+  //   addFog();
+  // });
 
   closeSigninForm.addEventListener('click', () => {
     signIn.style.display = 'none';

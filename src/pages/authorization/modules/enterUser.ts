@@ -1,6 +1,6 @@
 import { authorizedUser } from '../../../core/globalVariables';
 import { ISignIn } from '../types/types';
-import { removeFog } from './addFog';
+import { addFog, removeFog } from './addFog';
 import { signInAPI } from './signInAPI';
 
 export function enterUser() {
@@ -9,7 +9,7 @@ export function enterUser() {
   const signInButton: HTMLButtonElement | null = document.querySelector('.signin-button');
   const signInButtonForm: HTMLButtonElement | null = document.querySelector('.signin-button-form');
   const signIn = document.querySelector('.signin-container') as HTMLElement;
-
+  const fog = document.querySelector('.fog') as HTMLElement;
 
   signInButton?.addEventListener('click', (event) => {
     event.preventDefault();
@@ -28,9 +28,10 @@ export function enterUser() {
     } else {
       console.log('check3');
       signIn.style.display = 'flex';
+      addFog();
     }
 
-    removeFog();
+    if (fog) removeFog();
   });
 
   signInButtonForm?.addEventListener('click', async (event) => {

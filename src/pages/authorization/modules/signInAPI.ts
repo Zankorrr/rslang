@@ -16,7 +16,6 @@ export async function signInAPI(user: ISignIn) {
 
      if (response.status === 200 && signInButton) {
       const signIn = document.querySelector('.signin-container') as HTMLElement;
-      console.log('check4');
       localStorage.setItem('userToken', content.token);
       localStorage.setItem('userId', content.userId);
 
