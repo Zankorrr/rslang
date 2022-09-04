@@ -16,7 +16,6 @@ export function enterUser() {
 
     if (signInButton.innerText === 'Log out' && signInButton) {
       signIn.style.display = 'none';
-      console.log('check2');
       signInButton.innerText = 'Sign in';
 
       localStorage.removeItem('userToken');
@@ -26,7 +25,6 @@ export function enterUser() {
       authorizedUser.userToken = '';
       authorizedUser.userId = '';
     } else {
-      console.log('check3');
       signIn.style.display = 'flex';
       addFog();
     }

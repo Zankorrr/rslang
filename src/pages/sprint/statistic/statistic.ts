@@ -52,7 +52,6 @@ export const showStatisticsWindow = () => {
 
   audioButtons.forEach((button, index) => {
     button?.addEventListener('click', () => {
-      console.log(index);
       wordAudios[index].play();
     });
   });
