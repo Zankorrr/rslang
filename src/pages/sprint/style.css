@@ -6,6 +6,7 @@
   display: none;
 }
 .game {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -137,6 +138,17 @@
   color: red;
   opacity: 0;
   animation: up 1s linear 1 normal running;
+}
+
+.close-sprint {
+  position: absolute;
+	top: 8px;
+	right: 12px;
+	font-size: 20px;
+}
+
+.close-sprint:hover {
+  cursor: pointer;
 }
 
 @keyframes up {

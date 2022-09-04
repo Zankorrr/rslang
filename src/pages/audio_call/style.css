@@ -166,6 +166,7 @@
   transform: scale3d(1.1, 1.1, 1.1);
   transition: all 0.2s ease 0s;
   box-shadow: 0 0 4px #333;
+  background-color: #de8668;
 }
 
 .word-variables:focus {

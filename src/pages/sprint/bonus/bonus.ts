@@ -38,7 +38,6 @@ export const pushButtons = (difficult: number | null) => {
   };
 
   const plusPoints = () => {
-    console.log('plus');
     const pointsPlus = document.createElement('div');
     pointsPlus.classList.add('plus-points');
     pointsPlus.innerText = `+${points}`;
@@ -52,7 +51,6 @@ export const pushButtons = (difficult: number | null) => {
   };
 
   const minusPoints = () => {
-    console.log('minus');
     const pointsMinus = document.createElement('div');
     pointsMinus.classList.add('minus-points');
     pointsMinus.innerText = '-10';

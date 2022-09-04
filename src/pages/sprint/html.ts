@@ -105,6 +105,7 @@ export const html = `
                     </div>
                 </div>
             </div>
+            <div class="close-sprint">x</div>
         </div>
     </div>
     <div class="statistics-wrapper" id="statistics-wrapper">

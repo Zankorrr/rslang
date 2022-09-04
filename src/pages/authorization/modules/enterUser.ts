@@ -1,5 +1,6 @@
 import { authorizedUser } from '../../../core/globalVariables';
 import { ISignIn } from '../types/types';
+import { removeFog } from './addFog';
 import { signInAPI } from './signInAPI';
 
 export function enterUser() {
@@ -28,6 +29,8 @@ export function enterUser() {
       console.log('check3');
       signIn.style.display = 'flex';
     }
+
+    removeFog();
   });
 
   signInButtonForm?.addEventListener('click', async (event) => {
@@ -40,5 +43,7 @@ export function enterUser() {
       };
       await signInAPI(user);
     }
+
+    removeFog();
   });
 }

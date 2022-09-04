@@ -1,6 +1,6 @@
 import './style.css';
 import { arrForStatistics } from '../sprint';
-import closeApp from './closeAgainApp';
+import { closeApp } from './closeAgainApp';
 
 const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 

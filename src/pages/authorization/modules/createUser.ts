@@ -1,4 +1,5 @@
 import { ISignUp } from '../types/types';
+import { removeFog } from './addFog';
 import { signUpAPI } from './signUpAPI';
 
 export function createUser() {
@@ -21,6 +22,8 @@ export function createUser() {
 
       const signUp = document.querySelector('.signup-container') as HTMLElement;
       signUp.style.display = 'none';
+
+      removeFog();
     }
   });
 }
