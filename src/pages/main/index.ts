@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { openApp } from '../audio_call/modules/openApp';
 import { addFog, removeFog } from '../authorization/modules/addFog';
+import { textbookColors, textbookVariables } from '../textbook/index';
 import './style.css';
 
 export function addHeader() {
@@ -152,6 +153,15 @@ export function updateNavigation() {
   });
 
   textbookButton.addEventListener('click', () => {
+    const wavesTop = document.querySelector('.bgTop') as HTMLElement;
+    const wavesMiddle = document.querySelector('.bgMiddle') as HTMLElement;
+    const wavesBottom = document.querySelector('.bgBottom') as HTMLElement;
+    const bodyApp = document.body;
+    const colorId = textbookVariables.chapter;
+    wavesTop.style.background = textbookColors[colorId];
+    wavesMiddle.style.background = textbookColors[colorId];
+    wavesBottom.style.background = textbookColors[colorId];
+    bodyApp.style.background = textbookColors[colorId];
     hideElements();
     textbookPage.style.display = 'flex';
     footer.style.display = 'flex';

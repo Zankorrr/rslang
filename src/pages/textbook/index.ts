@@ -18,7 +18,7 @@ export const textbookVariables: ItextbookVariables = {
   pagesAmount: 30,
 };
 
-const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
+export const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
 
 async function getFilteredIDs(userWords: IUserWord[], difficulty: string) {
   const filteredWords = userWords.filter((el) => el.difficulty === difficulty);
