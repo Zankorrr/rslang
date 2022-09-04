@@ -1,5 +1,5 @@
 import { baseUrl } from '../../../core/globalVariables';
-import { IWord } from './types';
+import { IWord } from '../../../core/types';
 
 export function addTask(arr: IWord[], num: number) {
   const wordAudio: HTMLMediaElement | null = document.querySelector('.word-audio');

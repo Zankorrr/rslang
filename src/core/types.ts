@@ -12,7 +12,9 @@ export interface IWord {
   transcription: string,
   wordTranslate: string,
   textMeaningTranslate: string,
-  textExampleTranslate: string
+  textExampleTranslate: string,
+  variables?: string[]
+  boolean?: boolean,
 }
 
 export interface IUserWord {
@@ -60,3 +62,14 @@ interface IUserWordsStatisticOptional {
   set?: number,
 }
 
+export interface IResult {
+  word: string,
+  result: boolean,
+  wordTranslate: string,
+  audio: string
+}
+
+export interface IAnswer {
+  translateWord: string,
+  id: string
+}

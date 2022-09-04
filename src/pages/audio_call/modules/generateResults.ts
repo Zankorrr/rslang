@@ -1,5 +1,5 @@
 import { baseUrl } from '../../../core/globalVariables';
-import { IResult } from './types';
+import { IResult } from '../../../core/types';
 
 export function generateResults(res: IResult[]) {
   const gameContainer = document.querySelector('.audio-call-game');

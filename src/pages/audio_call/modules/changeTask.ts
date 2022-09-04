@@ -1,6 +1,6 @@
 import { addTask } from './addTask';
 import { generateResults } from './generateResults';
-import { IResult, IWord } from './types';
+import { IResult, IWord } from '../../../core/types';
 
 export function changeTask(count: number, arr: IWord[], arrR: IResult[]) {
   const gameContainer: HTMLElement | null = document.querySelector('.audio-call-game');

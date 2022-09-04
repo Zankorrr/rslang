@@ -1,9 +1,8 @@
+import { baseUrl } from '../../../core/globalVariables';
 import { ISignUp } from '../types/types';
 
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
-
 export async function signUpAPI(user: ISignUp) {
-  const response = await fetch(`${baseUrl}/users`, {
+  await fetch(`${baseUrl}/users`, {
        method: 'POST',
        headers: {
          Accept: 'application/json',
@@ -11,7 +10,4 @@ export async function signUpAPI(user: ISignUp) {
        },
        body: JSON.stringify(user),
      });
-     const content = await response.json();
-
-     console.log(content);
 }

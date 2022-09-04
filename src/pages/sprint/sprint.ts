@@ -1,5 +1,5 @@
+import { IAnswer, IWord } from '../../core/types';
 import pushButtons from './bonus/bonus';
-import { IAnswer, IWord } from './intefaces';
 import closeApp from './statistic/closeAgainApp';
 
 const randomInteger = (min: number, max: number) => {

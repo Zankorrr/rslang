@@ -1,4 +1,4 @@
-import { IResult, IWord } from './types';
+import { IResult, IWord } from '../../../core/types';
 import { addResultWord } from './addResultWord';
 import { baseUrl } from '../../../core/globalVariables';
 

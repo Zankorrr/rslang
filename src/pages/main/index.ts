@@ -116,7 +116,6 @@ export function hideElements() {
 }
 
 export function updateNavigation() {
-  // const audioCallGame = document.querySelector('.audio-call-game') as HTMLElement;
   const sprintGame = document.querySelector('.sprint-game') as HTMLElement;
   const statisticsPage = document.querySelector('.statistics-page') as HTMLElement;
   const textbookPage = document.querySelector('.textbook-page') as HTMLElement;

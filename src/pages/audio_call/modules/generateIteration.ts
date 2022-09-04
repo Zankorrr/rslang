@@ -1,6 +1,6 @@
 import { baseUrl } from '../../../core/globalVariables';
 import { getRandomNumber } from './getRandomNumber';
-import { IResult, IWord } from './types';
+import { IResult, IWord } from '../../../core/types';
 
 export function generateIteration(data: IWord[], arr: string[], res: IResult[]) {
   const iterationContainer = document.querySelector('.iteration-container');
@@ -76,8 +76,5 @@ export function generateIteration(data: IWord[], arr: string[], res: IResult[]) 
       }
       wordAudio?.play();
     });
-  });
-  wordButton?.addEventListener('click', () => {
-    // quit from iteration
   });
 }

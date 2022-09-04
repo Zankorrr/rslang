@@ -1,8 +1,6 @@
-import { authorizedUser } from '../../../core/globalVariables';
+import { authorizedUser, baseUrl } from '../../../core/globalVariables';
 import { updateTextbook } from '../../textbook/index';
 import { ISignIn } from '../types/types';
-
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 
 export async function signInAPI(user: ISignIn) {
   const signInButton: HTMLButtonElement | null = document.querySelector('.signin-button');
