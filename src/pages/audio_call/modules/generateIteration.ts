@@ -47,7 +47,8 @@ export function generateIteration(data: IWord[], arr: string[], res: IResult[]) 
   wordsVariablesButtons.forEach((button) => {
     button.addEventListener('click', () => {
       if (button.innerHTML === arr[arr.length - 1]) {
-        button.style.backgroundColor = 'green';
+        console.log('green');
+        button.style.backgroundColor = 'grey';
           const resultWord: IResult = {
           word: data[wordIndex].word,
           result: true,
@@ -57,7 +58,8 @@ export function generateIteration(data: IWord[], arr: string[], res: IResult[]) 
         res.push(resultWord);
       }
       if (button.innerHTML !== arr[arr.length - 1]) {
-        button.style.backgroundColor = 'red';
+        console.log('red');
+        button.style.backgroundColor = 'brown';
         const resultWord: IResult = {
           word: data[wordIndex].word,
           result: false,

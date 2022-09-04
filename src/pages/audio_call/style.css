@@ -14,11 +14,12 @@
 
 .close-button {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 5px;
+  right: 5px;
   border: 0;
   font-size: 30px;
   background: #ffffff00;
+  font-family: 'Comfortaa', cursive;
 }
 
 .close-button:hover {
@@ -89,15 +90,7 @@
   justify-content: center;
 }
 
-.true-answer {
-	background-color: green;
-}
-
-.false-answer {
-	background-color: red;
-}
-
-.word-variables-container button {
+.word-variables {
   border: 0;
   background: #ffffff00;
   color: #fff;
@@ -106,6 +99,15 @@
   border-right: 1px solid rgba(255, 255, 255, 0.5);
   padding: 0px 15px 0px 15px;
 }
+
+.true-answer {
+	color: green;
+}
+
+.false-answer {
+	color: red;
+}
+
 
 .word-variables-container button:hover {
   cursor: pointer;
