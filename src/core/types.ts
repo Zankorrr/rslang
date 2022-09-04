@@ -1,4 +1,4 @@
-export interface Word {
+export interface IWord {
   id: string,
   group: number,
   page: number,
@@ -22,41 +22,41 @@ export interface IUserWord {
 }
 
 export interface IAuthorizedUser {
-	flag: boolean,
+  flag: boolean,
   userToken: string,
   userId: string,
 }
 
 export interface IUserWord {
-	difficulty: string,
-	optional: IUserWordOptional,
+  difficulty: string,
+  optional: IUserWordOptional,
 }
 
 interface IUserWordOptional {
   newWord: boolean,
-	progress: IUserWordProgress,
+  progress: IUserWordProgress,
   learnedWord: IUserLearnedWord,
 
 }
 
 interface IUserWordProgress {
   right: number,
-	wrong: number
+  wrong: number
 }
 
 interface IUserLearnedWord {
   learned: boolean,
-	counter: number,
+  counter: number,
 }
 
 export interface IUserWordsStatistic {
-		learnedWords: number,
-		optional: IUserWordsStatisticOptional,
+  learnedWords: number,
+  optional: IUserWordsStatisticOptional,
 }
 
 interface IUserWordsStatisticOptional {
-	newWords: number,
-	percentRight: number,
-	set?: number,
+  newWords: number,
+  percentRight: number,
+  set?: number,
 }
 

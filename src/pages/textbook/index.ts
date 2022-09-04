@@ -7,7 +7,7 @@ import {
 } from '../../core/api';
 
 import { baseUrl } from '../../core/globalVariables';
-import { IUserWord, Word } from '../../core/types';
+import { IUserWord, IWord } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
 import './style.css';
 
@@ -44,7 +44,7 @@ export async function updateTextbook() {
       trickyChapter.style.display = 'none';
     }
 
-    let data: Word[] = [];
+    let data: IWord[] = [];
     const pagination = document.querySelector('.textbook-pagination-container') as HTMLElement;
     if (textbookVariables.chapter === 6) {
       data = await Promise.all(trickyIDs.map((id) => getWord(id)));
