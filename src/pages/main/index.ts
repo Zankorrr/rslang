@@ -17,9 +17,6 @@ export function addHeader() {
   const textbookButton = document.createElement('button');
   textbookButton.classList.add('textbook-button');
   textbookButton.innerText = 'Textbook';
-  // const wordListButton = document.createElement('button');
-  // wordListButton.classList.add('word-list-button');
-  // wordListButton.innerText = 'Word list';
   const audioCallButton = document.createElement('button');
   audioCallButton.classList.add('audio-call-button');
   audioCallButton.innerText = 'Audio call';
@@ -42,7 +39,6 @@ export function addHeader() {
   navigation.append(
     mainPageButton,
     textbookButton,
-    // wordListButton,
     audioCallButton,
     sprintButton,
     statisticsButton,
@@ -107,7 +103,6 @@ export function hideElements() {
   const sprintGame = document.querySelector('.sprint-game') as HTMLElement;
   const statisticsPage = document.querySelector('.statistics-page') as HTMLElement;
   const textbookPage = document.querySelector('.textbook-page') as HTMLElement;
-  // const wordListPage = document.querySelector('.word-list-page') as HTMLElement;
   const signUp = document.querySelector('.signup-container') as HTMLElement;
   const signIn = document.querySelector('.signin-container') as HTMLElement;
   const description = document.querySelector('.description') as HTMLElement;
@@ -126,7 +121,6 @@ export function updateNavigation() {
   const sprintGame = document.querySelector('.sprint-game') as HTMLElement;
   const statisticsPage = document.querySelector('.statistics-page') as HTMLElement;
   const textbookPage = document.querySelector('.textbook-page') as HTMLElement;
-  // const wordListPage = document.querySelector('.word-list-page') as HTMLElement;
   const signUp = document.querySelector('.signup-container') as HTMLElement;
   const signIn = document.querySelector('.signin-container') as HTMLElement;
   const description = document.querySelector('.description') as HTMLElement;
@@ -135,7 +129,6 @@ export function updateNavigation() {
 
   const mainPageButton = document.querySelector('.main-page-button') as HTMLButtonElement;
   const textbookButton = document.querySelector('.textbook-button') as HTMLButtonElement;
-  // const wordListButton = document.querySelector('.word-list-button') as HTMLButtonElement;
   const audioCallButton = document.querySelector('.audio-call-button') as HTMLButtonElement;
   const sprintButton = document.querySelector('.sprint-button') as HTMLButtonElement;
   const statisticsButton = document.querySelector('.statistics-button') as HTMLButtonElement;
@@ -143,7 +136,6 @@ export function updateNavigation() {
   const signInButton = document.querySelector('.signin-button') as HTMLButtonElement;
   const closeSigninForm = document.querySelector('.close-signin-form') as HTMLElement;
   const closeSignupForm = document.querySelector('.close-signup-form') as HTMLElement;
-  // const signInButton = document.querySelector('.signin-button') as HTMLButtonElement;
 
   mainPageButton.addEventListener('click', () => {
     hideElements();
@@ -166,12 +158,6 @@ export function updateNavigation() {
     textbookPage.style.display = 'flex';
     footer.style.display = 'flex';
   });
-
-  // wordListButton.addEventListener('click', () => {
-  //   hideElements();
-  //   wordListPage.style.display = 'block';
-  //   footer.style.display = 'flex';
-  // });
 
   audioCallButton.addEventListener('click', () => {
     openApp('audiocall-from-menu');
