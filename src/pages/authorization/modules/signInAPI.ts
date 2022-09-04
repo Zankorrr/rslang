@@ -17,7 +17,6 @@ export async function signInAPI(user: ISignIn) {
      const content = await response.json();
 
      if (response.status === 200 && signInButton) {
-      updateTextbook();
       const signIn = document.querySelector('.signin-container') as HTMLElement;
       console.log('check4');
       localStorage.setItem('userToken', content.token);
@@ -29,5 +28,6 @@ export async function signInAPI(user: ISignIn) {
 
        signIn.style.display = 'none';
        signInButton.innerText = 'Log out';
+       updateTextbook();
      }
 }

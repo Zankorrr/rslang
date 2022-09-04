@@ -7,6 +7,7 @@ import {
 } from '../../core/api';
 
 import { baseUrl } from '../../core/globalVariables';
+import { IUserWord, Word } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
 import './style.css';
 
@@ -33,17 +34,24 @@ export async function updateTextbook() {
     let userWords: IUserWord[] = [];
     let trickyIDs: string[] = [];
     let learnedIDs: string[] = [];
+    const trickyChapter = document.querySelector('.tricky') as HTMLButtonElement;
     if (localStorage.getItem('userId')) {
       userWords = await getUserWords();
       trickyIDs = await getFilteredIDs(userWords, 'tricky');
       learnedIDs = await getFilteredIDs(userWords, 'learned');
+      trickyChapter.style.display = 'inline-block';
+    } else {
+      trickyChapter.style.display = 'none';
     }
 
     let data: Word[] = [];
+    const pagination = document.querySelector('.textbook-pagination-container') as HTMLElement;
     if (textbookVariables.chapter === 6) {
       data = await Promise.all(trickyIDs.map((id) => getWord(id)));
+      pagination.style.display = 'none';
     } else {
       data = await getWords(textbookVariables.chapter, textbookVariables.page);
+      pagination.style.display = 'flex';
     }
     data.forEach((word) => {
       const wordContainer = document.createElement('div');
