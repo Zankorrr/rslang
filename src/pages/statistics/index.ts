@@ -5,9 +5,7 @@ function addStatisticsPage() {
   statisticsPage.classList.add('statistics-page');
   statisticsPage.innerText = `The Statistics Page:
   Development in progress`;
-  //
-  // Page code here
-  //
+
   document.body.appendChild(statisticsPage);
 }
 

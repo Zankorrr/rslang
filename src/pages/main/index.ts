@@ -55,23 +55,25 @@ export function addHeader() {
 export function addDescription() {
   const description = document.createElement('div');
   description.classList.add('description');
-  description.innerText = 'RSLang - это бесплатная возможность повысить свой словарный запас в формате игры. Скучно не будет.';
+  description.innerHTML = 'Сегодня английский язык – второй ключевой навык для специалиста после профессиональных умений а иногда и первый. Знание английского упрощает изучение и прокачку навыков. <span>RSLang</span> - это бесплатная возможность повысить свой словарный запас в формате игры. Скучно не будет.';
   document.body.appendChild(description);
 }
 
 export function addAboutTeam() {
   const aboutTeam = document.createElement('div');
   aboutTeam.classList.add('about-team');
-  aboutTeam.innerText = 'About team:';
   const aboutAleksey = document.createElement('div');
   aboutAleksey.classList.add('about-member');
-  aboutAleksey.innerText = 'github.com/Zankorrr';
+  aboutAleksey.classList.add('about-Aleksey');
+  aboutAleksey.innerHTML = '<p><i>Team Lead, frontend developer</i></p><p>Backend, электронный учебник, список слов</p>';
   const aboutDmitry = document.createElement('div');
   aboutDmitry.classList.add('about-member');
-  aboutDmitry.innerText = 'github.com/dimtim1992';
+  aboutDmitry.classList.add('about-Dmitry');
+  aboutDmitry.innerHTML = '<p><i>Frontend developer</i></p><p>Авторизация, игра "Audio call"</p>';
   const aboutMaksim = document.createElement('div');
   aboutMaksim.classList.add('about-member');
-  aboutMaksim.innerText = 'github.com/MaxNikitenok';
+  aboutMaksim.classList.add('about-Maksim');
+  aboutMaksim.innerHTML = '<p><i>Frontend developer</i></p><p>Дизайн, игра "Sprint"</p>';
   aboutTeam.append(aboutAleksey, aboutDmitry, aboutMaksim);
   document.body.appendChild(aboutTeam);
 }
@@ -135,14 +137,13 @@ export function updateNavigation() {
   const sprintButton = document.querySelector('.sprint-button') as HTMLButtonElement;
   const statisticsButton = document.querySelector('.statistics-button') as HTMLButtonElement;
   const signUpButton = document.querySelector('.signup-button') as HTMLButtonElement;
-  // const signInButton = document.querySelector('.signin-button') as HTMLButtonElement;
   const closeSigninForm = document.querySelector('.close-signin-form') as HTMLElement;
   const closeSignupForm = document.querySelector('.close-signup-form') as HTMLElement;
 
   mainPageButton.addEventListener('click', () => {
     hideElements();
     description.style.display = 'block';
-    aboutTeam.style.display = 'block';
+    aboutTeam.style.display = 'flex';
     footer.style.display = 'flex';
   });
 
@@ -182,12 +183,6 @@ export function updateNavigation() {
     addFog();
   });
 
-  // signInButton.addEventListener('click', () => {
-  //   signIn.style.display = 'flex';
-  //   signUp.style.display = 'none';
-  //   addFog();
-  // });
-
   closeSigninForm.addEventListener('click', () => {
     signIn.style.display = 'none';
     removeFog();
@@ -197,15 +192,6 @@ export function updateNavigation() {
     signUp.style.display = 'none';
     removeFog();
   });
-
-  // signInButton.addEventListener('click', () => {
-  //   if (signInButton.innerText === 'Log out') {
-  //     signInButton.innerText = 'Sign in';
-  //   } else {
-  //     signUp.style.display = 'none';
-  //     signIn.style.display = 'flex';
-  //   }
-  // });
 }
 
 

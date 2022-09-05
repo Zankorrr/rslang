@@ -24,7 +24,7 @@ export const closeApp = () => {
     arrForStatistics.length = 0;
     hideElements();
     description.style.display = 'block';
-    aboutTeam.style.display = 'block';
+    aboutTeam.style.display = 'flex';
     footer.style.display = 'flex';
     newGame();
   };
@@ -33,7 +33,7 @@ export const closeApp = () => {
     arrForStatistics.length = 0;
     hideElements();
     description.style.display = 'block';
-    aboutTeam.style.display = 'block';
+    aboutTeam.style.display = 'flex';
     footer.style.display = 'flex';
     newGame();
   };
