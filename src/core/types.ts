@@ -57,9 +57,22 @@ export interface IUserWordsStatistic {
 }
 
 interface IUserWordsStatisticOptional {
+  audiocall: IUserWordsStatisticOptionalGames,
+	sprint: IUserWordsStatisticOptionalGames,
+	textbook: IUserWordsStatisticOptionalTextbook,
+}
+
+interface IUserWordsStatisticOptionalGames {
   newWords: number,
-  percentRight: number,
-  set?: number,
+  allWords: number,
+  rightWords: number,
+  set: number,
+}
+
+interface IUserWordsStatisticOptionalTextbook {
+  newWords: number,
+  allWords: number,
+  rightWords: number,
 }
 
 export interface IResult {
