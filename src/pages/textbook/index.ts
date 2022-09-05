@@ -1,13 +1,13 @@
 import {
   createUserWord,
+  getUserWordFull,
   getUserWords,
   getWord,
   getWords,
-  removeUserWord,
+  updateUserWordFull,
 } from '../../core/api';
-
-import { baseUrl } from '../../core/globalVariables';
-import { IUserWord, IWord } from '../../core/types';
+import { authorizedUser, baseUrl } from '../../core/globalVariables';
+import { IUserWordFull, IWord } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
 import './style.css';
 
@@ -20,10 +20,21 @@ export const textbookVariables = {
 
 export const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
 
-async function getFilteredIDs(userWords: IUserWord[], difficulty: string) {
-  const filteredWords = userWords.filter((el) => el.difficulty === difficulty);
-  const filteredIDs = filteredWords.map((el: IUserWord) => el.wordId);
-  return filteredIDs;
+async function getUserWordsIDs(userWords: IUserWordFull[]) {
+  const userWordsIDs = userWords.map((el) => el.optional.wordID);
+  return userWordsIDs;
+}
+
+async function getTrickyIDs(userWords: IUserWordFull[]) {
+  const trickyWords = userWords.filter((el) => el.difficulty === 'yes');
+  const trickyIDs = trickyWords.map((el) => el.optional.wordID);
+  return trickyIDs;
+}
+
+async function getLearnedIDs(userWords: IUserWordFull[]) {
+  const learnedWords = userWords.filter((el) => el.optional.learnedWord.learned === true);
+  const learnedIDs = learnedWords.map((el) => el.optional.wordID);
+  return learnedIDs;
 }
 
 export async function updateTextbook() {
@@ -31,14 +42,15 @@ export async function updateTextbook() {
   if (chapterContainer) {
     chapterContainer.textContent = '';
 
-    let userWords: IUserWord[] = [];
+    let userWordsIDs: string[] = [];
     let trickyIDs: string[] = [];
     let learnedIDs: string[] = [];
     const trickyChapter = document.querySelector('.tricky') as HTMLButtonElement;
-    if (localStorage.getItem('userId')) {
-      userWords = await getUserWords();
-      trickyIDs = await getFilteredIDs(userWords, 'tricky');
-      learnedIDs = await getFilteredIDs(userWords, 'learned');
+    if (authorizedUser.flag === true) {
+      const userWords = await getUserWords();
+      userWordsIDs = await getUserWordsIDs(userWords);
+      trickyIDs = await getTrickyIDs(userWords);
+      learnedIDs = await getLearnedIDs(userWords);
       trickyChapter.style.display = 'inline-block';
     } else {
       trickyChapter.style.display = 'none';
@@ -53,7 +65,7 @@ export async function updateTextbook() {
       data = await getWords(textbookVariables.chapter, textbookVariables.page);
       pagination.style.display = 'flex';
     }
-    data.forEach((word) => {
+    data.forEach(async (word) => {
       const wordContainer = document.createElement('div');
       wordContainer.classList.add('textbook-word-container');
 
@@ -86,44 +98,106 @@ export async function updateTextbook() {
       const wordToLearnedButton = document.createElement('button');
       wordToLearnedButton.innerText = 'Learned';
 
+      const body: IUserWordFull = {
+        difficulty: '',
+        optional: {
+          wordID: word.id,
+          newWord: true,
+          progress: {
+            right: 0,
+            wrong: 0,
+          },
+          learnedWord: {
+            learned: false,
+            counter: 0,
+          },
+        },
+      };
+
       wordToTrickyButton.addEventListener('click', async () => {
-        if (trickyIDs.includes(word.id)) {
-          await removeUserWord(word.id);
-          if (textbookVariables.chapter === 6) {
-            updateTextbook();
+        if (userWordsIDs.includes(word.id)) {
+          const oldBody = await getUserWordFull(
+            authorizedUser.userId,
+            word.id,
+            authorizedUser.userToken,
+            );
+          if (trickyIDs.includes(word.id)) {
+            body.difficulty = 'no';
+            body.optional = oldBody.optional;
+          } else {
+            body.difficulty = 'yes';
+            body.optional = oldBody.optional;
+            body.optional.learnedWord.learned = false;
           }
+          await updateUserWordFull(
+            authorizedUser.userId,
+            word.id,
+            authorizedUser.userToken,
+            body,
+            );
         } else {
-          if (learnedIDs.includes(word.id)) {
-            await removeUserWord(word.id);
-            wordContainer.classList.toggle('textbook-learned-word');
-            wordToLearnedButton.classList.toggle('textbook-learned-word');
-          }
-          createUserWord(word.id, 'tricky');
+          body.difficulty = 'yes';
+          await createUserWord(
+            authorizedUser.userId,
+            word.id,
+            authorizedUser.userToken,
+            body,
+            );
         }
         wordContainer.classList.toggle('textbook-tricky-word');
         wordToTrickyButton.classList.toggle('textbook-tricky-word');
       });
 
       wordToLearnedButton.addEventListener('click', async () => {
-        if (learnedIDs.includes(word.id)) {
-          removeUserWord(word.id);
-        } else {
-          if (trickyIDs.includes(word.id)) {
-            await removeUserWord(word.id);
-            wordContainer.classList.toggle('textbook-tricky-word');
-            wordToTrickyButton.classList.toggle('textbook-tricky-word');
-            if (textbookVariables.chapter === 6) {
+        if (userWordsIDs.includes(word.id)) {
+          const oldBody = await getUserWordFull(
+            authorizedUser.userId,
+            word.id,
+            authorizedUser.userToken,
+            );
+          if (learnedIDs.includes(word.id)) {
+            body.difficulty = oldBody.difficulty;
+            body.optional = oldBody.optional;
+            body.optional.learnedWord.learned = false;
+          } else {
+            body.difficulty = 'no';
+            body.optional = oldBody.optional;
+            body.optional.learnedWord.learned = true;
+          }
+          await updateUserWordFull(
+            authorizedUser.userId,
+            word.id,
+            authorizedUser.userToken,
+            body,
+            );
+            if (textbookVariables.chapter === textbookVariables.chaptersAmount - 1) {
               updateTextbook();
             }
-          }
-          createUserWord(word.id, 'learned');
+        } else {
+          body.optional.learnedWord.learned = true;
+          await createUserWord(
+            authorizedUser.userId,
+            word.id,
+            authorizedUser.userToken,
+            body,
+            );
         }
         wordContainer.classList.toggle('textbook-learned-word');
         wordToLearnedButton.classList.toggle('textbook-learned-word');
       });
 
       const mistakesCounter = document.createElement('button');
-      mistakesCounter.innerText = '0/0';
+      mistakesCounter.innerText = 'NEW';
+      if (userWordsIDs.includes(word.id)) {
+        const progressBody = await getUserWordFull(
+          authorizedUser.userId,
+          word.id,
+          authorizedUser.userToken,
+          );
+        if (!progressBody.optional.newWord) {
+          mistakesCounter.innerText = `${progressBody.optional.progress.right} / ${progressBody.optional.progress.wrong}`;
+        }
+      }
 
       if (localStorage.getItem('userId')) {
         wordToTrickyButton.style.display = 'block';
@@ -135,12 +209,14 @@ export async function updateTextbook() {
         mistakesCounter.style.display = 'none';
       }
 
-      if (textbookVariables.chapter !== 6 && trickyIDs.includes(word.id)) {
+      if (textbookVariables.chapter !== textbookVariables.chaptersAmount - 1
+        && trickyIDs.includes(word.id)) {
         wordContainer.classList.add('textbook-tricky-word');
         wordToTrickyButton.classList.add('textbook-tricky-word');
       }
 
-      if (textbookVariables.chapter !== 6 && learnedIDs.includes(word.id)) {
+      if (textbookVariables.chapter !== textbookVariables.chaptersAmount - 1
+        && learnedIDs.includes(word.id)) {
         wordContainer.classList.add('textbook-learned-word');
         wordToLearnedButton.classList.add('textbook-learned-word');
       }
@@ -178,6 +254,12 @@ function addTextbookPage() {
   if (localStoragePage) {
     textbookVariables.page = +localStoragePage;
   }
+  if (localStorage.getItem('userId')) {
+    authorizedUser.flag = true;
+    authorizedUser.userId = localStorage.getItem('userId') || '';
+    authorizedUser.userToken = localStorage.getItem('userToken') || '';
+  }
+
   const textbookPage = document.createElement('div');
   textbookPage.classList.add('textbook-page');
 

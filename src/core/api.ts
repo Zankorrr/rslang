@@ -1,29 +1,28 @@
 import { baseUrl } from './globalVariables';
-import { IUserWord, IUserWordFull, IUserWordsStatistic, IWord } from './types';
+import { IUserWordFull, IUserWordsStatistic, IWord } from './types';
 
 export const getWords = async (group: number, page: number): Promise<IWord[]> => (await fetch(`${baseUrl}/words?group=${group}&page=${page}`)).json();
 
 export const getWord = async (wordId: string): Promise<IWord> => (await fetch(`${baseUrl}/words/${wordId}`)).json();
 
-export const createUserWord = async (wordId: string, difficulty: string): Promise<void> => {
-  const user = localStorage.getItem('userId');
-  const token = localStorage.getItem('userToken');
-  const response = await fetch(`${baseUrl}/users/${user}/words/${wordId}`, {
+export const createUserWord = async (
+  userId: string,
+  wordId: string,
+  token: string,
+  wordBody: IUserWordFull,
+  ): Promise<void> => {
+  await fetch(`${baseUrl}/users/${userId}/words/${wordId}`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ difficulty }),
+    body: JSON.stringify(wordBody),
   });
-  console.log(user);
-  console.log(token);
-  const result = await response.json();
-  console.log(result);
 };
 
-export const getUserWords = async (): Promise<IUserWord[]> => {
+export const getUserWords = async (): Promise<IUserWordFull[]> => {
   const token = localStorage.getItem('userToken');
   const response = await fetch(`${baseUrl}/users/${localStorage.getItem('userId')}/words`, {
     method: 'GET',
@@ -34,7 +33,6 @@ export const getUserWords = async (): Promise<IUserWord[]> => {
     },
   });
   const result = await response.json();
-  console.log(result);
   return result;
 };
 
@@ -73,7 +71,7 @@ export async function updateUserWordFull(
   token: string,
   wordBody: IUserWordFull,
  ): Promise<void> {
-  const response = await fetch(`${baseUrl}/users/${userId}/words/${wordId}`, {
+  await fetch(`${baseUrl}/users/${userId}/words/${wordId}`, {
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -82,8 +80,6 @@ export async function updateUserWordFull(
     },
     body: JSON.stringify(wordBody),
   });
-  const result = await response.json();
-  console.log(result);
 }
 
 export async function getUserStatistics(
@@ -99,7 +95,6 @@ export async function getUserStatistics(
     },
   });
   const result = await response.json();
-  console.log(result);
   return result;
 }
 
@@ -108,7 +103,7 @@ export async function updateUserStatistics(
   token: string,
   statisticBody: IUserWordsStatistic,
  ): Promise<void> {
-  const response = await fetch(`${baseUrl}/users/${userId}/statistics`, {
+  await fetch(`${baseUrl}/users/${userId}/statistics`, {
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -117,6 +112,4 @@ export async function updateUserStatistics(
     },
     body: JSON.stringify(statisticBody),
   });
-  const result = await response.json();
-  console.log(result);
 }
