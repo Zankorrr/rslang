@@ -1,6 +1,5 @@
-import { IResult } from './types';
-
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
+import { baseUrl } from '../../../core/globalVariables';
+import { IResult } from '../../../core/types';
 
 export function generateResults(res: IResult[]) {
   const gameContainer = document.querySelector('.audio-call-game');

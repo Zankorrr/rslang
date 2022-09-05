@@ -1,4 +1,4 @@
-import { IWord, IResult } from './types';
+import { IWord, IResult } from '../../../core/types';
 import { renderPage } from './renderPage';
 import { closeApp } from './closeApp';
 import { renderWordTask } from './renderWordTask';
@@ -7,7 +7,6 @@ import { addTask } from './addTask';
 import { addResultWord } from './addResultWord';
 import { baseUrl } from '../../../core/globalVariables';
 import { changeTask } from './changeTask';
-// import { pushWordButton } from './pushWordButton';
 
 let pushedButton = false;
 
@@ -42,7 +41,6 @@ export function createApp(words: IWord[]) {
 
   wordButton?.addEventListener('click', () => {
     counterIteration += 1;
-    // pushWordButton(pushedButton, counterIteration, wordsInSession, results);
 
     wordsVariables?.forEach((button) => {
       button.removeAttribute('disabled');

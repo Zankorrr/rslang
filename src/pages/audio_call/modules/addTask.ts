@@ -1,6 +1,5 @@
-import { IWord } from './types';
-
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
+import { baseUrl } from '../../../core/globalVariables';
+import { IWord } from '../../../core/types';
 
 export function addTask(arr: IWord[], num: number) {
   const wordAudio: HTMLMediaElement | null = document.querySelector('.word-audio');

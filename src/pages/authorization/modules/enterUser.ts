@@ -1,5 +1,6 @@
 import { authorizedUser } from '../../../core/globalVariables';
 import { ISignIn } from '../types/types';
+import { addFog, removeFog } from './addFog';
 import { signInAPI } from './signInAPI';
 
 export function enterUser() {
@@ -8,14 +9,13 @@ export function enterUser() {
   const signInButton: HTMLButtonElement | null = document.querySelector('.signin-button');
   const signInButtonForm: HTMLButtonElement | null = document.querySelector('.signin-button-form');
   const signIn = document.querySelector('.signin-container') as HTMLElement;
-
+  const fog = document.querySelector('.fog') as HTMLElement;
 
   signInButton?.addEventListener('click', (event) => {
     event.preventDefault();
 
     if (signInButton.innerText === 'Log out' && signInButton) {
       signIn.style.display = 'none';
-      console.log('check2');
       signInButton.innerText = 'Sign in';
 
       localStorage.removeItem('userToken');
@@ -25,9 +25,11 @@ export function enterUser() {
       authorizedUser.userToken = '';
       authorizedUser.userId = '';
     } else {
-      console.log('check3');
       signIn.style.display = 'flex';
+      addFog();
     }
+
+    if (fog) removeFog();
   });
 
   signInButtonForm?.addEventListener('click', async (event) => {
@@ -40,5 +42,7 @@ export function enterUser() {
       };
       await signInAPI(user);
     }
+
+    removeFog();
   });
 }

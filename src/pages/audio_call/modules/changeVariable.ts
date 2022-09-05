@@ -1,7 +1,7 @@
-import { IResult, IWord } from './types';
+import { IResult, IWord } from '../../../core/types';
 import { addResultWord } from './addResultWord';
+import { baseUrl } from '../../../core/globalVariables';
 
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 let pushedButton = false;
 
 export function changeVariable(arr: IWord[], arrR: IResult[], num: number) {
@@ -14,13 +14,12 @@ export function changeVariable(arr: IWord[], arrR: IResult[], num: number) {
 
   wordsVariables?.forEach((button) => {
     button.addEventListener('click', () => {
-
-			if (!pushedButton) {
-				pushedButton = true;
-				wordsVariables.forEach((item) => {
-					item.setAttribute('disabled', 'disabled');
-				});
-			}
+      if (!pushedButton) {
+        pushedButton = true;
+        wordsVariables.forEach((item) => {
+          item.setAttribute('disabled', 'disabled');
+        });
+      }
 
       if (button.innerText === wordText?.innerText) {
         button.classList.add('true-answer');
@@ -42,5 +41,5 @@ export function changeVariable(arr: IWord[], arrR: IResult[], num: number) {
 
       wordAudio?.play();
     });
-	});
+  });
 }

@@ -1,5 +1,5 @@
 import { changeTask } from './changeTask';
-import { IWord, IResult } from './types';
+import { IWord, IResult } from '../../../core/types';
 
 export function pushWordButton(
 pushedButton: boolean,

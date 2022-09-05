@@ -1,8 +1,6 @@
-import { authorizedUser } from '../../../core/globalVariables';
+import { authorizedUser, baseUrl } from '../../../core/globalVariables';
 import { updateTextbook } from '../../textbook/index';
 import { ISignIn } from '../types/types';
-
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
 
 export async function signInAPI(user: ISignIn) {
   const signInButton: HTMLButtonElement | null = document.querySelector('.signin-button');
@@ -17,9 +15,7 @@ export async function signInAPI(user: ISignIn) {
      const content = await response.json();
 
      if (response.status === 200 && signInButton) {
-      updateTextbook();
       const signIn = document.querySelector('.signin-container') as HTMLElement;
-      console.log('check4');
       localStorage.setItem('userToken', content.token);
       localStorage.setItem('userId', content.userId);
 
@@ -29,5 +25,6 @@ export async function signInAPI(user: ISignIn) {
 
        signIn.style.display = 'none';
        signInButton.innerText = 'Log out';
+       updateTextbook();
      }
 }

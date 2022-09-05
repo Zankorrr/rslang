@@ -1,4 +1,4 @@
-import { IWord } from './types';
+import { IWord } from '../../../core/types';
 import { getRandomNumber } from './getRandomNumber';
 import { getVariablesOfWord } from './getVariablesOfWord';
 

@@ -7,18 +7,18 @@ import {
 } from '../../core/api';
 
 import { baseUrl } from '../../core/globalVariables';
-import { IUserWord, Word, ItextbookVariables } from '../../core/types';
+import { IUserWord, IWord } from '../../core/types';
 import openApp from '../audio_call/modules/openApp';
 import './style.css';
 
-export const textbookVariables: ItextbookVariables = {
+export const textbookVariables = {
   chapter: 0,
   page: 0,
   chaptersAmount: 7,
   pagesAmount: 30,
 };
 
-const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
+export const textbookColors = ['#fa7b7b', '#fa9c77', '#f9f978', '#7ffb7f', '#8ff3fa', '#77c8fa', '#c07ef9'];
 
 async function getFilteredIDs(userWords: IUserWord[], difficulty: string) {
   const filteredWords = userWords.filter((el) => el.difficulty === difficulty);
@@ -34,17 +34,24 @@ export async function updateTextbook() {
     let userWords: IUserWord[] = [];
     let trickyIDs: string[] = [];
     let learnedIDs: string[] = [];
+    const trickyChapter = document.querySelector('.tricky') as HTMLButtonElement;
     if (localStorage.getItem('userId')) {
       userWords = await getUserWords();
       trickyIDs = await getFilteredIDs(userWords, 'tricky');
       learnedIDs = await getFilteredIDs(userWords, 'learned');
+      trickyChapter.style.display = 'inline-block';
+    } else {
+      trickyChapter.style.display = 'none';
     }
 
-    let data: Word[] = [];
+    let data: IWord[] = [];
+    const pagination = document.querySelector('.textbook-pagination-container') as HTMLElement;
     if (textbookVariables.chapter === 6) {
       data = await Promise.all(trickyIDs.map((id) => getWord(id)));
+      pagination.style.display = 'none';
     } else {
       data = await getWords(textbookVariables.chapter, textbookVariables.page);
+      pagination.style.display = 'flex';
     }
     data.forEach((word) => {
       const wordContainer = document.createElement('div');
@@ -173,7 +180,6 @@ function addTextbookPage() {
   }
   const textbookPage = document.createElement('div');
   textbookPage.classList.add('textbook-page');
-  textbookPage.style.backgroundColor = textbookColors[textbookVariables.chapter];
 
   const navigationContainer = document.createElement('div');
   navigationContainer.classList.add('textbook-navigation-container');

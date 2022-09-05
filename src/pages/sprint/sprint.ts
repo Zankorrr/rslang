@@ -1,5 +1,6 @@
+import { IAnswer, IWord } from '../../core/types';
 import pushButtons from './bonus/bonus';
-import { IAnswer, IWord } from './intefaces';
+import closeApp from './statistic/closeAgainApp';
 
 const randomInteger = (min: number, max: number) => {
   const rand = min + Math.random() * (max + 1 - min);
@@ -39,6 +40,7 @@ export const randomWord = async (difficult: number | null) => {
   (wordTranslate as HTMLElement).setAttribute('wordId', `${answerArr[randomIntAnswer].id}`);
 
   pushButtons(difficult);
+  closeApp();
 };
 
 export default randomWord;

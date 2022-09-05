@@ -1,4 +1,4 @@
-export interface Word {
+export interface IWord {
   id: string,
   group: number,
   page: number,
@@ -12,58 +12,64 @@ export interface Word {
   transcription: string,
   wordTranslate: string,
   textMeaningTranslate: string,
-  textExampleTranslate: string
+  textExampleTranslate: string,
+  variables?: string[]
+  boolean?: boolean,
 }
 
 export interface IUserWord {
   id: string,
   difficulty: string,
-  wordId: string
-}
-
-export interface ItextbookVariables {
-  chapter: number,
-  page: number,
-  chaptersAmount: number,
-  pagesAmount: number,
+  wordId: string,
 }
 
 export interface IAuthorizedUser {
-	flag: boolean,
+  flag: boolean,
   userToken: string,
   userId: string,
 }
 
-export interface IUserWord {
-	difficulty: string,
-	optional: IUserWordOptional,
+export interface IUserWordFull {
+  difficulty: string,
+  optional: IUserWordOptional,
 }
 
 interface IUserWordOptional {
   newWord: boolean,
-	progress: IUserWordProgress,
+  progress: IUserWordProgress,
   learnedWord: IUserLearnedWord,
 
 }
 
 interface IUserWordProgress {
   right: number,
-	wrong: number
+  wrong: number,
 }
 
 interface IUserLearnedWord {
   learned: boolean,
-	counter: number,
+  counter: number,
 }
 
 export interface IUserWordsStatistic {
-		learnedWords: number,
-		optional: IUserWordsStatisticOptional,
+  learnedWords: number,
+  optional: IUserWordsStatisticOptional,
 }
 
 interface IUserWordsStatisticOptional {
-	newWords: number,
-	percentRight: number,
-	set?: number,
+  newWords: number,
+  percentRight: number,
+  set?: number,
 }
 
+export interface IResult {
+  word: string,
+  result: boolean,
+  wordTranslate: string,
+  audio: string
+}
+
+export interface IAnswer {
+  translateWord: string,
+  id: string
+}

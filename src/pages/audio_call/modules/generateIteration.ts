@@ -1,7 +1,6 @@
+import { baseUrl } from '../../../core/globalVariables';
 import { getRandomNumber } from './getRandomNumber';
-import { IResult, IWord } from './types';
-
-const baseUrl = 'https://rslang-zankorrr-db.herokuapp.com';
+import { IResult, IWord } from '../../../core/types';
 
 export function generateIteration(data: IWord[], arr: string[], res: IResult[]) {
   const iterationContainer = document.querySelector('.iteration-container');
@@ -48,7 +47,7 @@ export function generateIteration(data: IWord[], arr: string[], res: IResult[]) 
   wordsVariablesButtons.forEach((button) => {
     button.addEventListener('click', () => {
       if (button.innerHTML === arr[arr.length - 1]) {
-        button.style.backgroundColor = 'green';
+        button.style.backgroundColor = 'grey';
           const resultWord: IResult = {
           word: data[wordIndex].word,
           result: true,
@@ -58,7 +57,7 @@ export function generateIteration(data: IWord[], arr: string[], res: IResult[]) 
         res.push(resultWord);
       }
       if (button.innerHTML !== arr[arr.length - 1]) {
-        button.style.backgroundColor = 'red';
+        button.style.backgroundColor = 'brown';
         const resultWord: IResult = {
           word: data[wordIndex].word,
           result: false,
@@ -77,8 +76,5 @@ export function generateIteration(data: IWord[], arr: string[], res: IResult[]) 
       }
       wordAudio?.play();
     });
-  });
-  wordButton?.addEventListener('click', () => {
-    // quit from iteration
   });
 }

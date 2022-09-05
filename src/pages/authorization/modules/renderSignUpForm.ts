@@ -10,6 +10,7 @@ export function renderSignUpForm() {
                   <label for="psw"><b>Password</b></label>
                   <input type="password" placeholder="Enter Password" name="psw" required class="signup-password">
                   <button class="signup-button-form">Sign up</button>
+                  <div class="close-signup-form">x</div>
                 </form>`;
   signUpContainer?.insertAdjacentHTML('beforeend', html);
 }
