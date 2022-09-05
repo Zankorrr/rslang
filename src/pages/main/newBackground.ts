@@ -29,6 +29,7 @@ export const newBackground = () => {
   const audioCallButton = document.querySelector('.audio-call-button') as HTMLElement;
   const sprintButton = document.querySelector('.sprint-button') as HTMLElement;
   const mainPageButton = document.querySelector('.main-page-button') as HTMLButtonElement;
+  const bodyApp = document.body;
 
   nav.addEventListener('click', (e) => {
     if (textbookPage.style.display === 'none') {
@@ -36,18 +37,22 @@ export const newBackground = () => {
         wavesTop.style.background = 'lightpink';
         wavesMiddle.style.background = 'lightpink';
         wavesBottom.style.background = 'lightpink';
+        bodyApp.style.background = 'lightpink';
       } else if (e.target === audioCallButton) {
         wavesTop.style.background = '#029e91';
         wavesMiddle.style.background = '#029e91';
         wavesBottom.style.background = '#029e91';
+        bodyApp.style.background = '#029e91';
       } else if (e.target === sprintButton) {
         wavesTop.style.background = '#5ca0cb';
         wavesMiddle.style.background = '#5ca0cb';
         wavesBottom.style.background = '#5ca0cb';
+        bodyApp.style.background = '#5ca0cb';
       } else if (e.target === mainPageButton) {
         wavesTop.style.background = 'linear-gradient(to top, #489cbd 20%, #029e91 80%)';
         wavesMiddle.style.background = 'linear-gradient(to top, #489cbd 20%, #029e91 80%)';
         wavesBottom.style.background = 'linear-gradient(to top, #489cbd 20%, #029e91 80%)';
+        bodyApp.style.background = '#029e91';
       }
     }
   });

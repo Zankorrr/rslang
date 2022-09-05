@@ -8,7 +8,7 @@ export const getWord = async (wordId: string): Promise<IWord> => (await fetch(`$
 export const createUserWord = async (wordId: string, difficulty: string): Promise<void> => {
   const user = localStorage.getItem('userId');
   const token = localStorage.getItem('userToken');
-  const response = await fetch(`${baseUrl}/users/${user}/words/${wordId}`, {
+await fetch(`${baseUrl}/users/${user}/words/${wordId}`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -17,10 +17,6 @@ export const createUserWord = async (wordId: string, difficulty: string): Promis
     },
     body: JSON.stringify({ difficulty }),
   });
-  console.log(user);
-  console.log(token);
-  const result = await response.json();
-  console.log(result);
 };
 
 export const getUserWords = async (): Promise<IUserWord[]> => {
@@ -34,7 +30,6 @@ export const getUserWords = async (): Promise<IUserWord[]> => {
     },
   });
   const result = await response.json();
-  console.log(result);
   return result;
 };
 

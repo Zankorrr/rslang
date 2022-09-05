@@ -11,7 +11,7 @@ export function closeApp() {
     gameContainer.style.display = 'none';
     hideElements();
     description.style.display = 'block';
-    aboutTeam.style.display = 'block';
+    aboutTeam.style.display = 'flex';
     footer.style.display = 'flex';
   }
 }
