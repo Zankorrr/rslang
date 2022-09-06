@@ -114,6 +114,48 @@ export const pushButtons = (difficult: number | null) => {
       addBooleanForStatistics(false);
     }
   };
+
+  document.onkeydown = (event) => {
+    if (event.code === 'ArrowLeft') {
+      if (wordId === answerId) {
+        plusPoints();
+        counter.innerText = `${+counter.innerText + points}`;
+        randomWord(difficult);
+        addActive();
+        addBooleanForStatistics(true);
+      } else {
+        if (+(counter.innerText) > 0) {
+          minusPoints();
+          counter.innerText = String(+(counter
+            .innerText) - 10);
+        }
+        randomWord(difficult);
+        removeActive();
+        removeBonus();
+        addBooleanForStatistics(false);
+      }
+    }
+    if (event.code === 'ArrowRight') {
+      if (wordId !== answerId) {
+        plusPoints();
+        counter.innerText = String(+(counter
+          .innerText) + points);
+        randomWord(difficult);
+        addActive();
+        addBooleanForStatistics(true);
+      } else {
+        if (+(counter.innerText) > 0) {
+          minusPoints();
+          counter.innerText = String(+(counter
+            .innerText) - 10);
+        }
+        randomWord(difficult);
+        removeActive();
+        removeBonus();
+        addBooleanForStatistics(false);
+      }
+    }
+  };
 };
 
 export default pushButtons;

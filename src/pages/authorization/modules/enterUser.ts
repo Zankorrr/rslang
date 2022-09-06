@@ -1,4 +1,5 @@
 import { authorizedUser } from '../../../core/globalVariables';
+import { updateTextbook } from '../../textbook/index';
 import { ISignIn } from '../types/types';
 import { addFog, removeFog } from './addFog';
 import { signInAPI } from './signInAPI';
@@ -24,6 +25,7 @@ export function enterUser() {
       authorizedUser.flag = false;
       authorizedUser.userToken = '';
       authorizedUser.userId = '';
+      updateTextbook();
     } else {
       signIn.style.display = 'flex';
       addFog();
@@ -42,7 +44,6 @@ export function enterUser() {
       };
       await signInAPI(user);
     }
-
     removeFog();
   });
 }
