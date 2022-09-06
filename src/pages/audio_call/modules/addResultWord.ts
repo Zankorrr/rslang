@@ -26,7 +26,7 @@ export async function addResultWord(
   };
 
   if (localStorage.getItem('userToken') && localStorage.getItem('userId')) {
-    let updateWordBody: IUserWordFull = {
+    const updateWordBody: IUserWordFull = {
       difficulty: 'No',
       optional: {
         newWord: false,
@@ -41,7 +41,7 @@ export async function addResultWord(
       },
     };
 
-    let updateUserStatisticBody: IUserWordsStatistic = {
+    const updateUserStatisticBody: IUserWordsStatistic = {
       learnedWords: 0,
       optional: {
         audiocall: {
@@ -66,11 +66,12 @@ export async function addResultWord(
 
     try {
       const responseWord = await getUserWordFull(localStorage.getItem('userId'), arrWords[num].id, localStorage.getItem('userToken'));
-      const responseStat = await getUserStatistics(localStorage.getItem('userId'), localStorage.getItem('userToken'));
 
-      if (responseWord && responseStat) {
-        updateWordBody = await getUserWordFull(localStorage.getItem('userId'), arrWords[num].id, localStorage.getItem('userToken'));
-        updateUserStatisticBody = await getUserStatistics(localStorage.getItem('userId'), localStorage.getItem('userToken'));
+      if (responseWord) {
+        const r = await getUserWordFull(localStorage.getItem('userId'), arrWords[num].id, localStorage.getItem('userToken'));
+        const s = await getUserStatistics(localStorage.getItem('userId'), localStorage.getItem('userToken'));
+        updateWordBody.optional = r.optional;
+        updateUserStatisticBody.optional = s.optional;
 
       if (flag) {
         updateWordBody.optional.progress.right += 1;
@@ -106,7 +107,18 @@ export async function addResultWord(
       }
     } catch (err) {
       // add error statistics
-      if (err === 'Not found') {
+      if (String(err) === 'Error: Not Found') {
+        try {
+          const res = await getUserStatistics(localStorage.getItem('userId'), localStorage.getItem('userToken'));
+          console.log('Now');
+          console.log(res);
+          if (res) {
+            updateUserStatisticBody.optional = res.optional;
+          }
+        } catch (e) {
+            console.log(e);
+        }
+
         updateWordBody.optional.newWord = false;
         updateUserStatisticBody.optional.audiocall.newWords += 1;
 

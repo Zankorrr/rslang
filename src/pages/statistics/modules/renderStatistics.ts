@@ -5,9 +5,9 @@ export function renderStatistics(arr: IUserWordsStatistic) {
   const html = `<div class="statistics-audiocall-container">
                   <h2 class="statistics-audiocall-title">Audiocall</h2>
                   <ul class="statistics-audiocall">
-                    <li class="statistics-audiocall-item">${arr.optional.audiocall.newWords}</li>
-                    <li class="statistics-audiocall-item">${arr.optional.audiocall.rightWords / arr.optional.audiocall.allWords}</li>
-                    <li class="statistics-audiocall-item">${arr.optional.audiocall.set}</li>
+                    <li class="statistics-audiocall-item">New words: ${arr.optional.audiocall.newWords}</li>
+                    <li class="statistics-audiocall-item">Right answers percent: ${arr.optional.audiocall.rightWords / arr.optional.audiocall.allWords}%</li>
+                    <li class="statistics-audiocall-item">The longest set of right answers: ${arr.optional.audiocall.set}</li>
                   </ul>
                 </div>
                 <div class="statistics-sprint-container">

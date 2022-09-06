@@ -19,10 +19,7 @@ export const createUserWord = async (wordId: string, difficulty: string): Promis
     },
     body: JSON.stringify({ difficulty }),
   });
-  console.log(user);
-  console.log(token);
-  const result = await response.json();
-  console.log(result);
+  console.log(response);
 };
 
 export const getUserWords = async (): Promise<IUserWord[]> => {
@@ -36,7 +33,6 @@ export const getUserWords = async (): Promise<IUserWord[]> => {
     },
   });
   const result = await response.json();
-  console.log(result);
   return result;
 };
 
@@ -99,7 +95,7 @@ export async function updateUserWordFull(
   token: string | null,
   wordBody: IUserWordFull,
  ): Promise<void> {
-  const response = await fetch(`${baseUrl}/users/${userId}/words/${wordId}`, {
+  await fetch(`${baseUrl}/users/${userId}/words/${wordId}`, {
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -108,8 +104,6 @@ export async function updateUserWordFull(
     },
     body: JSON.stringify(wordBody),
   });
-  const result = await response.json();
-  console.log(result);
 }
 
 export async function getUserStatistics(
@@ -133,30 +127,12 @@ export async function getUserStatistics(
   return result;
 }
 
-export async function createUserStatistics(
-  userId: string | null,
-  token: string | null,
-  statisticBody: IUserWordsStatistic,
- ): Promise<void> {
-  const response = await fetch(`${baseUrl}/users/${userId}/statistics`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(statisticBody),
-  });
-  const result = await response.json();
-  console.log(result);
-}
-
 export async function updateUserStatistics(
   userId: string | null,
   token: string | null,
   statisticBody: IUserWordsStatistic,
  ): Promise<void> {
-  const response = await fetch(`${baseUrl}/users/${userId}/statistics`, {
+  await fetch(`${baseUrl}/users/${userId}/statistics`, {
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -165,6 +141,4 @@ export async function updateUserStatistics(
     },
     body: JSON.stringify(statisticBody),
   });
-  const result = await response.json();
-  console.log(result);
 }
