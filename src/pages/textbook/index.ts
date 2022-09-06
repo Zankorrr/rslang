@@ -1,5 +1,5 @@
 import {
-  createUserWord,
+  createUserWordFull,
   getUserWordFull,
   getUserWords,
   getWord,
@@ -137,7 +137,7 @@ export async function updateTextbook() {
             );
         } else {
           body.difficulty = 'yes';
-          await createUserWord(
+          await createUserWordFull(
             authorizedUser.userId,
             word.id,
             authorizedUser.userToken,
@@ -175,7 +175,7 @@ export async function updateTextbook() {
             }
         } else {
           body.optional.learnedWord.learned = true;
-          await createUserWord(
+          await createUserWordFull(
             authorizedUser.userId,
             word.id,
             authorizedUser.userToken,
@@ -195,6 +195,8 @@ export async function updateTextbook() {
           authorizedUser.userToken,
           );
         if (!progressBody.optional.newWord) {
+          mistakesCounter.style.borderLeftColor = '#29ce29';
+          mistakesCounter.style.borderRightColor = 'red';
           mistakesCounter.innerText = `${progressBody.optional.progress.right} / ${progressBody.optional.progress.wrong}`;
         }
       }

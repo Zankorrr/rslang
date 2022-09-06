@@ -21,6 +21,9 @@ export function enterUser() {
       localStorage.removeItem('userToken');
       localStorage.removeItem('userId');
 
+      const statisticsContainer = document.querySelector('.statistics-page') as HTMLElement;
+      statisticsContainer.innerHTML = '';
+
       authorizedUser.flag = false;
       authorizedUser.userToken = '';
       authorizedUser.userId = '';
