@@ -3,6 +3,7 @@ import { IUserWordFull, IUserWordsStatistic } from "../../../core/types";
 export const updateWordBody: IUserWordFull = {
 	difficulty: '',
 	optional: {
+    id: '',
 		newWord: false,
 		progress: {
 			right: 0,

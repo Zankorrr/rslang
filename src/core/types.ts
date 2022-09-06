@@ -35,7 +35,7 @@ export interface IUserWordFull {
 }
 
 interface IUserWordOptional {
-
+  id: string,
   newWord: boolean,
   progress: IUserWordProgress,
   learnedWord: IUserLearnedWord,
