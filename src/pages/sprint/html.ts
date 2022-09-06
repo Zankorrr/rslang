@@ -2,31 +2,31 @@ export const html = `
 <div class="sprint-container" id="sprint-container">
     <div class="difficultySelectionPlate" id="difficultForm">
         <p>SPRINT</p>
-        <div id="difficultLevelChange">Select difficulty level</div>
+        <div id="difficultLevelChange">Choose the chapter</div>
         <div class="difficult-inputs">
             <input type="radio" id="difficult1"
                 name="difficultLevel" data-difficult="0">
-            <label for="difficult1" class="label-diff">A1</label>
+            <label for="difficult1" class="label-diff">1</label>
 
             <input type="radio" id="difficult2"
                 name="difficultLevel" data-difficult="1">
-            <label for="difficult2" class="label-diff">A2</label>
+            <label for="difficult2" class="label-diff">2</label>
 
             <input type="radio" id="difficult3"
                 name="difficultLevel" data-difficult="2">
-            <label for="difficult3" class="label-diff">B1</label>
+            <label for="difficult3" class="label-diff">3</label>
 
             <input type="radio" id="difficult4"
                 name="difficultLevel" data-difficult="3">
-            <label for="difficult4" class="label-diff">B2</label>
+            <label for="difficult4" class="label-diff">4</label>
 
             <input type="radio" id="difficult5"
                 name="difficultLevel" data-difficult="4">
-            <label for="difficult5" class="label-diff">C1</label>
+            <label for="difficult5" class="label-diff">5</label>
 
             <input type="radio" id="difficult6"
                 name="difficultLevel" data-difficult="5">
-            <label for="difficult6" class="label-diff">C2</label>
+            <label for="difficult6" class="label-diff">6</label>
         </div>
         <div class="difficultButton">
             <div class="button-start" id="button-start">START</div>
@@ -105,7 +105,7 @@ export const html = `
                     </div>
                 </div>
             </div>
-            <div class="close-sprint">x</div>
+            <div class="close-sprint"></div>
         </div>
     </div>
     <div class="statistics-wrapper" id="statistics-wrapper">
