@@ -18,7 +18,6 @@ export function enterUser() {
     if (signInButton.innerText === 'Log out' && signInButton) {
       signIn.style.display = 'none';
       signInButton.innerText = 'Sign in';
-
       localStorage.removeItem('userToken');
       localStorage.removeItem('userId');
 

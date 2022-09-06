@@ -97,6 +97,7 @@ export async function addResultWord(
 
         if (updateWordBody.optional.learnedWord.learned) {
           updateUserStatisticBody.learnedWords -= 1;
+          updateWordBody.optional.learnedWord.learned = false;
         }
 
         updateWordBody.optional.learnedWord.learned = false;
@@ -109,7 +110,6 @@ export async function addResultWord(
       await updateUserStatistics(localStorage.getItem('userId'), localStorage.getItem('userToken'), updateUserStatisticBody);
       }
     } catch (err) {
-      // add error statistics
       if (String(err) === 'Error: Not Found') {
         try {
           const res = await getUserStatistics(localStorage.getItem('userId'), localStorage.getItem('userToken'));
@@ -145,6 +145,7 @@ export async function addResultWord(
 
           if (updateWordBody.optional.learnedWord.learned) {
             updateUserStatisticBody.learnedWords -= 1;
+            updateWordBody.optional.learnedWord.learned = false;
           }
 
           updateWordBody.optional.learnedWord.learned = false;
