@@ -19,11 +19,11 @@ export function renderStatistics(arr: IUserWordsStatistic) {
                   </ul>
                 </div>
                 <div class="statistics-textbook-container">
-                  <h2 class="statistics-textbook-title">Textbook</h2>
+                  <h2 class="statistics-textbook-title">Words</h2>
                   <ul class="statistics-textbook">
-                    <li class="statistics-textbook-item">New words: ${arr.optional.textbook.newWords}</li>
+                    <li class="statistics-textbook-item">New words: ${arr.optional.audiocall.newWords + arr.optional.sprint.newWords}</li>
                     <li class="statistics-textbook-item">Learned words: ${arr.learnedWords}</li>
-                    <li class="statistics-textbook-item">Right answers percent: ${arr.optional.textbook.rightWords / arr.optional.textbook.allWords}%</li>
+                    <li class="statistics-textbook-item">Right answers percent: ${((arr.optional.audiocall.rightWords + arr.optional.audiocall.rightWords) / 2) / ((arr.optional.audiocall.allWords + arr.optional.sprint.allWords) / 2)}%</li>
                   </ul>
                 </div>`;
   statisticsContainer?.insertAdjacentHTML('beforeend', html);
