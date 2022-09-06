@@ -1,4 +1,6 @@
-import { IWord, IResult } from '../../../core/types';
+import {
+  IWord, IResult,
+} from '../../../core/types';
 import { renderPage } from './renderPage';
 import { closeApp } from './closeApp';
 import { renderWordTask } from './renderWordTask';

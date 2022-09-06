@@ -35,10 +35,10 @@ export interface IUserWordFull {
 }
 
 interface IUserWordOptional {
+
   newWord: boolean,
   progress: IUserWordProgress,
   learnedWord: IUserLearnedWord,
-
 }
 
 interface IUserWordProgress {
