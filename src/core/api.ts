@@ -1,28 +1,35 @@
 import { baseUrl } from './globalVariables';
-import {
-  IUserWord, IUserWordFull, IUserWordsStatistic, IWord,
-} from './types';
+import { IUserWordFull, IUserWordsStatistic, IWord } from './types';
+// import {
+//   IUserWord, IUserWordFull, IUserWordsStatistic, IWord,
+// } from './types';
 
 export const getWords = async (group: number, page: number): Promise<IWord[]> => (await fetch(`${baseUrl}/words?group=${group}&page=${page}`)).json();
 
 export const getWord = async (wordId: string): Promise<IWord> => (await fetch(`${baseUrl}/words/${wordId}`)).json();
 
-export const createUserWord = async (wordId: string, difficulty: string): Promise<void> => {
-  const user = localStorage.getItem('userId');
-  const token = localStorage.getItem('userToken');
-  const response = await fetch(`${baseUrl}/users/${user}/words/${wordId}`, {
+export const createUserWord = async (
+  userId: string,
+  wordId: string,
+  token: string,
+  wordBody: IUserWordFull,
+  ): Promise<void> => {
+  await fetch(`${baseUrl}/users/${userId}/words/${wordId}`, {
+// export const createUserWord = async (wordId: string, difficulty: string): Promise<void> => {
+//   const user = localStorage.getItem('userId');
+//   const token = localStorage.getItem('userToken');
+// await fetch(`${baseUrl}/users/${user}/words/${wordId}`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ difficulty }),
+    body: JSON.stringify(wordBody),
   });
-  console.log(response);
 };
 
-export const getUserWords = async (): Promise<IUserWord[]> => {
+export const getUserWords = async (): Promise<IUserWordFull[]> => {
   const token = localStorage.getItem('userToken');
   const response = await fetch(`${baseUrl}/users/${localStorage.getItem('userId')}/words`, {
     method: 'GET',
@@ -76,7 +83,7 @@ export async function createUserWordFull(
   token: string | null,
   wordBody: IUserWordFull,
  ): Promise<void> {
-  const response = await fetch(`${baseUrl}/users/${userId}/words/${wordId}`, {
+    await fetch(`${baseUrl}/users/${userId}/words/${wordId}`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -85,8 +92,6 @@ export async function createUserWordFull(
     },
     body: JSON.stringify(wordBody),
   });
-  const result = await response.json();
-  console.log(result);
 }
 
 export async function updateUserWordFull(

@@ -15,7 +15,7 @@ export async function generateIteration(data: IWord[], arr: string[], res: IResu
 	let updateWordBody: IUserWordFull = {
 		difficulty: '',
 		optional: {
-			id: '',
+			wordID: '',
 			newWord: false,
 			progress: {
 				right: 0,
@@ -114,7 +114,7 @@ export async function generateIteration(data: IWord[], arr: string[], res: IResu
 					let updateWordBody: IUserWordFull = {
 						difficulty: '',
 						optional: {
-							id: '',
+							wordID: '',
 							newWord: false,
 							progress: {
 								right: 0,
@@ -195,7 +195,7 @@ export async function generateIteration(data: IWord[], arr: string[], res: IResu
 					let updateWordBody: IUserWordFull = {
 						difficulty: '',
 						optional: {
-							id: '',
+							wordID: '',
 							newWord: false,
 							progress: {
 								right: 0,

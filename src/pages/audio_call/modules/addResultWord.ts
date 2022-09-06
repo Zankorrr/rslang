@@ -29,7 +29,7 @@ export async function addResultWord(
     const updateWordBody: IUserWordFull = {
       difficulty: 'No',
       optional: {
-        id: '',
+        wordID: '',
         newWord: false,
         progress: {
           right: 0,
@@ -72,7 +72,7 @@ export async function addResultWord(
         const r = await getUserWordFull(localStorage.getItem('userId'), arrWords[num].id, localStorage.getItem('userToken'));
         const s = await getUserStatistics(localStorage.getItem('userId'), localStorage.getItem('userToken'));
         updateWordBody.optional = r.optional;
-        updateWordBody.optional.id = arrWords[num].id;
+        updateWordBody.optional.wordID = arrWords[num].id;
         updateUserStatisticBody.optional = s.optional;
 
       if (flag) {
@@ -93,7 +93,7 @@ export async function addResultWord(
         updateUserStatisticBody.optional.audiocall.set += 1;
       } else {
         updateWordBody.optional.progress.wrong += 1;
-        updateWordBody.optional.id = arrWords[num].id;
+        updateWordBody.optional.wordID = arrWords[num].id;
 
         if (updateWordBody.optional.learnedWord.learned) {
           updateUserStatisticBody.learnedWords -= 1;
@@ -121,7 +121,7 @@ export async function addResultWord(
         }
 
         updateWordBody.optional.newWord = false;
-        updateWordBody.optional.id = arrWords[num].id;
+        updateWordBody.optional.wordID = arrWords[num].id;
         updateUserStatisticBody.optional.audiocall.newWords += 1;
 
         if (flag) {
