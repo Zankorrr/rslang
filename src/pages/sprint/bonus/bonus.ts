@@ -98,6 +98,12 @@ export const pushButtons = (difficult: number | null) => {
       removeActive();
       removeBonus();
       addBooleanForStatistics(false);
+      addResultWord(
+        false,
+        arrForRes,
+        arrForStatistics,
+        arrForStatistics.length - 1,
+        );
     }
   };
 
@@ -109,6 +115,12 @@ export const pushButtons = (difficult: number | null) => {
       randomWord(difficult);
       addActive();
       addBooleanForStatistics(true);
+      addResultWord(
+        true,
+        arrForRes,
+        arrForStatistics,
+        arrForStatistics.length - 1,
+        );
     } else {
       if (+(counter.innerText) > 0) {
         minusPoints();
@@ -119,6 +131,12 @@ export const pushButtons = (difficult: number | null) => {
       removeActive();
       removeBonus();
       addBooleanForStatistics(false);
+      addResultWord(
+        false,
+        arrForRes,
+        arrForStatistics,
+        arrForStatistics.length - 1,
+        );
     }
   };
 
