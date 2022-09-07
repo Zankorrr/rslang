@@ -1,4 +1,5 @@
-import { IAnswer, IWord } from '../../core/types';
+import { baseUrl } from '../../core/globalVariables';
+import { IAnswer, IResult, IWord } from '../../core/types';
 import pushButtons from './bonus/bonus';
 import closeApp from './statistic/closeAgainApp';
 
@@ -8,14 +9,14 @@ const randomInteger = (min: number, max: number) => {
 };
 
 export const arrForStatistics: IWord[] = [];
+export const arrForRes: IResult[] = [];
 
 export const randomWord = async (difficult: number | null) => {
   const wordAsk = document.getElementById('word-ask');
   const wordTranslate = document.getElementById('word-translate');
-  const url = 'https://rslang-zankorrr-db.herokuapp.com/';
   const randomPage = randomInteger(0, 29);
 
-  const response = await fetch(`${url}words/?group=${difficult}&page=${randomPage}`, {
+  const response = await fetch(`${baseUrl}/words/?group=${difficult}&page=${randomPage}`, {
     method: 'GET',
   });
 
