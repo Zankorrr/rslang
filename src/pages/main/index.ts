@@ -1,5 +1,6 @@
 import { openApp } from '../audio_call/modules/openApp';
 import { addFog, removeFog } from '../authorization/modules/addFog';
+import { openStatistics } from '../statistics/modules/openStatistics';
 import { textbookColors, textbookVariables } from '../textbook/index';
 import './style.css';
 
@@ -173,8 +174,9 @@ export function updateNavigation() {
 
   statisticsButton.addEventListener('click', () => {
     hideElements();
-    statisticsPage.style.display = 'block';
+    statisticsPage.style.display = 'flex';
     footer.style.display = 'flex';
+    openStatistics();
   });
 
   signUpButton.addEventListener('click', () => {
