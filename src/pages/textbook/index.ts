@@ -144,6 +144,9 @@ export async function updateTextbook() {
             body,
             );
         }
+        if (textbookVariables.chapter === textbookVariables.chaptersAmount - 1) {
+          updateTextbook();
+        }
         wordContainer.classList.toggle('textbook-tricky-word');
         wordToTrickyButton.classList.toggle('textbook-tricky-word');
       });
