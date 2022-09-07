@@ -1,4 +1,5 @@
-import { randomWord, arrForStatistics } from '../sprint';
+import { randomWord, arrForStatistics, arrForRes } from '../sprint';
+import { addResultWord } from '../stat';
 
 let points = 10;
 
@@ -81,6 +82,12 @@ export const pushButtons = (difficult: number | null) => {
       randomWord(difficult);
       addActive();
       addBooleanForStatistics(true);
+      addResultWord(
+        true,
+        arrForRes,
+        arrForStatistics,
+        arrForStatistics.length - 1,
+        );
     } else {
       if (+(counter.innerText) > 0) {
         minusPoints();
