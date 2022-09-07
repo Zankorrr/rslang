@@ -2,6 +2,17 @@
   display: none;
   font-family: 'Comfortaa', cursive;
 }
+
+.sprint-game::after {
+  content: 'Sprint';
+  font-size: 100px;
+  font-weight: 900;
+  position: fixed;
+  bottom: 50px;
+  left: 80px;
+  color: #0f66813a;
+}
+
 .game-wrapper {
   display: none;
 }
