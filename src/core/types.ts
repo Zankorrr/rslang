@@ -17,28 +17,10 @@ export interface IWord {
   boolean?: boolean,
 }
 
-export interface IUserWord {
-  id: string,
-  difficulty: string,
-  wordId: string,
-}
-
 export interface IAuthorizedUser {
   flag: boolean,
   userToken: string,
   userId: string,
-}
-
-export interface IUserWordFull {
-  difficulty: string,
-  optional: IUserWordOptional,
-}
-
-interface IUserWordOptional {
-  newWord: boolean,
-  progress: IUserWordProgress,
-  learnedWord: IUserLearnedWord,
-
 }
 
 interface IUserWordProgress {
@@ -51,15 +33,40 @@ interface IUserLearnedWord {
   counter: number,
 }
 
-export interface IUserWordsStatistic {
-  learnedWords: number,
-  optional: IUserWordsStatisticOptional,
+interface IUserWordOptional {
+  wordID: string,
+  newWord: boolean,
+  progress: IUserWordProgress,
+  learnedWord: IUserLearnedWord,
+}
+
+export interface IUserWordFull {
+  difficulty: string,
+  optional: IUserWordOptional,
+}
+
+interface IUserWordsStatisticOptionalGames {
+  newWords: number,
+  allWords: number,
+  rightWords: number,
+  set: number,
+}
+
+interface IUserWordsStatisticOptionalTextbook {
+  newWords: number,
+  allWords: number,
+  rightWords: number,
 }
 
 interface IUserWordsStatisticOptional {
-  newWords: number,
-  percentRight: number,
-  set?: number,
+  audiocall: IUserWordsStatisticOptionalGames,
+  sprint: IUserWordsStatisticOptionalGames,
+  textbook: IUserWordsStatisticOptionalTextbook,
+}
+
+export interface IUserWordsStatistic {
+  learnedWords: number,
+  optional: IUserWordsStatisticOptional,
 }
 
 export interface IResult {
