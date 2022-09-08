@@ -14,7 +14,7 @@
   position: fixed;
   bottom: 220px;
   left: -100px;
-  color: #0f587518;
+  color: #8d314818;
   font-family: 'Comfortaa', cursive;
   transform: rotate(-90deg);
   z-index: -1;
@@ -61,8 +61,8 @@
 
 .textbook-word-buttons > button,
 .textbook-pagination-container > button {
-  border: 2px solid;
-  border-color: rgba(0, 0, 0, 0.5);
+  border: 5px solid;
+  border-color: rgba(0, 0, 0, 0.05);
   border-radius: 7px;
   margin: 10px 0px 10px 20px;
   cursor: pointer;
