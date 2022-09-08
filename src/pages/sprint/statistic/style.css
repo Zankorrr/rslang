@@ -1,0 +1,93 @@
+p {
+    padding: 0;
+    margin: 0;
+}
+.statistics-wrapper {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.statistics {
+    width: 40%;
+    height: 70%;
+    padding: 20px;
+    background-color: #ffffff;
+    color: #334456;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #666;
+    overflow: auto;
+}
+.right-text,
+ .wrong-text {
+    font-size: 27px;
+    margin-bottom: 3px;
+}
+.right-text {
+    border-bottom: 2px solid #027ea1;
+}
+.wrong-text {
+    border-bottom: 2px solid #de8668;
+}
+.right-results {
+    margin-top: 20px;
+}
+.right div,
+.wrong div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    border-bottom: solid 1px #c3b69f;
+}
+.wrong-results {
+    margin-top: 20px;
+}
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+}
+.results-title {
+    font-size: 33px;
+}
+.stat-btns {
+    display: flex;
+}
+.close-app {
+    color: #de8668;
+    transition: all 0.2s ease 0s;
+}
+.close-app:hover {
+    cursor: pointer;
+    transform: scale3d(1.1, 1.1, 1.1);
+}
+.again {
+    margin-right: 20px;
+    color: #027ea1;
+    transition: all 0.2s ease 0s;
+}
+.again:hover {
+    cursor: pointer;
+    transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.word-audio-button img {
+    width: 20px;
+}
+
+.word-audio-button {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    flex: 0;
+}
+
+.right-answer span,
+.wrong-answer span {
+    flex: 1;
+}

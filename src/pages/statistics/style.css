@@ -1,0 +1,14 @@
+.statistics-page {
+  display: none;
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0);
+  margin-top: 10px;
+	flex-direction: column;
+}
+
+.statistics-audiocall-container,
+.statistics-sprint-container,
+.statistics-textbook-container {
+	display: flex;
+	flex-direction: column;
+}
