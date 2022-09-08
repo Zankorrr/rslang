@@ -1,7 +1,7 @@
 export const html = `
 <div class="sprint-container" id="sprint-container">
     <div class="difficultySelectionPlate" id="difficultForm">
-        <p>SPRINT</p>
+        <p>Sprint</p>
         <div id="difficultLevelChange">Choose the chapter</div>
         <div class="difficult-inputs">
             <input type="radio" id="difficult1"
@@ -29,7 +29,7 @@ export const html = `
             <label for="difficult6" class="label-diff">6</label>
         </div>
         <div class="difficultButton">
-            <div class="button-start" id="button-start">START</div>
+            <div class="button-start" id="button-start">Start</div>
         </div>
     </div> 
     <div class="load-screen">

@@ -6,16 +6,18 @@ p {
     display: none;
     position: absolute;
     left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    top: 15%;
+    right: 0;
+    width: 40%;
+    height: 70%;
+    margin: 0 auto;
     justify-content: center;
     align-items: center;
     z-index: 100;
 }
 .statistics {
-    width: 40%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
     padding: 20px;
     background-color: #ffffff;
     color: #334456;

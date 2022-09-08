@@ -12,6 +12,16 @@
   font-family: 'Comfortaa', cursive;
 }
 
+.audio-call-game::after {
+  content: 'Audio call';
+  font-size: 100px;
+  font-weight: 900;
+  position: fixed;
+  bottom: 50px;
+  left: 80px;
+  color: #0d705f42;
+}
+
 .close-button {
   position: absolute;
   border: none;
@@ -136,12 +146,14 @@
 
 .chapter-container {
 	display: flex;
+  height: 300px;
+  padding-top: 40px;
 	flex-direction: column;
 	align-items: center;
 }
 
 .chapter-title {
-  margin: 20px;
+  margin: 50px 0px 25px 0px;
   font-size: 20px;
   font-weight: 100;
   color: #fff;
@@ -155,6 +167,7 @@
   margin: 5px 1px;
   border: none;
   border-radius: 3px;
+  font-family: 'Comfortaa', cursive;
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0);
@@ -212,4 +225,9 @@ button:hover {
 
 .word-result-text {
   flex: 1;
+}
+
+.audio-call-title {
+  font-size: 33px;
+  color: #fff;
 }

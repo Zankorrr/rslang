@@ -2,6 +2,7 @@ export function renderChooseTab() {
   const gameContainer: HTMLElement | null = document.querySelector('.audio-call-game');
   const html = `
   <div class = "chapter-container">
+    <div class="audio-call-title">Audio call</div>
     <h2 class="chapter-title">Choose the chapter</h2>
     <div class="chapter-button-container">
       <button class="chapter-button">1</button>

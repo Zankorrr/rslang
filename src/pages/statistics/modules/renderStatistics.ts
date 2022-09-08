@@ -2,7 +2,8 @@ import { IUserWordsStatistic } from '../../../core/types';
 
 export function renderStatistics(arr: IUserWordsStatistic) {
   const statisticsContainer = document.querySelector('.statistics-page');
-  const html = `<div class="statistics-audiocall-container">
+  const html = `<div class="statistics-title">Statistics</div>
+                <div class="statistics-audiocall-container">
                   <h2 class="statistics-audiocall-title">Audiocall</h2>
                   <ul class="statistics-audiocall">
                     <li class="statistics-audiocall-item">New words: ${arr.optional.audiocall.newWords}</li>

@@ -1,12 +1,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Raleway:wght@100;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap');
 
 body {
   display: flex;
   padding: 0 100px;
-  font-family: 'Klee One', cursive;
+  font-family: 'Caveat', cursive;
   background: #029e91;
 }
 .header {
@@ -65,6 +65,7 @@ h1 {
   font-family: 'Raleway', sans-serif;
   align-items: center;
   padding-right: 10px;
+  line-height: 22px;
 }
 .about-member i {
   font-size: 18px;
@@ -75,7 +76,7 @@ h1 {
 .about-Maksim::before {
   position: absolute;
   content: '';
-  top: -10px;
+  top: 0px;
   left: -80px;
   width: 70px;
   height: 70px;
@@ -103,6 +104,11 @@ h1 {
   flex-shrink: 0;
   height: 35px;
   margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.footer a {
+  color: #000;
 }
 
 .footer .rss-logo {

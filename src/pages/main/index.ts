@@ -66,15 +66,15 @@ export function addAboutTeam() {
   const aboutAleksey = document.createElement('div');
   aboutAleksey.classList.add('about-member');
   aboutAleksey.classList.add('about-Aleksey');
-  aboutAleksey.innerHTML = '<p><i>Team Lead, frontend developer</i></p><p>Backend, электронный учебник, список слов</p>';
+  aboutAleksey.innerHTML = '<p>Aleksey</p><p><i>Team Lead, frontend developer</i></p><p>Backend, электронный учебник, список слов</p>';
   const aboutDmitry = document.createElement('div');
   aboutDmitry.classList.add('about-member');
   aboutDmitry.classList.add('about-Dmitry');
-  aboutDmitry.innerHTML = '<p><i>Frontend developer</i></p><p>Авторизация, игра "Audio call"</p>';
+  aboutDmitry.innerHTML = '<p>Dmitry</p><p><i>Frontend developer</i></p><p>Авторизация, игра "Audio call"</p>';
   const aboutMaksim = document.createElement('div');
   aboutMaksim.classList.add('about-member');
   aboutMaksim.classList.add('about-Maksim');
-  aboutMaksim.innerHTML = '<p><i>Frontend developer</i></p><p>Дизайн, игра "Sprint"</p>';
+  aboutMaksim.innerHTML = '<p>Maksim</p><p><i>Frontend developer</i></p><p>Дизайн, игра "Sprint"</p>';
   aboutTeam.append(aboutAleksey, aboutDmitry, aboutMaksim);
   document.body.appendChild(aboutTeam);
 }
